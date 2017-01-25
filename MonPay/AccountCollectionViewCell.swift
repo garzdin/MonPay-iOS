@@ -11,12 +11,12 @@ import UIKit
 class AccountCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var accountNumberLabel: UILabel!
-    @IBOutlet var selectedIndicator: UIImageView!
+    @IBOutlet var selectedIndicator: UIView!
     @IBOutlet var infoButton: UIButton!
+    var accountSelected: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectedIndicator.isHidden = true
     }
-    
 }

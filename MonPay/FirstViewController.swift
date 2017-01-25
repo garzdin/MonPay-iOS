@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: Reuse identifiers
+
 fileprivate let reuseIdentifier = "accountCell"
 fileprivate let staticReuseIdentifier = "newAccountCell"
 fileprivate let recipientCellReuseIdentifier = "recipientCell"
@@ -29,6 +31,8 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         self.recipientsCollectionView.dataSource = self
     }
     
+    // MARK: Data delegation
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
@@ -44,6 +48,8 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
             return 1
         }
     }
+    
+    // MARK: Cells setup
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 1 {
@@ -68,24 +74,35 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
     }
     
+    // MARK: Cells indication
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             if collectionView == accountsCollectionView {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AccountCollectionViewCell
-                DispatchQueue.main.async {
-                    cell.selectedIndicator.isHidden = false
+                for cell in collectionView.visibleCells.filter({(cell) in return cell is AccountCollectionViewCell}) as! [AccountCollectionViewCell] {
+                    cell.selectedIndicator.isHidden = true
+                    cell.accountSelected = false
                 }
+                let cell = collectionView.cellForItem(at: indexPath) as! AccountCollectionViewCell
+                cell.accountSelected = true
+                cell.selectedIndicator.isHidden = false
             }
         }
     }
+    
+    // MARK: Cell info button tapped action
     
     func didTapInfoButton(sender: UIButton?) {
         print(sender?.tag)
     }
     
+    // MARK: Cell add new account button tapped action
+    
     @IBAction func addNewAccount(_ sender: UIButton) {
         performSegue(withIdentifier: "addNewAccount", sender: sender)
     }
+    
+    // MARK: Transfer intiated
     
     @IBAction func goToConfirmScreen(_ sender: UIButton) {
         performSegue(withIdentifier: "confirmSend", sender: sender)

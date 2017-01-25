@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		49204D9E1E38B34C00442C74 /* AccountsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49204D9D1E38B34C00442C74 /* AccountsCollectionView.swift */; };
 		49204DA01E38B69500442C74 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49204D9F1E38B69500442C74 /* AccountCollectionViewCell.swift */; };
+		4926CC581E3944550029C736 /* AddNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926CC571E3944550029C736 /* AddNewAccountViewController.swift */; };
 		49414C691E38E9FB00CF1F20 /* RecipientsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49414C681E38E9FB00CF1F20 /* RecipientsCollectionView.swift */; };
 		49414C6B1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49414C6A1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift */; };
 		49414C6D1E39002000CF1F20 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49414C6C1E39002000CF1F20 /* ConfirmViewController.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		49204D9D1E38B34C00442C74 /* AccountsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsCollectionView.swift; sourceTree = "<group>"; };
 		49204D9F1E38B69500442C74 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
+		4926CC571E3944550029C736 /* AddNewAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewAccountViewController.swift; sourceTree = "<group>"; };
 		49414C681E38E9FB00CF1F20 /* RecipientsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientsCollectionView.swift; sourceTree = "<group>"; };
 		49414C6A1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientCollectionViewCell.swift; sourceTree = "<group>"; };
 		49414C6C1E39002000CF1F20 /* ConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				49414C681E38E9FB00CF1F20 /* RecipientsCollectionView.swift */,
 				49414C6A1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift */,
 				49414C6C1E39002000CF1F20 /* ConfirmViewController.swift */,
+				4926CC571E3944550029C736 /* AddNewAccountViewController.swift */,
 			);
 			path = MonPay;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4957AC2B1E37B0F2006A951A /* SecondViewController.swift in Sources */,
+				4926CC581E3944550029C736 /* AddNewAccountViewController.swift in Sources */,
 				4957AC271E37B0F2006A951A /* AppDelegate.swift in Sources */,
 				49414C6B1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift in Sources */,
 				49414C6D1E39002000CF1F20 /* ConfirmViewController.swift in Sources */,

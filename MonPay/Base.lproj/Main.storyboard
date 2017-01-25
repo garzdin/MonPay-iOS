@@ -45,13 +45,6 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card" translatesAutoresizingMaskIntoConstraints="NO" id="2Vj-oa-0C9">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="tFi-c0-rOM">
-                                                    <rect key="frame" x="5" y="12" width="12" height="12"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="12" id="hsC-f1-a3s"/>
-                                                        <constraint firstAttribute="width" constant="12" id="qhV-ek-nd8"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cpo-bg-iZk">
                                                     <rect key="frame" x="8" y="50" width="134" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -66,27 +59,35 @@
                                                     </constraints>
                                                     <state key="normal" image="info"/>
                                                 </button>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zve-ZS-fFD">
+                                                    <rect key="frame" x="0.0" y="99" width="150" height="1"/>
+                                                    <color key="backgroundColor" red="0.28235294117647058" green="0.81176470588235294" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="KrS-FL-Wc7"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Zve-ZS-fFD" secondAttribute="bottom" id="80r-M9-bHa"/>
+                                            <constraint firstItem="Zve-ZS-fFD" firstAttribute="leading" secondItem="k5p-A0-xqT" secondAttribute="leading" id="EJ9-EE-4at"/>
                                             <constraint firstItem="C76-Xk-Jfp" firstAttribute="top" secondItem="k5p-A0-xqT" secondAttribute="top" constant="8" id="GyT-ib-hYn"/>
                                             <constraint firstAttribute="trailing" secondItem="2Vj-oa-0C9" secondAttribute="trailing" id="Q1x-eQ-5RG"/>
-                                            <constraint firstItem="tFi-c0-rOM" firstAttribute="leading" secondItem="k5p-A0-xqT" secondAttribute="leading" constant="5" id="TQz-ie-ROx"/>
                                             <constraint firstItem="Cpo-bg-iZk" firstAttribute="leading" secondItem="k5p-A0-xqT" secondAttribute="leadingMargin" id="ceZ-UQ-4cO"/>
                                             <constraint firstItem="2Vj-oa-0C9" firstAttribute="leading" secondItem="k5p-A0-xqT" secondAttribute="leading" id="fAh-HA-Nai"/>
-                                            <constraint firstItem="tFi-c0-rOM" firstAttribute="top" secondItem="k5p-A0-xqT" secondAttribute="top" constant="12" id="fVG-6J-LW0"/>
                                             <constraint firstAttribute="trailing" secondItem="C76-Xk-Jfp" secondAttribute="trailing" constant="5" id="iaL-Tp-Npy"/>
                                             <constraint firstItem="Cpo-bg-iZk" firstAttribute="centerX" secondItem="k5p-A0-xqT" secondAttribute="centerX" id="kAI-bQ-q8w"/>
                                             <constraint firstItem="Cpo-bg-iZk" firstAttribute="centerY" secondItem="k5p-A0-xqT" secondAttribute="centerY" id="mC6-Xs-Obd"/>
                                             <constraint firstAttribute="bottom" secondItem="2Vj-oa-0C9" secondAttribute="bottom" id="pQJ-kf-QHh"/>
                                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Cpo-bg-iZk" secondAttribute="trailing" id="sfW-Pd-xFY"/>
+                                            <constraint firstAttribute="trailing" secondItem="Zve-ZS-fFD" secondAttribute="trailing" id="u0q-M6-Y4Q"/>
                                             <constraint firstItem="2Vj-oa-0C9" firstAttribute="top" secondItem="k5p-A0-xqT" secondAttribute="top" id="wVh-KL-oCO"/>
                                         </constraints>
                                         <size key="customSize" width="150" height="100"/>
                                         <connections>
                                             <outlet property="accountNumberLabel" destination="Cpo-bg-iZk" id="11l-GI-dBV"/>
                                             <outlet property="infoButton" destination="C76-Xk-Jfp" id="KbP-ho-yk0"/>
-                                            <outlet property="selectedIndicator" destination="tFi-c0-rOM" id="XsY-9D-dij"/>
+                                            <outlet property="selectedIndicator" destination="Zve-ZS-fFD" id="EH2-ax-2EJ"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="newAccountCell" id="mfs-mg-13x">
@@ -366,7 +367,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2207.1999999999998" y="1547.6761619190406"/>
+            <point key="canvasLocation" x="-2207.2463768115945" y="1547.2826086956522"/>
         </scene>
         <!--Account-->
         <scene sceneID="cA2-Uv-3au">
@@ -535,10 +536,10 @@
             </objects>
             <point key="canvasLocation" x="-794" y="2337"/>
         </scene>
-        <!--View Controller-->
+        <!--Add New Account View Controller-->
         <scene sceneID="7Ss-zo-fSr">
             <objects>
-                <viewController id="UE4-Qz-Gnl" sceneMemberID="viewController">
+                <viewController id="UE4-Qz-Gnl" customClass="AddNewAccountViewController" customModule="MonPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="h8Q-4E-7ag"/>
                         <viewControllerLayoutGuide type="bottom" id="xbs-vd-BFY"/>
@@ -552,6 +553,23 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U68-Z3-2l1">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAJ-72-8zT">
+                                            <rect key="frame" x="374" y="40" width="20" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="0eH-1I-hXS"/>
+                                                <constraint firstAttribute="height" constant="20" id="Qf8-4R-h5T"/>
+                                            </constraints>
+                                            <state key="normal" backgroundImage="cross"/>
+                                            <connections>
+                                                <action selector="dismissAddNewAccount:" destination="UE4-Qz-Gnl" eventType="touchUpInside" id="S1h-nv-zje"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="cAJ-72-8zT" firstAttribute="top" secondItem="U68-Z3-2l1" secondAttribute="top" constant="40" id="Iwx-tZ-ePf"/>
+                                        <constraint firstAttribute="trailing" secondItem="cAJ-72-8zT" secondAttribute="trailing" constant="20" id="b35-9s-aLO"/>
+                                    </constraints>
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
@@ -978,7 +996,6 @@
         <image name="recipients" width="18" height="17"/>
         <image name="search" width="25" height="26"/>
         <image name="send" width="17" height="16"/>
-        <image name="tick" width="14" height="14"/>
         <image name="transfers" width="17" height="17"/>
     </resources>
 </document>
