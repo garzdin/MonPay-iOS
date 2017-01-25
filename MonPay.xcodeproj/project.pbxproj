@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49204D9E1E38B34C00442C74 /* AccountsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49204D9D1E38B34C00442C74 /* AccountsCollectionView.swift */; };
+		49204DA01E38B69500442C74 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49204D9F1E38B69500442C74 /* AccountCollectionViewCell.swift */; };
+		49414C691E38E9FB00CF1F20 /* RecipientsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49414C681E38E9FB00CF1F20 /* RecipientsCollectionView.swift */; };
+		49414C6B1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49414C6A1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift */; };
+		49414C6D1E39002000CF1F20 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49414C6C1E39002000CF1F20 /* ConfirmViewController.swift */; };
 		4957AC271E37B0F2006A951A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957AC261E37B0F2006A951A /* AppDelegate.swift */; };
 		4957AC291E37B0F2006A951A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957AC281E37B0F2006A951A /* FirstViewController.swift */; };
 		4957AC2B1E37B0F2006A951A /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957AC2A1E37B0F2006A951A /* SecondViewController.swift */; };
@@ -16,6 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		49204D9D1E38B34C00442C74 /* AccountsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsCollectionView.swift; sourceTree = "<group>"; };
+		49204D9F1E38B69500442C74 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
+		49414C681E38E9FB00CF1F20 /* RecipientsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientsCollectionView.swift; sourceTree = "<group>"; };
+		49414C6A1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientCollectionViewCell.swift; sourceTree = "<group>"; };
+		49414C6C1E39002000CF1F20 /* ConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		4957AC231E37B0F2006A951A /* MonPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4957AC261E37B0F2006A951A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4957AC281E37B0F2006A951A /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +73,11 @@
 				4957AC2F1E37B0F2006A951A /* Assets.xcassets */,
 				4957AC311E37B0F2006A951A /* LaunchScreen.storyboard */,
 				4957AC341E37B0F2006A951A /* Info.plist */,
+				49204D9D1E38B34C00442C74 /* AccountsCollectionView.swift */,
+				49204D9F1E38B69500442C74 /* AccountCollectionViewCell.swift */,
+				49414C681E38E9FB00CF1F20 /* RecipientsCollectionView.swift */,
+				49414C6A1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift */,
+				49414C6C1E39002000CF1F20 /* ConfirmViewController.swift */,
 			);
 			path = MonPay;
 			sourceTree = "<group>";
@@ -142,6 +157,11 @@
 			files = (
 				4957AC2B1E37B0F2006A951A /* SecondViewController.swift in Sources */,
 				4957AC271E37B0F2006A951A /* AppDelegate.swift in Sources */,
+				49414C6B1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift in Sources */,
+				49414C6D1E39002000CF1F20 /* ConfirmViewController.swift in Sources */,
+				49414C691E38E9FB00CF1F20 /* RecipientsCollectionView.swift in Sources */,
+				49204D9E1E38B34C00442C74 /* AccountsCollectionView.swift in Sources */,
+				49204DA01E38B69500442C74 /* AccountCollectionViewCell.swift in Sources */,
 				4957AC291E37B0F2006A951A /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +324,7 @@
 				4957AC391E37B0F2006A951A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
