@@ -9,23 +9,9 @@
 import UIKit
 
 class InitialViewController: UIViewController {
-
-    @IBOutlet var loginButton: UIButton!
-    @IBOutlet var registerButton: UIButton!
-    @IBOutlet var forgotPasswordButton: UIButton!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        loginButton.layer.borderWidth = 2
-        loginButton.layer.borderColor = UIColor(red: 72/255.0, green: 207/255.0, blue: 173/255.0, alpha: 1.0).cgColor
-        loginButton.layer.cornerRadius = loginButton.frame.size.height / 2
-        registerButton.layer.borderWidth = 2
-        registerButton.layer.borderColor = UIColor(red: 72/255.0, green: 207/255.0, blue: 173/255.0, alpha: 1.0).cgColor
-        registerButton.layer.cornerRadius = registerButton.frame.size.height / 2
-        forgotPasswordButton.layer.borderWidth = 2
-        forgotPasswordButton.layer.borderColor = UIColor(red: 72/255.0, green: 207/255.0, blue: 173/255.0, alpha: 1.0).cgColor
-        forgotPasswordButton.layer.cornerRadius = forgotPasswordButton.frame.size.height / 2
-        
+        super.viewDidLoad()        
     }
 
     override func didReceiveMemoryWarning() {

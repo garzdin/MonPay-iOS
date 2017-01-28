@@ -22,6 +22,8 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
 
     @IBOutlet var accountsCollectionView: AccountsCollectionView!
     @IBOutlet var recipientsCollectionView: RecipientsCollectionView!
+    @IBOutlet var fromCurrencyLabel: UILabel!
+    @IBOutlet var toCurrencyLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,12 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         self.accountsCollectionView.dataSource = self
         self.recipientsCollectionView.delegate = self
         self.recipientsCollectionView.dataSource = self
+        let tapFromCurrencyLabel = UITapGestureRecognizer(target: self, action: #selector(didTapFromCurrencyLabel(sender:)))
+        fromCurrencyLabel.isUserInteractionEnabled = true
+        fromCurrencyLabel.addGestureRecognizer(tapFromCurrencyLabel)
+        let tapToCurrencyLabel = UITapGestureRecognizer(target: self, action: #selector(didTapToCurrencyLabel(sender:)))
+        toCurrencyLabel.isUserInteractionEnabled = true
+        toCurrencyLabel.addGestureRecognizer(tapToCurrencyLabel)
     }
     
     // MARK: Data delegation
@@ -93,7 +101,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
     // MARK: Cell info button tapped action
     
     func didTapInfoButton(sender: UIButton?) {
-        print(sender?.tag)
+        
     }
     
     // MARK: Cell add new account button tapped action
@@ -107,5 +115,19 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
     @IBAction func goToConfirmScreen(_ sender: UIButton) {
         performSegue(withIdentifier: "confirmSend", sender: sender)
     }
+    
+    // MARK: From currency label tap
+    
+    func didTapFromCurrencyLabel(sender: UILabel) {
+        performSegue(withIdentifier: "chooseCurrency", sender: sender)
+    }
+    
+    // MARK: To currency label tap
+    
+    func didTapToCurrencyLabel(sender: UILabel) {
+        performSegue(withIdentifier: "chooseCurrency", sender: sender)
+    }
+    
+    @IBAction func unwindToSendScreen(segue: UIStoryboardSegue) {}
 }
 

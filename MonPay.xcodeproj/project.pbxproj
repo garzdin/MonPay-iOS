@@ -22,7 +22,9 @@
 		499375191E3A4440008D65F3 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499375181E3A4440008D65F3 /* InitialViewController.swift */; };
 		4993751B1E3A4863008D65F3 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4993751A1E3A4863008D65F3 /* RegistrationViewController.swift */; };
 		4993751D1E3A5DA2008D65F3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4993751C1E3A5DA2008D65F3 /* LoginViewController.swift */; };
+		49C0EB491E3D005C000AE7FB /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C0EB481E3D005C000AE7FB /* RoundedImageView.swift */; };
 		49C9B70D1E3B620A004CAFEF /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C9B70C1E3B620A004CAFEF /* UnderlinedTextField.swift */; };
+		49F0BC8D1E3BD83F00FB344B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F0BC8C1E3BD83F00FB344B /* RoundedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +45,9 @@
 		499375181E3A4440008D65F3 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		4993751A1E3A4863008D65F3 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		4993751C1E3A5DA2008D65F3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		49C0EB481E3D005C000AE7FB /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		49C9B70C1E3B620A004CAFEF /* UnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
+		49F0BC8C1E3BD83F00FB344B /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,8 @@
 				4993751A1E3A4863008D65F3 /* RegistrationViewController.swift */,
 				4993751C1E3A5DA2008D65F3 /* LoginViewController.swift */,
 				49C9B70C1E3B620A004CAFEF /* UnderlinedTextField.swift */,
+				49F0BC8C1E3BD83F00FB344B /* RoundedButton.swift */,
+				49C0EB481E3D005C000AE7FB /* RoundedImageView.swift */,
 			);
 			path = MonPay;
 			sourceTree = "<group>";
@@ -181,6 +187,8 @@
 				499375191E3A4440008D65F3 /* InitialViewController.swift in Sources */,
 				49414C691E38E9FB00CF1F20 /* RecipientsCollectionView.swift in Sources */,
 				49204D9E1E38B34C00442C74 /* AccountsCollectionView.swift in Sources */,
+				49C0EB491E3D005C000AE7FB /* RoundedImageView.swift in Sources */,
+				49F0BC8D1E3BD83F00FB344B /* RoundedButton.swift in Sources */,
 				49204DA01E38B69500442C74 /* AccountCollectionViewCell.swift in Sources */,
 				4957AC291E37B0F2006A951A /* FirstViewController.swift in Sources */,
 			);

@@ -9,14 +9,9 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
-    @IBOutlet var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginButton.layer.borderWidth = 2
-        loginButton.layer.borderColor = UIColor(red: 72/255.0, green: 207/255.0, blue: 173/255.0, alpha: 1.0).cgColor
-        loginButton.layer.cornerRadius = loginButton.frame.size.height / 2
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,4 +29,8 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func loginAction(_ sender: UIButton) {
+        performSegue(withIdentifier: "authenticated", sender: sender)
+    }
 }
