@@ -15,7 +15,6 @@
 		49414C6D1E39002000CF1F20 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49414C6C1E39002000CF1F20 /* ConfirmViewController.swift */; };
 		4957AC271E37B0F2006A951A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957AC261E37B0F2006A951A /* AppDelegate.swift */; };
 		4957AC291E37B0F2006A951A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957AC281E37B0F2006A951A /* FirstViewController.swift */; };
-		4957AC2B1E37B0F2006A951A /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957AC2A1E37B0F2006A951A /* SecondViewController.swift */; };
 		4957AC2E1E37B0F2006A951A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4957AC2C1E37B0F2006A951A /* Main.storyboard */; };
 		4957AC301E37B0F2006A951A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4957AC2F1E37B0F2006A951A /* Assets.xcassets */; };
 		4957AC331E37B0F2006A951A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4957AC311E37B0F2006A951A /* LaunchScreen.storyboard */; };
@@ -25,6 +24,13 @@
 		49C0EB491E3D005C000AE7FB /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C0EB481E3D005C000AE7FB /* RoundedImageView.swift */; };
 		49C9B70D1E3B620A004CAFEF /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C9B70C1E3B620A004CAFEF /* UnderlinedTextField.swift */; };
 		49F0BC8D1E3BD83F00FB344B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F0BC8C1E3BD83F00FB344B /* RoundedButton.swift */; };
+		49F986FB1E3DF72000EC57C9 /* TransfersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F986FA1E3DF72000EC57C9 /* TransfersTableViewController.swift */; };
+		49F986FD1E3DF91400EC57C9 /* TransferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F986FC1E3DF91400EC57C9 /* TransferTableViewCell.swift */; };
+		49F986FF1E3DFCC600EC57C9 /* TransferDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F986FE1E3DFCC600EC57C9 /* TransferDetailsViewController.swift */; };
+		49F987011E3E05F700EC57C9 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F987001E3E05F700EC57C9 /* AccountViewController.swift */; };
+		49F987031E3E08AE00EC57C9 /* RecipientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F987021E3E08AE00EC57C9 /* RecipientsTableViewController.swift */; };
+		49F987051E3E0AED00EC57C9 /* RecipientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F987041E3E0AED00EC57C9 /* RecipientTableViewCell.swift */; };
+		49F987071E3E0D0E00EC57C9 /* RecipientDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F987061E3E0D0E00EC57C9 /* RecipientDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +43,6 @@
 		4957AC231E37B0F2006A951A /* MonPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4957AC261E37B0F2006A951A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4957AC281E37B0F2006A951A /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		4957AC2A1E37B0F2006A951A /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		4957AC2D1E37B0F2006A951A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4957AC2F1E37B0F2006A951A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4957AC321E37B0F2006A951A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,6 +53,13 @@
 		49C0EB481E3D005C000AE7FB /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		49C9B70C1E3B620A004CAFEF /* UnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		49F0BC8C1E3BD83F00FB344B /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		49F986FA1E3DF72000EC57C9 /* TransfersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransfersTableViewController.swift; sourceTree = "<group>"; };
+		49F986FC1E3DF91400EC57C9 /* TransferTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferTableViewCell.swift; sourceTree = "<group>"; };
+		49F986FE1E3DFCC600EC57C9 /* TransferDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferDetailsViewController.swift; sourceTree = "<group>"; };
+		49F987001E3E05F700EC57C9 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		49F987021E3E08AE00EC57C9 /* RecipientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientsTableViewController.swift; sourceTree = "<group>"; };
+		49F987041E3E0AED00EC57C9 /* RecipientTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientTableViewCell.swift; sourceTree = "<group>"; };
+		49F987061E3E0D0E00EC57C9 /* RecipientDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +94,6 @@
 			children = (
 				4957AC261E37B0F2006A951A /* AppDelegate.swift */,
 				4957AC281E37B0F2006A951A /* FirstViewController.swift */,
-				4957AC2A1E37B0F2006A951A /* SecondViewController.swift */,
 				4957AC2C1E37B0F2006A951A /* Main.storyboard */,
 				4957AC2F1E37B0F2006A951A /* Assets.xcassets */,
 				4957AC311E37B0F2006A951A /* LaunchScreen.storyboard */,
@@ -96,9 +107,16 @@
 				499375181E3A4440008D65F3 /* InitialViewController.swift */,
 				4993751A1E3A4863008D65F3 /* RegistrationViewController.swift */,
 				4993751C1E3A5DA2008D65F3 /* LoginViewController.swift */,
+				49F986FA1E3DF72000EC57C9 /* TransfersTableViewController.swift */,
 				49C9B70C1E3B620A004CAFEF /* UnderlinedTextField.swift */,
 				49F0BC8C1E3BD83F00FB344B /* RoundedButton.swift */,
 				49C0EB481E3D005C000AE7FB /* RoundedImageView.swift */,
+				49F986FC1E3DF91400EC57C9 /* TransferTableViewCell.swift */,
+				49F986FE1E3DFCC600EC57C9 /* TransferDetailsViewController.swift */,
+				49F987001E3E05F700EC57C9 /* AccountViewController.swift */,
+				49F987021E3E08AE00EC57C9 /* RecipientsTableViewController.swift */,
+				49F987041E3E0AED00EC57C9 /* RecipientTableViewCell.swift */,
+				49F987061E3E0D0E00EC57C9 /* RecipientDetailsViewController.swift */,
 			);
 			path = MonPay;
 			sourceTree = "<group>";
@@ -177,20 +195,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				4993751D1E3A5DA2008D65F3 /* LoginViewController.swift in Sources */,
-				4957AC2B1E37B0F2006A951A /* SecondViewController.swift in Sources */,
+				49F986FB1E3DF72000EC57C9 /* TransfersTableViewController.swift in Sources */,
 				4926CC581E3944550029C736 /* AddNewAccountViewController.swift in Sources */,
 				4957AC271E37B0F2006A951A /* AppDelegate.swift in Sources */,
 				4993751B1E3A4863008D65F3 /* RegistrationViewController.swift in Sources */,
 				49414C6B1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift in Sources */,
 				49414C6D1E39002000CF1F20 /* ConfirmViewController.swift in Sources */,
 				49C9B70D1E3B620A004CAFEF /* UnderlinedTextField.swift in Sources */,
+				49F987011E3E05F700EC57C9 /* AccountViewController.swift in Sources */,
+				49F987071E3E0D0E00EC57C9 /* RecipientDetailsViewController.swift in Sources */,
+				49F987031E3E08AE00EC57C9 /* RecipientsTableViewController.swift in Sources */,
 				499375191E3A4440008D65F3 /* InitialViewController.swift in Sources */,
 				49414C691E38E9FB00CF1F20 /* RecipientsCollectionView.swift in Sources */,
 				49204D9E1E38B34C00442C74 /* AccountsCollectionView.swift in Sources */,
+				49F987051E3E0AED00EC57C9 /* RecipientTableViewCell.swift in Sources */,
 				49C0EB491E3D005C000AE7FB /* RoundedImageView.swift in Sources */,
 				49F0BC8D1E3BD83F00FB344B /* RoundedButton.swift in Sources */,
 				49204DA01E38B69500442C74 /* AccountCollectionViewCell.swift in Sources */,
+				49F986FD1E3DF91400EC57C9 /* TransferTableViewCell.swift in Sources */,
 				4957AC291E37B0F2006A951A /* FirstViewController.swift in Sources */,
+				49F986FF1E3DFCC600EC57C9 /* TransferDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

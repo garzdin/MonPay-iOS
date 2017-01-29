@@ -1,22 +1,19 @@
 //
-//  AddNewAccountViewController.swift
+//  AccountViewController.swift
 //  MonPay
 //
-//  Created by Teodor on 25/01/2017.
+//  Created by Teodor on 29/01/2017.
 //  Copyright © 2017 TeodorGarzdin. All rights reserved.
 //
 
 import UIKit
 
-class AddNewAccountViewController: UIViewController {
+class AccountViewController: UIViewController {
 
-    @IBOutlet var currencyLabel: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tapCurrencyLabel = UITapGestureRecognizer(target: self, action: #selector(didTapCurrencyLabel(sender:)))
-        currencyLabel.isUserInteractionEnabled = true
-        currencyLabel.addGestureRecognizer(tapCurrencyLabel)
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,9 +32,6 @@ class AddNewAccountViewController: UIViewController {
     }
     */
     
-    func didTapCurrencyLabel(sender: UILabel) {
-        performSegue(withIdentifier: "chooseCurrencyForAccount", sender: sender)
-    }
-    
-    @IBAction func unwindToAddNewAccount(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToAccount(segue: UIStoryboardSegue) {}
+
 }

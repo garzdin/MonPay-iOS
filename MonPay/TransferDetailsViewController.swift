@@ -1,22 +1,18 @@
 //
-//  AddNewAccountViewController.swift
+//  TransferDetailsViewController.swift
 //  MonPay
 //
-//  Created by Teodor on 25/01/2017.
+//  Created by Teodor on 29/01/2017.
 //  Copyright © 2017 TeodorGarzdin. All rights reserved.
 //
 
 import UIKit
 
-class AddNewAccountViewController: UIViewController {
+class TransferDetailsViewController: UIViewController {
 
-    @IBOutlet var currencyLabel: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tapCurrencyLabel = UITapGestureRecognizer(target: self, action: #selector(didTapCurrencyLabel(sender:)))
-        currencyLabel.isUserInteractionEnabled = true
-        currencyLabel.addGestureRecognizer(tapCurrencyLabel)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "delete"), style: .plain, target: self, action: #selector(didPressDelete(sender:)))
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,9 +31,8 @@ class AddNewAccountViewController: UIViewController {
     }
     */
     
-    func didTapCurrencyLabel(sender: UILabel) {
-        performSegue(withIdentifier: "chooseCurrencyForAccount", sender: sender)
+    func didPressDelete(sender: UIBarButtonItem) {
+        
     }
-    
-    @IBAction func unwindToAddNewAccount(segue: UIStoryboardSegue) {}
+
 }
