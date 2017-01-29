@@ -16,7 +16,9 @@ class TransferTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.selectionStyle = .none
+        let selectedView = UIView(frame: self.frame)
+        selectedView.backgroundColor = UIColor(red: 72/255.0, green: 207/255.0, blue: 173/255.0, alpha: 1.0)
+        self.selectedBackgroundView = selectedView
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
