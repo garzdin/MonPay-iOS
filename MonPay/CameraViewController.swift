@@ -9,6 +9,17 @@
 import UIKit
 import AVFoundation
 
+enum DeviceOrientation: Int {
+    case photos_EXIF_0ROW_TOP_0COL_LEFT = 1,
+    photos_EXIF_0ROW_TOP_0COL_RIGHT = 2,
+    photos_EXIF_0ROW_BOTTOM_0COL_RIGHT = 3,
+    photos_EXIF_0ROW_BOTTOM_0COL_LEFT = 4,
+    photos_EXIF_0ROW_LEFT_0COL_TOP = 5,
+    photos_EXIF_0ROW_RIGHT_0COL_TOP = 6,
+    photos_EXIF_0ROW_RIGHT_0COL_BOTTOM = 7,
+    photos_EXIF_0ROW_LEFT_0COL_BOTTOM = 8
+}
+
 @IBDesignable class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     @IBOutlet var dismissButton: UIButton!
@@ -61,7 +72,8 @@ import AVFoundation
         
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer?.frame = self.view.bounds
-        previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+        previewLayer?.backgroundColor = UIColor.black.cgColor
+        previewLayer?.videoGravity = AVLayerVideoGravityResizeAspect
         
         self.view.layer.addSublayer(previewLayer!)
         
@@ -90,19 +102,100 @@ import AVFoundation
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!) {
         let cvImage = CMSampleBufferGetImageBuffer(sampleBuffer)
         let outputImage = CIImage(cvImageBuffer: cvImage!)
-        let scale = (self.previewLayer?.bounds.size.width)! / (self.previewLayer?.bounds.size.height)!
-        if let feature = detector?.features(in: outputImage).first as? CIRectangleFeature {
-            let frame = CGRect(x: (feature.topRight.x * scale) - ((feature.topLeft.y * scale) - (feature.bottomLeft.y * scale)), y: feature.bottomLeft.y * scale, width: (feature.topLeft.y * scale) - (feature.bottomLeft.y * scale), height: (feature.topRight.x * scale) - (feature.topLeft.x * scale))
-            DispatchQueue.main.async {
-                self.highlightView?.frame = frame
-            }
-            takePhotoButton.isEnabled = true
-        } else {
-            DispatchQueue.main.async {
-                self.highlightView?.frame = CGRect.zero
-            }
-            takePhotoButton.isEnabled = false
+        
+        let curDeviceOrientation : UIDeviceOrientation = UIDevice.current.orientation
+        var exifOrientation : Int
+        
+        switch curDeviceOrientation {
+            
+        case UIDeviceOrientation.portraitUpsideDown:
+            exifOrientation = DeviceOrientation.photos_EXIF_0ROW_LEFT_0COL_BOTTOM.rawValue
+        case UIDeviceOrientation.landscapeLeft:
+            exifOrientation = DeviceOrientation.photos_EXIF_0ROW_TOP_0COL_LEFT.rawValue
+        case UIDeviceOrientation.landscapeRight:
+            exifOrientation = DeviceOrientation.photos_EXIF_0ROW_BOTTOM_0COL_RIGHT.rawValue
+        default:
+            exifOrientation = DeviceOrientation.photos_EXIF_0ROW_RIGHT_0COL_TOP.rawValue
         }
+        
+        let imageOptions : NSDictionary = [CIDetectorImageOrientation : NSNumber(value: exifOrientation as Int)]
+        
+        if let feature = detector?.features(in: outputImage, options: imageOptions as? [String : AnyObject]).first as? CIRectangleFeature {
+            
+            let fdesc: CMFormatDescription = CMSampleBufferGetFormatDescription(sampleBuffer)!
+            let clap: CGRect = CMVideoFormatDescriptionGetCleanAperture(fdesc, false)
+            
+            DispatchQueue.main.async(execute: { () -> Void in
+                self.highlightView?.frame = self.drawBoxForFeature(feature, clap: clap, orientation: curDeviceOrientation)
+            })
+        }
+    }
+    
+    func drawBoxForFeature(_ feature: CIFeature, clap: CGRect, orientation: UIDeviceOrientation) -> CGRect {
+        let parentFrameSize: CGSize = self.view.frame.size
+        let gravity: NSString = previewLayer!.videoGravity as NSString
+        
+        let previewBox : CGRect = self.videoPreviewBoxForGravity(gravity, frameSize: parentFrameSize, apertureSize: clap.size)
+        
+        var faceRect : CGRect = feature.bounds
+        
+        var temp: CGFloat = faceRect.width
+        faceRect.size.width = faceRect.height
+        faceRect.size.height = temp
+        temp = faceRect.origin.x
+        faceRect.origin.x = faceRect.origin.y
+        faceRect.origin.y = temp
+        let widthScaleBy = previewBox.size.width / clap.size.height
+        let heightScaleBy = previewBox.size.height / clap.size.width
+        faceRect.size.width *= widthScaleBy
+        faceRect.size.height *= heightScaleBy
+        faceRect.origin.x *= widthScaleBy
+        faceRect.origin.y *= heightScaleBy
+        
+        return faceRect.offsetBy(dx: previewBox.origin.x, dy: previewBox.origin.y)
+    }
+    
+    func videoPreviewBoxForGravity(_ gravity : NSString, frameSize : CGSize, apertureSize : CGSize) -> CGRect {
+        let apertureRatio : CGFloat = apertureSize.height / apertureSize.width
+        let viewRatio : CGFloat = frameSize.width / frameSize.height
+        
+        var size : CGSize = CGSize.zero
+        if gravity.isEqual(to: AVLayerVideoGravityResizeAspectFill) {
+            if viewRatio > apertureRatio {
+                size.width = frameSize.width
+                size.height = apertureSize.width * (frameSize.width / apertureSize.height)
+            } else {
+                size.width = apertureSize.height * (frameSize.height / apertureSize.width)
+                size.height = frameSize.height
+            }
+        } else if gravity.isEqual(to: AVLayerVideoGravityResizeAspect) {
+            if viewRatio > apertureRatio {
+                size.width = apertureSize.height * (frameSize.height / apertureSize.width)
+                size.height = frameSize.height
+            } else {
+                size.width = frameSize.width
+                size.height = apertureSize.width * (frameSize.width / apertureSize.height)
+            }
+        } else if gravity.isEqual(to: AVLayerVideoGravityResize) {
+            size.width = frameSize.width
+            size.height = frameSize.height
+        }
+        
+        var videoBox: CGRect = CGRect.zero
+        videoBox.size = size
+        if size.width < frameSize.width {
+            videoBox.origin.x = (frameSize.width - size.width) / 2;
+        } else {
+            videoBox.origin.x = (size.width - frameSize.width) / 2;
+        }
+        
+        if size.height < frameSize.height {
+            videoBox.origin.y = (frameSize.height - size.height) / 2;
+        } else {
+            videoBox.origin.y = (size.height - frameSize.height) / 2;
+        }
+        
+        return videoBox
     }
 
     @IBAction func takePhoto(_ sender: UIButton) {
