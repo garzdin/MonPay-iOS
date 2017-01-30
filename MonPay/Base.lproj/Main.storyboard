@@ -2022,6 +2022,9 @@ of an ID document. This document can be either your
                                     <constraint firstAttribute="height" constant="35" id="kKx-WW-1qx"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="camera"/>
+                                <connections>
+                                    <segue destination="nbz-3G-lbF" kind="presentation" modalPresentationStyle="overCurrentContext" id="hUq-P3-rmp"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hdk-Rc-O82" customClass="RoundedButton" customModule="MonPay" customModuleProvider="target">
                                 <rect key="frame" x="137" y="331.33333333333331" width="140" height="40"/>
@@ -2060,6 +2063,79 @@ of an ID document. This document can be either your
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5HI-aa-na6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1359" y="-1010"/>
+        </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="fI5-ON-f2t">
+            <objects>
+                <viewController id="nbz-3G-lbF" customClass="CameraViewController" customModule="MonPay" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j6D-LW-TUf"/>
+                        <viewControllerLayoutGuide type="bottom" id="dYh-7g-UYn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WSZ-II-tEo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQj-t0-ruV" customClass="RoundedButton" customModule="MonPay" customModuleProvider="target">
+                                <rect key="frame" x="177" y="646" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="9Vi-D9-SH4"/>
+                                    <constraint firstAttribute="height" constant="60" id="F36-fL-gyg"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.28235294119999998" green="0.81176470590000005" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.28235294119999998" green="0.81176470590000005" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="takePhoto:" destination="nbz-3G-lbF" eventType="touchUpInside" id="a9O-wH-HqX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="498-KX-UTY">
+                                <rect key="frame" x="374" y="40" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="7J8-6o-hUt"/>
+                                    <constraint firstAttribute="height" constant="20" id="l8n-4h-qjS"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="cross"/>
+                                <connections>
+                                    <action selector="dismissCameraView:" destination="nbz-3G-lbF" eventType="touchUpInside" id="etX-bt-MXC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="498-KX-UTY" firstAttribute="top" secondItem="j6D-LW-TUf" secondAttribute="bottom" constant="20" id="Ydy-hi-XdQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="498-KX-UTY" secondAttribute="trailing" id="pSH-CH-m1k"/>
+                            <constraint firstItem="dYh-7g-UYn" firstAttribute="top" secondItem="DQj-t0-ruV" secondAttribute="bottom" constant="30" id="udq-Pu-s9R"/>
+                            <constraint firstItem="DQj-t0-ruV" firstAttribute="centerX" secondItem="WSZ-II-tEo" secondAttribute="centerX" id="zhp-2I-jhz"/>
+                        </constraints>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="rectangleBorderWidth">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="rectangleBorderColor">
+                            <color key="value" red="0.28235294119999998" green="0.81176470590000005" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="dismissButton" destination="498-KX-UTY" id="SZZ-OA-Uj3"/>
+                        <outlet property="takePhotoButton" destination="DQj-t0-ruV" id="OPI-tf-ODl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yh1-4b-00M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1358" y="-251"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -2147,7 +2223,7 @@ of an ID document. This document can be either your
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-5"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="c2b-vK-k4A">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c2b-vK-k4A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
