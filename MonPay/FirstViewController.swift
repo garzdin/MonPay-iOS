@@ -95,6 +95,16 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
                 cell.accountSelected = true
                 cell.selectedIndicator.isHidden = false
             }
+            if collectionView == recipientsCollectionView {
+                for cell in collectionView.visibleCells.filter({(cell) in return cell is RecipientCollectionViewCell}) as! [RecipientCollectionViewCell] {
+                    cell.recipientSelected = false
+                    cell.setUnselected()
+                }
+                if let cell = collectionView.cellForItem(at: indexPath) as? RecipientCollectionViewCell {
+                    cell.recipientSelected = true
+                    cell.setSelected()
+                }
+            }
         }
     }
     
