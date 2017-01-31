@@ -15,7 +15,7 @@ fileprivate let staticReuseIdentifier = "newAccountCell"
 fileprivate let recipientCellReuseIdentifier = "recipientCell"
 fileprivate let recipientSearchCellReuseIdentifier = "recipientSearchCell"
 
-class FirstViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     let data: [String] = ["BG12JSW61293812093", "BG12JSW61293812093", "BG12JSW61293812093"]
     let recipients: [String] = ["Adam Smith", "John Doe", "Batman"]
