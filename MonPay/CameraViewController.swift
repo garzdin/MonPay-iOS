@@ -9,6 +9,10 @@
 import UIKit
 import AVFoundation
 
+protocol IDRecognizerDelegate: class {
+    func didDetectIDCard(image: UIImage)
+}
+
 enum DeviceOrientation: Int {
     case photos_EXIF_0ROW_TOP_0COL_LEFT = 1,
     photos_EXIF_0ROW_TOP_0COL_RIGHT = 2,
@@ -23,7 +27,6 @@ enum DeviceOrientation: Int {
 @IBDesignable class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     @IBOutlet var dismissButton: UIButton!
-    @IBOutlet var takePhotoButton: RoundedButton!
     
     @IBInspectable var rectangleBorderWidth: CGFloat = 2.0 {
         didSet {
@@ -44,10 +47,10 @@ enum DeviceOrientation: Int {
     
     var detector: CIDetector?
     
+    weak var delegate: IDRecognizerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        takePhotoButton.isEnabled = false
         
         detector = CIDetector(
             ofType: CIDetectorTypeRectangle,
@@ -55,7 +58,7 @@ enum DeviceOrientation: Int {
             options: [CIDetectorAccuracy: CIDetectorAccuracyHigh]
         )
         
-        captureSession.sessionPreset = AVCaptureSessionPresetPhoto
+        captureSession.sessionPreset = AVCaptureSessionPreset1280x720
         let backCamera = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         do {
             let input = try AVCaptureDeviceInput(device: backCamera)
@@ -85,7 +88,6 @@ enum DeviceOrientation: Int {
         
         self.view.addSubview(highlightView!)
         
-        self.view.bringSubview(toFront: self.takePhotoButton)
         self.view.bringSubview(toFront: self.dismissButton)
     }
     
@@ -125,8 +127,16 @@ enum DeviceOrientation: Int {
             let fdesc: CMFormatDescription = CMSampleBufferGetFormatDescription(sampleBuffer)!
             let clap: CGRect = CMVideoFormatDescriptionGetCleanAperture(fdesc, false)
             
+            let frame = self.drawBoxForFeature(feature, clap: clap, orientation: curDeviceOrientation)
+            
             DispatchQueue.main.async(execute: { () -> Void in
-                self.highlightView?.frame = self.drawBoxForFeature(feature, clap: clap, orientation: curDeviceOrientation)
+                self.highlightView?.frame = frame
+                if frame.width / frame.height > 1.5 {
+                    self.delegate?.didDetectIDCard(image: UIImage(ciImage: outputImage.cropping(to: frame)))
+                    self.dismiss(animated: true, completion: {
+                        self.captureSession.stopRunning()
+                    })
+                }
             })
         }
     }
@@ -196,10 +206,6 @@ enum DeviceOrientation: Int {
         }
         
         return videoBox
-    }
-
-    @IBAction func takePhoto(_ sender: UIButton) {
-        
     }
     
     @IBAction func dismissCameraView(_ sender: UIButton) {

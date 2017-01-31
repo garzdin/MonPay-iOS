@@ -1994,10 +1994,10 @@
             </objects>
             <point key="canvasLocation" x="2348" y="2337"/>
         </scene>
-        <!--View Controller-->
+        <!--Onboarding Step Three View Controller-->
         <scene sceneID="0Vj-8q-iM1">
             <objects>
-                <viewController storyboardIdentifier="RegistrationStepThree" id="teu-T3-rjh" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegistrationStepThree" id="teu-T3-rjh" customClass="OnboardingStepThreeViewController" customModule="MonPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pWP-vp-sYo"/>
                         <viewControllerLayoutGuide type="bottom" id="tvz-IL-dyf"/>
@@ -2023,7 +2023,7 @@ of an ID document. This document can be either your
                                 </constraints>
                                 <state key="normal" backgroundImage="camera"/>
                                 <connections>
-                                    <segue destination="nbz-3G-lbF" kind="presentation" modalPresentationStyle="overCurrentContext" id="hUq-P3-rmp"/>
+                                    <segue destination="nbz-3G-lbF" kind="presentation" identifier="openCamera" modalPresentationStyle="overCurrentContext" id="hUq-P3-rmp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hdk-Rc-O82" customClass="RoundedButton" customModule="MonPay" customModuleProvider="target">
@@ -2076,30 +2076,6 @@ of an ID document. This document can be either your
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQj-t0-ruV" customClass="RoundedButton" customModule="MonPay" customModuleProvider="target">
-                                <rect key="frame" x="177" y="646" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="9Vi-D9-SH4"/>
-                                    <constraint firstAttribute="height" constant="60" id="F36-fL-gyg"/>
-                                </constraints>
-                                <state key="normal">
-                                    <color key="titleColor" red="0.28235294119999998" green="0.81176470590000005" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.28235294119999998" green="0.81176470590000005" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="30"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="takePhoto:" destination="nbz-3G-lbF" eventType="touchUpInside" id="a9O-wH-HqX"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="498-KX-UTY">
                                 <rect key="frame" x="374" y="40" width="20" height="20"/>
                                 <constraints>
@@ -2116,8 +2092,6 @@ of an ID document. This document can be either your
                         <constraints>
                             <constraint firstItem="498-KX-UTY" firstAttribute="top" secondItem="j6D-LW-TUf" secondAttribute="bottom" constant="20" id="Ydy-hi-XdQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="498-KX-UTY" secondAttribute="trailing" id="pSH-CH-m1k"/>
-                            <constraint firstItem="dYh-7g-UYn" firstAttribute="top" secondItem="DQj-t0-ruV" secondAttribute="bottom" constant="30" id="udq-Pu-s9R"/>
-                            <constraint firstItem="DQj-t0-ruV" firstAttribute="centerX" secondItem="WSZ-II-tEo" secondAttribute="centerX" id="zhp-2I-jhz"/>
                         </constraints>
                     </view>
                     <userDefinedRuntimeAttributes>
@@ -2130,7 +2104,6 @@ of an ID document. This document can be either your
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="dismissButton" destination="498-KX-UTY" id="SZZ-OA-Uj3"/>
-                        <outlet property="takePhotoButton" destination="DQj-t0-ruV" id="OPI-tf-ODl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yh1-4b-00M" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		490B81FB1E41024B00BCBC4F /* OnboardingStepThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B81FA1E41024B00BCBC4F /* OnboardingStepThreeViewController.swift */; };
 		49204D9E1E38B34C00442C74 /* AccountsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49204D9D1E38B34C00442C74 /* AccountsCollectionView.swift */; };
 		49204DA01E38B69500442C74 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49204D9F1E38B69500442C74 /* AccountCollectionViewCell.swift */; };
 		4926CC581E3944550029C736 /* AddNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926CC571E3944550029C736 /* AddNewAccountViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		490B81FA1E41024B00BCBC4F /* OnboardingStepThreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingStepThreeViewController.swift; sourceTree = "<group>"; };
 		49204D9D1E38B34C00442C74 /* AccountsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsCollectionView.swift; sourceTree = "<group>"; };
 		49204D9F1E38B69500442C74 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
 		4926CC571E3944550029C736 /* AddNewAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewAccountViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				49F987021E3E08AE00EC57C9 /* RecipientsTableViewController.swift */,
 				49F987041E3E0AED00EC57C9 /* RecipientTableViewCell.swift */,
 				49F987061E3E0D0E00EC57C9 /* RecipientDetailsViewController.swift */,
+				490B81FA1E41024B00BCBC4F /* OnboardingStepThreeViewController.swift */,
 				49C1CEDD1E3E81BB009076D3 /* CameraViewController.swift */,
 			);
 			path = MonPay;
@@ -219,6 +222,7 @@
 				49F986FD1E3DF91400EC57C9 /* TransferTableViewCell.swift in Sources */,
 				4957AC291E37B0F2006A951A /* FirstViewController.swift in Sources */,
 				49F986FF1E3DFCC600EC57C9 /* TransferDetailsViewController.swift in Sources */,
+				490B81FB1E41024B00BCBC4F /* OnboardingStepThreeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
