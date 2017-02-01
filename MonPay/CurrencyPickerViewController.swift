@@ -63,4 +63,8 @@ class CurrencyPickerViewController: UIViewController, PickerViewDelegate, Picker
         delegate?.didSelectCurrency(index: selectedRow, currency: currencies[selectedRow], sender: segueSender)
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func dismissAction(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

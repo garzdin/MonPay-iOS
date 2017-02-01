@@ -23,11 +23,12 @@
 		499375191E3A4440008D65F3 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499375181E3A4440008D65F3 /* InitialViewController.swift */; };
 		4993751B1E3A4863008D65F3 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4993751A1E3A4863008D65F3 /* RegistrationViewController.swift */; };
 		4993751D1E3A5DA2008D65F3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4993751C1E3A5DA2008D65F3 /* LoginViewController.swift */; };
-		49AD23BD1E41D4AA002FE3C7 /* PickerVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD23BC1E41D4AA002FE3C7 /* PickerVIew.swift */; };
+		49AD23BD1E41D4AA002FE3C7 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD23BC1E41D4AA002FE3C7 /* PickerView.swift */; };
 		49AD23BF1E41D514002FE3C7 /* CurrencyPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD23BE1E41D514002FE3C7 /* CurrencyPickerViewController.swift */; };
 		49C0EB491E3D005C000AE7FB /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C0EB481E3D005C000AE7FB /* RoundedImageView.swift */; };
 		49C1CEDE1E3E81BB009076D3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C1CEDD1E3E81BB009076D3 /* CameraViewController.swift */; };
 		49C9B70D1E3B620A004CAFEF /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C9B70C1E3B620A004CAFEF /* UnderlinedTextField.swift */; };
+		49E500DA1E4258B7009559CB /* AddNewRecipientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E500D91E4258B7009559CB /* AddNewRecipientViewController.swift */; };
 		49F0BC8D1E3BD83F00FB344B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F0BC8C1E3BD83F00FB344B /* RoundedButton.swift */; };
 		49F986FB1E3DF72000EC57C9 /* TransfersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F986FA1E3DF72000EC57C9 /* TransfersTableViewController.swift */; };
 		49F986FD1E3DF91400EC57C9 /* TransferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F986FC1E3DF91400EC57C9 /* TransferTableViewCell.swift */; };
@@ -57,11 +58,12 @@
 		499375181E3A4440008D65F3 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		4993751A1E3A4863008D65F3 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		4993751C1E3A5DA2008D65F3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		49AD23BC1E41D4AA002FE3C7 /* PickerVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerVIew.swift; sourceTree = "<group>"; };
+		49AD23BC1E41D4AA002FE3C7 /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		49AD23BE1E41D514002FE3C7 /* CurrencyPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyPickerViewController.swift; sourceTree = "<group>"; };
 		49C0EB481E3D005C000AE7FB /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		49C1CEDD1E3E81BB009076D3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		49C9B70C1E3B620A004CAFEF /* UnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
+		49E500D91E4258B7009559CB /* AddNewRecipientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewRecipientViewController.swift; sourceTree = "<group>"; };
 		49F0BC8C1E3BD83F00FB344B /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		49F986FA1E3DF72000EC57C9 /* TransfersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransfersTableViewController.swift; sourceTree = "<group>"; };
 		49F986FC1E3DF91400EC57C9 /* TransferTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferTableViewCell.swift; sourceTree = "<group>"; };
@@ -120,7 +122,7 @@
 				49C9B70C1E3B620A004CAFEF /* UnderlinedTextField.swift */,
 				49F0BC8C1E3BD83F00FB344B /* RoundedButton.swift */,
 				49C0EB481E3D005C000AE7FB /* RoundedImageView.swift */,
-				49AD23BC1E41D4AA002FE3C7 /* PickerVIew.swift */,
+				49AD23BC1E41D4AA002FE3C7 /* PickerView.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -156,6 +158,7 @@
 				49F987021E3E08AE00EC57C9 /* RecipientsTableViewController.swift */,
 				49F987041E3E0AED00EC57C9 /* RecipientTableViewCell.swift */,
 				49F987061E3E0D0E00EC57C9 /* RecipientDetailsViewController.swift */,
+				49E500D91E4258B7009559CB /* AddNewRecipientViewController.swift */,
 			);
 			name = Recipients;
 			sourceTree = "<group>";
@@ -285,11 +288,12 @@
 				49AD23BF1E41D514002FE3C7 /* CurrencyPickerViewController.swift in Sources */,
 				49F987071E3E0D0E00EC57C9 /* RecipientDetailsViewController.swift in Sources */,
 				49F987031E3E08AE00EC57C9 /* RecipientsTableViewController.swift in Sources */,
-				49AD23BD1E41D4AA002FE3C7 /* PickerVIew.swift in Sources */,
+				49AD23BD1E41D4AA002FE3C7 /* PickerView.swift in Sources */,
 				490B81FD1E4105BD00BCBC4F /* AccountSettingsViewController.swift in Sources */,
 				49C1CEDE1E3E81BB009076D3 /* CameraViewController.swift in Sources */,
 				499375191E3A4440008D65F3 /* InitialViewController.swift in Sources */,
 				49414C691E38E9FB00CF1F20 /* RecipientsCollectionView.swift in Sources */,
+				49E500DA1E4258B7009559CB /* AddNewRecipientViewController.swift in Sources */,
 				49204D9E1E38B34C00442C74 /* AccountsCollectionView.swift in Sources */,
 				49F987051E3E0AED00EC57C9 /* RecipientTableViewCell.swift in Sources */,
 				49C0EB491E3D005C000AE7FB /* RoundedImageView.swift in Sources */,

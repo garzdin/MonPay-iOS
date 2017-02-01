@@ -18,11 +18,6 @@ class AddNewAccountViewController: UIViewController, CurrencyPickerDelegate {
         currencyLabel.isUserInteractionEnabled = true
         currencyLabel.addGestureRecognizer(tapCurrencyLabel)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectCurrencyForNewAccount" {
