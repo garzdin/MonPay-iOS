@@ -772,7 +772,7 @@
                         <segue destination="uhG-Ie-lOo" kind="presentation" identifier="login" id="pHk-3u-xU1"/>
                         <segue destination="T2g-c7-Bas" kind="presentation" identifier="forgotPassword" id="htf-KP-qyX"/>
                         <segue destination="U54-9X-YXd" kind="presentation" identifier="register" id="qQJ-oc-Pbg"/>
-                        <segue destination="HeH-nT-o0x" kind="custom" identifier="logout" id="SE9-wC-IfB"/>
+                        <segue destination="HeH-nT-o0x" kind="showDetail" identifier="logout" id="SE9-wC-IfB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5C-oS-q4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1547,7 +1547,7 @@
                     </view>
                     <connections>
                         <outlet property="currencyLabel" destination="odV-D0-CTl" id="tKI-hJ-gbU"/>
-                        <segue destination="LF7-Xn-r3U" kind="presentation" identifier="chooseCurrencyForAccount" modalPresentationStyle="overCurrentContext" id="g7P-b4-F4R"/>
+                        <segue destination="wz7-QN-zzb" kind="presentation" identifier="selectCurrencyForNewAccount" modalPresentationStyle="overCurrentContext" id="z51-Uv-c9T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0R7-bH-39T" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2323,10 +2323,10 @@ of an ID document. This document can be either your
             </objects>
             <point key="canvasLocation" x="2348" y="752"/>
         </scene>
-        <!--View Controller-->
+        <!--Currency Picker View Controller-->
         <scene sceneID="ATf-nm-55b">
             <objects>
-                <viewController id="wz7-QN-zzb" sceneMemberID="viewController">
+                <viewController id="wz7-QN-zzb" customClass="CurrencyPickerViewController" customModule="MonPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wUD-Ev-gfr"/>
                         <viewControllerLayoutGuide type="bottom" id="xaS-RG-yzA"/>
@@ -2352,11 +2352,8 @@ of an ID document. This document can be either your
                                                 <segue destination="GG4-N2-Z2K" kind="unwind" unwindAction="unwindToSendScreenWithSegue:" id="ew5-p6-0Rh"/>
                                             </connections>
                                         </button>
-                                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bnO-wy-Ba0">
-                                            <rect key="frame" x="20" y="260" width="374" height="216"/>
-                                        </pickerView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FT0-0k-AM5" customClass="RoundedButton" customModule="MonPay" customModuleProvider="target">
-                                            <rect key="frame" x="137" y="506" width="140" height="40"/>
+                                            <rect key="frame" x="137" y="488" width="140" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="Fl8-05-hM3"/>
                                                 <constraint firstAttribute="width" constant="140" id="L7x-MG-0yC"/>
@@ -2375,17 +2372,27 @@ of an ID document. This document can be either your
                                                     <real key="value" value="20"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="didPressChoose:" destination="wz7-QN-zzb" eventType="touchUpInside" id="8Nw-aS-umI"/>
+                                            </connections>
                                         </button>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DOE-e1-8kX" customClass="PickerView" customModule="MonPay" customModuleProvider="target">
+                                            <rect key="frame" x="20" y="278" width="374" height="180"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="180" id="Ia7-Ft-gCV"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="FT0-0k-AM5" firstAttribute="centerX" secondItem="HaU-Gc-ZZt" secondAttribute="centerX" id="0VN-oS-5V2"/>
-                                        <constraint firstItem="bnO-wy-Ba0" firstAttribute="centerY" secondItem="HaU-Gc-ZZt" secondAttribute="centerY" id="0yo-vd-4Pg"/>
-                                        <constraint firstAttribute="trailing" secondItem="bnO-wy-Ba0" secondAttribute="trailing" constant="20" id="35C-ea-4M2"/>
+                                        <constraint firstItem="DOE-e1-8kX" firstAttribute="leading" secondItem="HaU-Gc-ZZt" secondAttribute="leading" constant="20" id="3ym-mZ-0KG"/>
                                         <constraint firstItem="GQ7-Wr-exj" firstAttribute="top" secondItem="HaU-Gc-ZZt" secondAttribute="top" constant="40" id="4ZC-Ik-1bd"/>
-                                        <constraint firstItem="bnO-wy-Ba0" firstAttribute="centerX" secondItem="HaU-Gc-ZZt" secondAttribute="centerX" id="Sob-rG-jfx"/>
-                                        <constraint firstItem="FT0-0k-AM5" firstAttribute="top" secondItem="bnO-wy-Ba0" secondAttribute="bottom" constant="30" id="gLh-Uz-dBq"/>
+                                        <constraint firstItem="DOE-e1-8kX" firstAttribute="centerY" secondItem="HaU-Gc-ZZt" secondAttribute="centerY" id="80V-Oi-ev5"/>
+                                        <constraint firstItem="DOE-e1-8kX" firstAttribute="centerX" secondItem="HaU-Gc-ZZt" secondAttribute="centerX" id="Brl-MW-bUi"/>
+                                        <constraint firstItem="FT0-0k-AM5" firstAttribute="top" secondItem="DOE-e1-8kX" secondAttribute="bottom" constant="30" id="Tti-Ke-1Ik"/>
                                         <constraint firstAttribute="trailing" secondItem="GQ7-Wr-exj" secondAttribute="trailing" constant="20" id="iAH-Ln-EzQ"/>
-                                        <constraint firstItem="bnO-wy-Ba0" firstAttribute="leading" secondItem="HaU-Gc-ZZt" secondAttribute="leading" constant="20" id="zkY-na-b9d"/>
+                                        <constraint firstAttribute="trailing" secondItem="DOE-e1-8kX" secondAttribute="trailing" constant="20" id="l3d-SF-oFH"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="dark"/>
@@ -2399,93 +2406,14 @@ of an ID document. This document can be either your
                             <constraint firstAttribute="trailing" secondItem="2qS-6j-Wi4" secondAttribute="trailing" id="zth-OT-0jO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pickerView" destination="DOE-e1-8kX" id="JmX-1X-xPO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WHa-VF-ul6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="GG4-N2-Z2K" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-3943.4782608695655" y="2334.7826086956525"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="f8U-Uf-kxM">
-            <objects>
-                <viewController id="LF7-Xn-r3U" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="yeQ-uR-fah"/>
-                        <viewControllerLayoutGuide type="bottom" id="Jlh-eB-IHk"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rRg-kS-Lxo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qEB-wk-Tkp">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="b4g-ts-vOz">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2t-Ui-a8q">
-                                            <rect key="frame" x="374" y="40" width="20" height="20"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="20" id="7qR-zW-CTr"/>
-                                                <constraint firstAttribute="height" constant="20" id="LT8-ri-JWC"/>
-                                            </constraints>
-                                            <state key="normal" backgroundImage="cross"/>
-                                            <connections>
-                                                <segue destination="xsl-7v-hoI" kind="unwind" unwindAction="unwindToAddNewAccountWithSegue:" id="WqM-1I-LAk"/>
-                                            </connections>
-                                        </button>
-                                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSR-Op-pY8">
-                                            <rect key="frame" x="20" y="260" width="374" height="216"/>
-                                        </pickerView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u59-Db-Gbu" customClass="RoundedButton" customModule="MonPay" customModuleProvider="target">
-                                            <rect key="frame" x="137" y="506" width="140" height="40"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="cUc-TM-MjM"/>
-                                                <constraint firstAttribute="width" constant="140" id="hVh-E5-2oC"/>
-                                            </constraints>
-                                            <state key="normal" title="Choose">
-                                                <color key="titleColor" red="0.28235294119999998" green="0.81176470590000005" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
-                                            </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                    <real key="value" value="2"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                    <color key="value" red="0.28235294119999998" green="0.81176470590000005" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="20"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="OSR-Op-pY8" firstAttribute="centerY" secondItem="b4g-ts-vOz" secondAttribute="centerY" id="Bu4-Zg-NN6"/>
-                                        <constraint firstItem="f2t-Ui-a8q" firstAttribute="top" secondItem="b4g-ts-vOz" secondAttribute="top" constant="40" id="HCb-F2-jNq"/>
-                                        <constraint firstItem="u59-Db-Gbu" firstAttribute="top" secondItem="OSR-Op-pY8" secondAttribute="bottom" constant="30" id="NHW-gq-dBr"/>
-                                        <constraint firstItem="OSR-Op-pY8" firstAttribute="leading" secondItem="b4g-ts-vOz" secondAttribute="leading" constant="20" id="PXO-VU-v6L"/>
-                                        <constraint firstItem="OSR-Op-pY8" firstAttribute="centerX" secondItem="b4g-ts-vOz" secondAttribute="centerX" id="Q1R-qG-6H5"/>
-                                        <constraint firstItem="u59-Db-Gbu" firstAttribute="centerX" secondItem="b4g-ts-vOz" secondAttribute="centerX" id="dKr-Qg-iSB"/>
-                                        <constraint firstAttribute="trailing" secondItem="OSR-Op-pY8" secondAttribute="trailing" constant="20" id="qmn-dN-l9X"/>
-                                        <constraint firstAttribute="trailing" secondItem="f2t-Ui-a8q" secondAttribute="trailing" constant="20" id="y9p-FF-9Hl"/>
-                                    </constraints>
-                                </view>
-                                <blurEffect style="dark"/>
-                            </visualEffectView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Jlh-eB-IHk" firstAttribute="top" secondItem="qEB-wk-Tkp" secondAttribute="bottom" id="2dn-dZ-nfB"/>
-                            <constraint firstItem="qEB-wk-Tkp" firstAttribute="top" secondItem="rRg-kS-Lxo" secondAttribute="top" id="4mS-HD-VlP"/>
-                            <constraint firstItem="qEB-wk-Tkp" firstAttribute="leading" secondItem="rRg-kS-Lxo" secondAttribute="leading" id="8Xf-AS-VKg"/>
-                            <constraint firstAttribute="trailing" secondItem="qEB-wk-Tkp" secondAttribute="trailing" id="hnO-M5-y7A"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x1j-zp-JwG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="xsl-7v-hoI" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="-3099" y="3060"/>
         </scene>
     </scenes>
     <resources>
@@ -2506,5 +2434,6 @@ of an ID document. This document can be either your
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="SE9-wC-IfB"/>
+        <segue reference="SVa-Xn-taY"/>
     </inferredMetricsTieBreakers>
 </document>

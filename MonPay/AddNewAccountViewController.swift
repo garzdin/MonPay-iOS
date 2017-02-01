@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddNewAccountViewController: UIViewController {
+class AddNewAccountViewController: UIViewController, CurrencyPickerDelegate {
 
     @IBOutlet var currencyLabel: UILabel!
     
@@ -24,19 +24,20 @@ class AddNewAccountViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "selectCurrencyForNewAccount" {
+            if let destination = segue.destination as? CurrencyPickerViewController {
+                destination.delegate = self
+            }
+        }
     }
-    */
     
     func didTapCurrencyLabel(sender: UILabel) {
-        performSegue(withIdentifier: "chooseCurrencyForAccount", sender: sender)
+        performSegue(withIdentifier: "selectCurrencyForNewAccount", sender: sender)
+    }
+    
+    func didSelectCurrency(index: Int, currency: String, sender: Any?) {
+        currencyLabel.text = currency
     }
     
     @IBAction func unwindToAddNewAccount(segue: UIStoryboardSegue) {}

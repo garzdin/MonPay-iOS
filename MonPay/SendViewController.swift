@@ -15,7 +15,7 @@ fileprivate let staticReuseIdentifier = "newAccountCell"
 fileprivate let recipientCellReuseIdentifier = "recipientCell"
 fileprivate let recipientSearchCellReuseIdentifier = "recipientSearchCell"
 
-class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CurrencyPickerDelegate {
     
     let data: [String] = ["BG12JSW61293812093", "BG12JSW61293812093", "BG12JSW61293812093"]
     let recipients: [String] = ["Adam Smith", "John Doe", "Batman"]
@@ -108,6 +108,15 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "chooseCurrency" {
+            if let destination = segue.destination as? CurrencyPickerViewController {
+                destination.delegate = self
+                destination.segueSender = sender
+            }
+        }
+    }
+    
     // MARK: Cell info button tapped action
     
     func didTapInfoButton(sender: UIButton?) {
@@ -136,6 +145,14 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func didTapToCurrencyLabel(sender: UILabel) {
         performSegue(withIdentifier: "chooseCurrency", sender: sender)
+    }
+    
+    func didSelectCurrency(index: Int, currency: String, sender: Any?) {
+        if let gesture = sender as? UITapGestureRecognizer {
+            if let label = gesture.view as? UILabel {
+                label.text = currency
+            }
+        }
     }
     
     @IBAction func unwindToSendScreen(segue: UIStoryboardSegue) {}
