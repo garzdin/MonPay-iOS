@@ -120,7 +120,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: Cell info button tapped action
     
     func didTapInfoButton(sender: UIButton?) {
-        
+        performSegue(withIdentifier: "showAccountDetails", sender: sender)
     }
     
     // MARK: Cell add new account button tapped action
