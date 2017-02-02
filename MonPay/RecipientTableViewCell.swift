@@ -10,6 +10,7 @@ import UIKit
 
 class RecipientTableViewCell: UITableViewCell {
 
+    @IBOutlet var profileView: UIView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var accountLabel: UILabel!
     
@@ -22,5 +23,15 @@ class RecipientTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        if selected {
+            profileView.backgroundColor = UIColor(red: 12/255.0, green: 27/255.0, blue: 42/255.0, alpha: 1.0)
+        }
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        if highlighted {
+            profileView.backgroundColor = UIColor(red: 12/255.0, green: 27/255.0, blue: 42/255.0, alpha: 1.0)
+        }
     }
 }

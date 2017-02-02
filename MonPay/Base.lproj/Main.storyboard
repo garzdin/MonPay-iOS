@@ -1960,6 +1960,7 @@
                                 <connections>
                                     <outlet property="accountLabel" destination="yUZ-SK-KFO" id="z1p-YY-JEv"/>
                                     <outlet property="nameLabel" destination="1Xo-k8-N9g" id="v9F-UO-TLV"/>
+                                    <outlet property="profileView" destination="TGJ-uE-dRy" id="wtz-oN-SbZ"/>
                                     <segue destination="Fme-47-37F" kind="show" id="1Jz-pl-ZpA"/>
                                 </connections>
                             </tableViewCell>
