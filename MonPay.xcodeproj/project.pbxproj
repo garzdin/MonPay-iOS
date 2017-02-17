@@ -15,6 +15,11 @@
 		49414C691E38E9FB00CF1F20 /* RecipientsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49414C681E38E9FB00CF1F20 /* RecipientsCollectionView.swift */; };
 		49414C6B1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49414C6A1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift */; };
 		49414C6D1E39002000CF1F20 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49414C6C1E39002000CF1F20 /* ConfirmViewController.swift */; };
+		4952AA0A1E5751A2006165E7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952AA091E5751A2006165E7 /* User.swift */; };
+		4952AA0D1E575AAD006165E7 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952AA0C1E575AAD006165E7 /* Address.swift */; };
+		4952AA0F1E575D57006165E7 /* Beneficiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952AA0E1E575D57006165E7 /* Beneficiary.swift */; };
+		4952AA111E575E77006165E7 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952AA101E575E77006165E7 /* Account.swift */; };
+		4952AA131E576294006165E7 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952AA121E576294006165E7 /* Transaction.swift */; };
 		4957AC271E37B0F2006A951A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957AC261E37B0F2006A951A /* AppDelegate.swift */; };
 		4957AC291E37B0F2006A951A /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957AC281E37B0F2006A951A /* SendViewController.swift */; };
 		4957AC2E1E37B0F2006A951A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4957AC2C1E37B0F2006A951A /* Main.storyboard */; };
@@ -47,6 +52,11 @@
 		49414C681E38E9FB00CF1F20 /* RecipientsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientsCollectionView.swift; sourceTree = "<group>"; };
 		49414C6A1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientCollectionViewCell.swift; sourceTree = "<group>"; };
 		49414C6C1E39002000CF1F20 /* ConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		4952AA091E5751A2006165E7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4952AA0C1E575AAD006165E7 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		4952AA0E1E575D57006165E7 /* Beneficiary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beneficiary.swift; sourceTree = "<group>"; };
+		4952AA101E575E77006165E7 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		4952AA121E576294006165E7 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		4957AC231E37B0F2006A951A /* MonPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4957AC261E37B0F2006A951A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4957AC281E37B0F2006A951A /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +179,18 @@
 			name = Account;
 			sourceTree = "<group>";
 		};
+		4952AA0B1E57560D006165E7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4952AA091E5751A2006165E7 /* User.swift */,
+				4952AA0C1E575AAD006165E7 /* Address.swift */,
+				4952AA0E1E575D57006165E7 /* Beneficiary.swift */,
+				4952AA101E575E77006165E7 /* Account.swift */,
+				4952AA121E576294006165E7 /* Transaction.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		4957AC1A1E37B0F2006A951A = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +210,7 @@
 		4957AC251E37B0F2006A951A /* MonPay */ = {
 			isa = PBXGroup;
 			children = (
+				4952AA0B1E57560D006165E7 /* Models */,
 				490B82011E41197D00BCBC4F /* Components */,
 				490B81FE1E41193800BCBC4F /* Onboarding */,
 				490B82001E41196800BCBC4F /* Main */,
@@ -278,7 +301,11 @@
 				4926CC581E3944550029C736 /* AddNewAccountViewController.swift in Sources */,
 				4957AC271E37B0F2006A951A /* AppDelegate.swift in Sources */,
 				4993751B1E3A4863008D65F3 /* RegistrationViewController.swift in Sources */,
+				4952AA111E575E77006165E7 /* Account.swift in Sources */,
+				4952AA0A1E5751A2006165E7 /* User.swift in Sources */,
+				4952AA0D1E575AAD006165E7 /* Address.swift in Sources */,
 				49414C6B1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift in Sources */,
+				4952AA0F1E575D57006165E7 /* Beneficiary.swift in Sources */,
 				49414C6D1E39002000CF1F20 /* ConfirmViewController.swift in Sources */,
 				49C9B70D1E3B620A004CAFEF /* UnderlinedTextField.swift in Sources */,
 				49F987011E3E05F700EC57C9 /* AccountViewController.swift in Sources */,
@@ -290,6 +317,7 @@
 				49C1CEDE1E3E81BB009076D3 /* CameraViewController.swift in Sources */,
 				499375191E3A4440008D65F3 /* InitialViewController.swift in Sources */,
 				49414C691E38E9FB00CF1F20 /* RecipientsCollectionView.swift in Sources */,
+				4952AA131E576294006165E7 /* Transaction.swift in Sources */,
 				49E500DA1E4258B7009559CB /* AddNewRecipientViewController.swift in Sources */,
 				49204D9E1E38B34C00442C74 /* AccountsCollectionView.swift in Sources */,
 				49F987051E3E0AED00EC57C9 /* RecipientTableViewCell.swift in Sources */,
