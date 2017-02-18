@@ -538,6 +538,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E29D4BE9F0DB2DF161219305 /* Pods-MonPay.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5TZ5UX6U2K;
 				INFOPLIST_FILE = MonPay/Info.plist;
@@ -552,6 +553,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CDCB906802458C6DCC2DAD5A /* Pods-MonPay.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5TZ5UX6U2K;
 				INFOPLIST_FILE = MonPay/Info.plist;
