@@ -28,6 +28,8 @@
 		499375191E3A4440008D65F3 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499375181E3A4440008D65F3 /* InitialViewController.swift */; };
 		4993751B1E3A4863008D65F3 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4993751A1E3A4863008D65F3 /* RegistrationViewController.swift */; };
 		4993751D1E3A5DA2008D65F3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4993751C1E3A5DA2008D65F3 /* LoginViewController.swift */; };
+		499CD2591E58596E0079D8A5 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499CD2581E58596E0079D8A5 /* Networking.swift */; };
+		499CD25B1E585B740079D8A5 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499CD25A1E585B740079D8A5 /* Keychain.swift */; };
 		49AD23BD1E41D4AA002FE3C7 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD23BC1E41D4AA002FE3C7 /* PickerView.swift */; };
 		49AD23BF1E41D514002FE3C7 /* CurrencyPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD23BE1E41D514002FE3C7 /* CurrencyPickerViewController.swift */; };
 		49C1CEDE1E3E81BB009076D3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C1CEDD1E3E81BB009076D3 /* CameraViewController.swift */; };
@@ -41,9 +43,11 @@
 		49F987031E3E08AE00EC57C9 /* RecipientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F987021E3E08AE00EC57C9 /* RecipientsTableViewController.swift */; };
 		49F987051E3E0AED00EC57C9 /* RecipientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F987041E3E0AED00EC57C9 /* RecipientTableViewCell.swift */; };
 		49F987071E3E0D0E00EC57C9 /* RecipientDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F987061E3E0D0E00EC57C9 /* RecipientDetailsViewController.swift */; };
+		56BBFA3A5CE49766DED0D7C2 /* Pods_MonPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 170A0CC36D3E05B3159E4B17 /* Pods_MonPay.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		170A0CC36D3E05B3159E4B17 /* Pods_MonPay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MonPay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		490B81FA1E41024B00BCBC4F /* OnboardingStepThreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingStepThreeViewController.swift; sourceTree = "<group>"; };
 		490B81FC1E4105BD00BCBC4F /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
 		49204D9D1E38B34C00442C74 /* AccountsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsCollectionView.swift; sourceTree = "<group>"; };
@@ -67,6 +71,8 @@
 		499375181E3A4440008D65F3 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		4993751A1E3A4863008D65F3 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		4993751C1E3A5DA2008D65F3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		499CD2581E58596E0079D8A5 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		499CD25A1E585B740079D8A5 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		49AD23BC1E41D4AA002FE3C7 /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		49AD23BE1E41D514002FE3C7 /* CurrencyPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyPickerViewController.swift; sourceTree = "<group>"; };
 		49C1CEDD1E3E81BB009076D3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +86,8 @@
 		49F987021E3E08AE00EC57C9 /* RecipientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientsTableViewController.swift; sourceTree = "<group>"; };
 		49F987041E3E0AED00EC57C9 /* RecipientTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientTableViewCell.swift; sourceTree = "<group>"; };
 		49F987061E3E0D0E00EC57C9 /* RecipientDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientDetailsViewController.swift; sourceTree = "<group>"; };
+		CDCB906802458C6DCC2DAD5A /* Pods-MonPay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonPay.release.xcconfig"; path = "Pods/Target Support Files/Pods-MonPay/Pods-MonPay.release.xcconfig"; sourceTree = "<group>"; };
+		E29D4BE9F0DB2DF161219305 /* Pods-MonPay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonPay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MonPay/Pods-MonPay.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,12 +95,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56BBFA3A5CE49766DED0D7C2 /* Pods_MonPay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		002DBA6EB3857273AEA94A99 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E29D4BE9F0DB2DF161219305 /* Pods-MonPay.debug.xcconfig */,
+				CDCB906802458C6DCC2DAD5A /* Pods-MonPay.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		2885DC9E7893EBF2CFBB67BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				170A0CC36D3E05B3159E4B17 /* Pods_MonPay.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		490B81FE1E41193800BCBC4F /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +222,8 @@
 			children = (
 				4957AC251E37B0F2006A951A /* MonPay */,
 				4957AC241E37B0F2006A951A /* Products */,
+				002DBA6EB3857273AEA94A99 /* Pods */,
+				2885DC9E7893EBF2CFBB67BB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -211,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				4952AA0B1E57560D006165E7 /* Models */,
+				499CD25C1E585BEE0079D8A5 /* Utils */,
 				490B82011E41197D00BCBC4F /* Components */,
 				490B81FE1E41193800BCBC4F /* Onboarding */,
 				490B82001E41196800BCBC4F /* Main */,
@@ -223,6 +252,15 @@
 			path = MonPay;
 			sourceTree = "<group>";
 		};
+		499CD25C1E585BEE0079D8A5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				499CD2581E58596E0079D8A5 /* Networking.swift */,
+				499CD25A1E585B740079D8A5 /* Keychain.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -230,9 +268,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4957AC371E37B0F2006A951A /* Build configuration list for PBXNativeTarget "MonPay" */;
 			buildPhases = (
+				A80AB775151B8A479EBBD274 /* [CP] Check Pods Manifest.lock */,
 				4957AC1F1E37B0F2006A951A /* Sources */,
 				4957AC201E37B0F2006A951A /* Frameworks */,
 				4957AC211E37B0F2006A951A /* Resources */,
+				F671B6EBD28290E9B332A6D0 /* [CP] Embed Pods Frameworks */,
+				6883DBF7F8B44E6CE6917647 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -291,6 +332,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6883DBF7F8B44E6CE6917647 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MonPay/Pods-MonPay-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A80AB775151B8A479EBBD274 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F671B6EBD28290E9B332A6D0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MonPay/Pods-MonPay-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4957AC1F1E37B0F2006A951A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -301,6 +390,7 @@
 				4926CC581E3944550029C736 /* AddNewAccountViewController.swift in Sources */,
 				4957AC271E37B0F2006A951A /* AppDelegate.swift in Sources */,
 				4993751B1E3A4863008D65F3 /* RegistrationViewController.swift in Sources */,
+				499CD25B1E585B740079D8A5 /* Keychain.swift in Sources */,
 				4952AA111E575E77006165E7 /* Account.swift in Sources */,
 				4952AA0A1E5751A2006165E7 /* User.swift in Sources */,
 				4952AA0D1E575AAD006165E7 /* Address.swift in Sources */,
@@ -315,6 +405,7 @@
 				49AD23BD1E41D4AA002FE3C7 /* PickerView.swift in Sources */,
 				490B81FD1E4105BD00BCBC4F /* AccountSettingsViewController.swift in Sources */,
 				49C1CEDE1E3E81BB009076D3 /* CameraViewController.swift in Sources */,
+				499CD2591E58596E0079D8A5 /* Networking.swift in Sources */,
 				499375191E3A4440008D65F3 /* InitialViewController.swift in Sources */,
 				49414C691E38E9FB00CF1F20 /* RecipientsCollectionView.swift in Sources */,
 				4952AA131E576294006165E7 /* Transaction.swift in Sources */,
@@ -445,6 +536,7 @@
 		};
 		4957AC381E37B0F2006A951A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E29D4BE9F0DB2DF161219305 /* Pods-MonPay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5TZ5UX6U2K;
@@ -458,6 +550,7 @@
 		};
 		4957AC391E37B0F2006A951A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDCB906802458C6DCC2DAD5A /* Pods-MonPay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5TZ5UX6U2K;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="DG2-V7-5JX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -650,7 +650,7 @@
         <!--Initial View Controller-->
         <scene sceneID="zNW-xr-yjo">
             <objects>
-                <viewController id="DG2-V7-5JX" customClass="InitialViewController" customModule="MonPay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialViewController" id="DG2-V7-5JX" customClass="InitialViewController" customModule="MonPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9I9-UT-iNi"/>
                         <viewControllerLayoutGuide type="bottom" id="okX-tb-pLY"/>
@@ -773,7 +773,6 @@
                         <segue destination="uhG-Ie-lOo" kind="presentation" identifier="login" id="pHk-3u-xU1"/>
                         <segue destination="T2g-c7-Bas" kind="presentation" identifier="forgotPassword" id="htf-KP-qyX"/>
                         <segue destination="U54-9X-YXd" kind="presentation" identifier="register" id="qQJ-oc-Pbg"/>
-                        <segue destination="HeH-nT-o0x" kind="showDetail" identifier="logout" id="SE9-wC-IfB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5C-oS-q4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -892,7 +891,7 @@
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
                                         <color key="value" red="0.3529411764705882" green="0.43529411764705883" blue="0.51372549019607838" alpha="1" colorSpace="calibratedRGB"/>
@@ -913,7 +912,7 @@
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
                                         <color key="value" red="0.3529411764705882" green="0.43529411764705883" blue="0.51372549019607838" alpha="1" colorSpace="calibratedRGB"/>
@@ -955,14 +954,28 @@
                                     <segue destination="MVH-HT-YpG" kind="unwind" unwindAction="unwindToInitialScreenWithSegue:" id="jxX-hq-2VM"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttS-wV-4aC">
+                                <rect key="frame" x="374" y="140" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.24754205518229744" blue="0.20106874768841498" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMp-Vg-X5f">
+                                <rect key="frame" x="374" y="205" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.2475420552" blue="0.20106874769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.098039215686274508" green="0.17254901960784313" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="JMp-Vg-X5f" secondAttribute="trailing" constant="20" id="CHa-ph-ewk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xIe-60-d5a" secondAttribute="trailing" constant="20" id="HVT-oL-E7e"/>
                             <constraint firstItem="o8Z-PQ-r2F" firstAttribute="leading" secondItem="bTz-CQ-lHg" secondAttribute="leadingMargin" constant="20" id="K6U-LW-Pj6"/>
                             <constraint firstItem="o8Z-PQ-r2F" firstAttribute="top" secondItem="6QO-FP-nts" secondAttribute="bottom" constant="120" id="M8A-E8-jPt"/>
                             <constraint firstItem="k5R-Cw-3Cj" firstAttribute="top" secondItem="6QO-FP-nts" secondAttribute="bottom" constant="20" id="Ncy-HO-GLm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GOl-03-41y" secondAttribute="trailing" constant="20" id="XUm-CV-TXe"/>
+                            <constraint firstItem="xIe-60-d5a" firstAttribute="top" secondItem="JMp-Vg-X5f" secondAttribute="bottom" id="b8E-ao-ZhW"/>
                             <constraint firstItem="GOl-03-41y" firstAttribute="leading" secondItem="bTz-CQ-lHg" secondAttribute="leadingMargin" constant="20" id="bK8-4c-dzu"/>
                             <constraint firstItem="vQ8-rT-diu" firstAttribute="leading" secondItem="bTz-CQ-lHg" secondAttribute="leadingMargin" constant="20" id="bhV-EU-9wy"/>
                             <constraint firstItem="vQ8-rT-diu" firstAttribute="top" secondItem="xIe-60-d5a" secondAttribute="bottom" id="cSF-5H-Aka"/>
@@ -974,9 +987,15 @@
                             <constraint firstItem="GOl-03-41y" firstAttribute="top" secondItem="o8Z-PQ-r2F" secondAttribute="bottom" id="qlY-QJ-Aca"/>
                             <constraint firstAttribute="trailingMargin" secondItem="o8Z-PQ-r2F" secondAttribute="trailing" constant="20" id="r4r-Sd-MOa"/>
                             <constraint firstItem="rmn-EL-YtB" firstAttribute="top" secondItem="vQ8-rT-diu" secondAttribute="bottom" constant="30" id="sPf-aN-Yfl"/>
+                            <constraint firstItem="o8Z-PQ-r2F" firstAttribute="top" secondItem="ttS-wV-4aC" secondAttribute="bottom" id="xp0-I1-MoY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ttS-wV-4aC" secondAttribute="trailing" constant="20" id="yOp-3W-ft1"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="passwordField" destination="xIe-60-d5a" id="ybT-Nc-GDS"/>
+                        <outlet property="passwordFieldErrorLabel" destination="JMp-Vg-X5f" id="vNu-XR-Twl"/>
+                        <outlet property="usernameField" destination="o8Z-PQ-r2F" id="u0F-vY-wbg"/>
+                        <outlet property="usernameFieldErrorLabel" destination="ttS-wV-4aC" id="yeP-5U-3Nq"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="authenticated" id="Z8H-i7-qeM"/>
                     </connections>
                 </viewController>
@@ -2309,7 +2328,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <segue destination="3RZ-mD-XaN" kind="unwind" unwindAction="unwindToInitialScreenWithSegue:" id="OMY-PM-qdG"/>
+                                                        <action selector="logoutAction:" destination="HeH-nT-o0x" eventType="touchUpInside" id="b1B-r9-xs8"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrd-3x-Y97" customClass="RoundedButton" customModule="MonPay" customModuleProvider="target">
@@ -2500,7 +2519,7 @@ of an ID document. This document can be either your
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="RootViewController" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -2867,7 +2886,6 @@ of an ID document. This document can be either your
         <image name="transfers" width="17" height="17"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SE9-wC-IfB"/>
         <segue reference="rA3-A3-Ctk"/>
     </inferredMetricsTieBreakers>
 </document>
