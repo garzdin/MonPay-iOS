@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 "refresh_token": refresh_token
             ]
             dispatchGroup.enter()
-            Networking.sharedInstance.request(url: "auth/refresh", method: .post, parameters: params, headers: [:]) { (response) in
+            Networking.sharedInstance.request(url: "auth/refresh", method: .post, parameters: params, encoding: JSONEncoding.default, headers: [:]) { (response) in
                 if response.1 == nil {
                     if let token = response.0?["token"] as? String, let refresh_token = response.0?["refresh_token"] as? String {
                         Keychain.sharedInstance.set(token, forKey: "token")
