@@ -66,7 +66,7 @@ class User: NSObject {
         }
         if let accounts = values["accounts"] as? [Dictionary<String, Any>] {
             for account in accounts {
-                self.accounts?.append(Account(values: account, entity: self))
+                self.accounts?.append(Account(values: account))
             }
         }
         if let created_on = values["created_on"] as? String {

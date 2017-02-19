@@ -57,7 +57,7 @@ class Beneficiary: NSObject {
             self.id_value = id_value
         }
         if let account = values["account"] as? Dictionary<String, Any> {
-            self.account = Account(values: account, entity: self)
+            self.account = Account(values: account)
         }
         if let created_on = values["created_on"] as? String {
             let formatter = DateFormatter()
