@@ -67,19 +67,10 @@ class RecipientDetailsViewController: UIViewController {
             let params = [
                 "id": recipient.id
             ]
-            Networking.sharedInstance.authenticatedRequest(url: "beneficiary/delete", method: .post, parameters: params, encoding: JSONEncoding.default, headers: [:]) { (response) in
-                if response.1 == nil {
-                
-                } else {
-                    if let errorDict = response.1 as [String: Any]? {
-                        print(errorDict)
-                    }
-                    return
-                }
-            }
-            _ = self.navigationController?.popViewController(animated: true)
-            self.delegate?.didDeleteRecipient(recipient: recipient)
+            Fetcher.sharedInstance.beneficiaryDelete(params: params, completion: { (response: [String : Any]?) in
+                _ = self.navigationController?.popViewController(animated: true)
+                self.delegate?.didDeleteRecipient(recipient: recipient)
+            })
         }
     }
-
 }

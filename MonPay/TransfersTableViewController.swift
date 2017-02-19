@@ -7,20 +7,18 @@
 //
 
 import UIKit
+import Alamofire
 
 fileprivate let reuseIdentifier = "transferCell"
 
 class TransfersTableViewController: UITableViewController {
     
-    let data: [[String:Any]] = [
-        ["name": "John Doe", "status": "Completed on 20 Sept 2016", "amount": "1000.00 GBP"],
-        ["name": "Jane Doe", "status": "Completed on 20 Aug 2016", "amount": "300.00 GBP"],
-        ["name": "John Smith", "status": "Completed on 20 Dec 2016", "amount": "800.00 GBP"],
-    ]
+    var transfers: [Transaction] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.contentInset = UIEdgeInsetsMake(15, 0, 0, 0)
+        self.getTransfersData()
     }
 
     // MARK: - Table view data source
@@ -30,14 +28,29 @@ class TransfersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return transfers.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! TransferTableViewCell
-        cell.nameLabel.text = data[indexPath.row]["name"] as? String
-        cell.statusLabel.text = data[indexPath.row]["status"] as? String
-        cell.amountLabel.text = data[indexPath.row]["amount"] as? String
+        if let currency = self.transfers[indexPath.row].currency {
+            cell.amountLabel.text = "1000 \(currency)"
+        }
+        cell.nameLabel.text = "Jane Doe"
+        cell.statusLabel.text = "Completed on 20 Sept 2016"
         return cell
+    }
+    
+    func getTransfersData() {
+        Fetcher.sharedInstance.transactionList { (response: [String : Any]?) in
+            if let transfers = response?["transactions"] as? [Any] {
+                for transfer in transfers {
+                    if let transfer = transfer as? [String: Any] {
+                        self.transfers.append(Transaction(values: transfer))
+                    }
+                }
+            }
+            self.tableView.reloadData()
+        }
     }
 }

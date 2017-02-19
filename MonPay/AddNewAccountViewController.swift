@@ -71,18 +71,11 @@ class AddNewAccountViewController: UIViewController, UITextFieldDelegate, Curren
             "currency": currencyLabel.text,
             "country": Locale.current.regionCode
         ]
-        Networking.sharedInstance.authenticatedRequest(url: "account/create", method: .post, parameters: params, encoding: JSONEncoding.default, headers: [:]) { (response) in
-            if response.1 == nil {
-                if let account = response.0?["account"] as? [String: Any] {
-                    let newAccount = Account(values: account)
-                    self.delegate?.didAddNewAccount(account: newAccount)
-                    self.dismiss(animated: true, completion: nil)
-                }
-            } else {
-                if let errorDict = response.1 as [String: Any]? {
-                    print(errorDict)
-                }
-                return
+        Fetcher.sharedInstance.accountCreate(params: params) { (response: [String : Any]?) in
+            if let account = response?["account"] as? [String: Any] {
+                let newAccount = Account(values: account)
+                self.delegate?.didAddNewAccount(account: newAccount)
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }

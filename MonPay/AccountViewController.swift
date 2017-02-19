@@ -45,37 +45,22 @@ class AccountViewController: UIViewController {
                     ]
                 ]
             ]
-            Networking.sharedInstance.authenticatedRequest(url: "user/update/", method: .post, parameters: params, encoding: JSONEncoding.default, headers: [:]) { (response) in
-                if response.1 == nil {
-                    print(response.0)
-                } else {
-                    if let errorDict = response.1 as [String: Any]? {
-                        print(errorDict)
-                    }
-                    return
-                }
-            }
+            Fetcher.sharedInstance.userUpdate(params: params, completion: { (response: [String : Any]?) in
+                // Update interface
+            })
         }
     }
     
     @IBAction func unwindToAccount(segue: UIStoryboardSegue) {}
     
     func getAccountInfo() {
-        Networking.sharedInstance.authenticatedRequest(url: "user", method: .get, parameters: [:], encoding: URLEncoding.default, headers: [:]) { (response) in
-            if response.1 == nil {
-                if let user = response.0?["user"] as? [String: Any] {
-                    self.user = User(values: user)
-                    self.emailField.text = self.user?.email
-                    self.firstNameField.text = self.user?.first_name
-                    self.lastNameField.text = self.user?.last_name
-                }
-            } else {
-                if let errorDict = response.1 as [String: Any]? {
-                    print(errorDict)
-                }
-                return
+        Fetcher.sharedInstance.userGet { (response: [String : Any]?) in
+            if let user = response?["user"] as? [String: Any] {
+                self.user = User(values: user)
+                self.emailField.text = self.user?.email
+                self.firstNameField.text = self.user?.first_name
+                self.lastNameField.text = self.user?.last_name
             }
         }
     }
-
 }

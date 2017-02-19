@@ -60,20 +60,13 @@ class RecipientsTableViewController: UITableViewController, RecipientDeleteDeleg
     }
     
     func getRecipientsData() {
-        Networking.sharedInstance.authenticatedRequest(url: "beneficiary", method: .get, parameters: [:], encoding: URLEncoding.default, headers: [:]) { (response) in
-            if response.1 == nil {
-                if let beneficiaries = response.0?["beneficiaries"] as? [Any] {
-                    for beneficiary in beneficiaries {
-                        if let beneficiary = beneficiary as? [String: Any] {
-                            self.recipients.append(Beneficiary(values: beneficiary))
-                        }
+        Fetcher.sharedInstance.beneficiaryList { (response: [String : Any]?) in
+            if let beneficiaries = response?["beneficiaries"] as? [Any] {
+                for beneficiary in beneficiaries {
+                    if let beneficiary = beneficiary as? [String: Any] {
+                        self.recipients.append(Beneficiary(values: beneficiary))
                     }
                 }
-            } else {
-                if let errorDict = response.1 as [String: Any]? {
-                    print(errorDict)
-                }
-                return
             }
             self.tableView.reloadData()
         }

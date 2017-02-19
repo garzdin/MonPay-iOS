@@ -172,20 +172,13 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBAction func unwindToSendScreen(segue: UIStoryboardSegue) {}
     
     func getAccounts() {
-        Networking.sharedInstance.authenticatedRequest(url: "account", method: .get, parameters: [:], encoding: URLEncoding.default, headers: [:]) { (response) in
-            if response.1 == nil {
-                if let accounts = response.0?["accounts"] as? [Any] {
-                    for account in accounts {
-                        if let account = account as? [String: Any] {
-                            self.accounts.append(Account(values: account))
-                        }
+        Fetcher.sharedInstance.accountList { (response: [String : Any]?) in
+            if let accounts = response?["accounts"] as? [Any] {
+                for account in accounts {
+                    if let account = account as? [String: Any] {
+                        self.accounts.append(Account(values: account))
                     }
                 }
-            } else {
-                if let errorDict = response.1 as [String: Any]? {
-                    print(errorDict)
-                }
-                return
             }
             self.accountsCollectionView.reloadData()
         }

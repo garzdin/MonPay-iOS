@@ -52,22 +52,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             "email": usernameField.text,
             "password": passwordField.text
         ]
-        Networking.sharedInstance.request(url: "auth/login", method: .post, parameters: params, encoding: JSONEncoding.default, headers: [:]) { (response) in
-            if response.1 == nil {
-                if let token = response.0?["token"] as? String, let refresh_token = response.0?["refresh_token"] as? String {
-                    Keychain.sharedInstance.set(token, forKey: "token")
-                    Keychain.sharedInstance.set(refresh_token, forKey: "refresh_token")
-                    self.performSegue(withIdentifier: "authenticated", sender: sender)
-                }
-            } else {
-                if let errorDict = response.1 as [String: Any]? {
-                    if let title = errorDict["title"] as? String, let description = errorDict["description"] as? String {
-                        if title.contains("404") {
-                            self.usernameFieldErrorLabel.text = description
-                        } else {
-                            self.passwordFieldErrorLabel.text = description
-                        }
-                    }
+        Fetcher.sharedInstance.authLogin(params: params) { (response: [String : Any]?) in
+            if let token = response?["token"] as? String, let refresh_token = response?["refresh_token"] as? String {
+                Keychain.sharedInstance.set(token, forKey: "token")
+                Keychain.sharedInstance.set(refresh_token, forKey: "refresh_token")
+                self.performSegue(withIdentifier: "authenticated", sender: sender)
+            }
+            if let title = response?["title"] as? String, let description = response?["description"] as? String {
+                if title.contains("404") {
+                    self.usernameFieldErrorLabel.text = description
+                } else {
+                    self.passwordFieldErrorLabel.text = description
                 }
                 return
             }
