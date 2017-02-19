@@ -9,6 +9,10 @@
 import UIKit
 import Alamofire
 
+protocol AddNewAccountDelegate: class {
+    func didAddNewAccount(account: Account)
+}
+
 class AddNewAccountViewController: UIViewController, UITextFieldDelegate, CurrencyPickerDelegate {
 
     @IBOutlet var ibanTextField: UnderlinedTextField!
@@ -16,6 +20,8 @@ class AddNewAccountViewController: UIViewController, UITextFieldDelegate, Curren
     @IBOutlet var currencyLabel: UILabel!
     @IBOutlet var ibanErrorLabel: UILabel!
     @IBOutlet var bicSwiftErrorLabel: UILabel!
+    
+    weak var delegate: AddNewAccountDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +73,11 @@ class AddNewAccountViewController: UIViewController, UITextFieldDelegate, Curren
         ]
         Networking.sharedInstance.authenticatedRequest(url: "account/create", method: .post, parameters: params, encoding: JSONEncoding.default, headers: [:]) { (response) in
             if response.1 == nil {
-                self.dismiss(animated: true, completion: nil)
+                if let account = response.0?["account"] as? [String: Any] {
+                    let newAccount = Account(values: account)
+                    self.delegate?.didAddNewAccount(account: newAccount)
+                    self.dismiss(animated: true, completion: nil)
+                }
             } else {
                 if let errorDict = response.1 as [String: Any]? {
                     print(errorDict)

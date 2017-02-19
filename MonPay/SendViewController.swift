@@ -16,7 +16,7 @@ fileprivate let staticReuseIdentifier = "newAccountCell"
 fileprivate let recipientCellReuseIdentifier = "recipientCell"
 fileprivate let recipientSearchCellReuseIdentifier = "recipientSearchCell"
 
-class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CurrencyPickerDelegate {
+class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CurrencyPickerDelegate, AddNewAccountDelegate {
     
     var accounts: [Account] = []
     let recipients: [String] = ["Adam Smith", "John Doe", "Batman"]
@@ -119,6 +119,11 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 destination.segueSender = sender
             }
         }
+        if segue.identifier == "addNewAccount" {
+            if let destination = segue.destination as? AddNewAccountViewController {
+                destination.delegate = self
+            }
+        }
     }
     
     // MARK: Cell info button tapped action
@@ -157,6 +162,11 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 label.text = currency
             }
         }
+    }
+    
+    func didAddNewAccount(account: Account) {
+        self.accounts.append(account)
+        self.accountsCollectionView.reloadData()
     }
     
     @IBAction func unwindToSendScreen(segue: UIStoryboardSegue) {}
