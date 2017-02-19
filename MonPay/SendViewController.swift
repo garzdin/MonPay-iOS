@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 // MARK: Reuse identifiers
 
@@ -17,7 +18,7 @@ fileprivate let recipientSearchCellReuseIdentifier = "recipientSearchCell"
 
 class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CurrencyPickerDelegate {
     
-    let data: [String] = ["BG12JSW61293812093", "BG12JSW61293812093", "BG12JSW61293812093"]
+    var accounts: [Account] = []
     let recipients: [String] = ["Adam Smith", "John Doe", "Batman"]
 
     @IBOutlet var accountsCollectionView: AccountsCollectionView!
@@ -37,6 +38,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let tapToCurrencyLabel = UITapGestureRecognizer(target: self, action: #selector(didTapToCurrencyLabel(sender:)))
         toCurrencyLabel.isUserInteractionEnabled = true
         toCurrencyLabel.addGestureRecognizer(tapToCurrencyLabel)
+        getAccounts()
     }
     
     // MARK: Data delegation
@@ -48,7 +50,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
             if collectionView == accountsCollectionView {
-                return self.data.count
+                return self.accounts.count
             } else {
                 return self.recipients.count
             }
@@ -71,7 +73,9 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
         } else {
             if collectionView == accountsCollectionView {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AccountCollectionViewCell
-                cell.accountNumberLabel.text = self.data[indexPath.row]
+                if let iban = self.accounts[indexPath.row].iban {
+                    cell.accountNumberLabel.text = iban
+                }
                 cell.infoButton.tag = indexPath.row
                 cell.infoButton.addTarget(self, action: #selector(didTapInfoButton(sender:)), for: UIControlEvents.touchUpInside)
                 return cell
@@ -156,5 +160,25 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     @IBAction func unwindToSendScreen(segue: UIStoryboardSegue) {}
+    
+    func getAccounts() {
+        Networking.sharedInstance.authenticatedRequest(url: "account", method: .get, parameters: [:], encoding: URLEncoding.default, headers: [:]) { (response) in
+            if response.1 == nil {
+                if let accounts = response.0?["accounts"] as? [Any] {
+                    for account in accounts {
+                        if let account = account as? [String: Any] {
+                            self.accounts.append(Account(values: account))
+                        }
+                    }
+                }
+            } else {
+                if let errorDict = response.1 as [String: Any]? {
+                    print(errorDict)
+                }
+                return
+            }
+            self.accountsCollectionView.reloadData()
+        }
+    }
 }
 
