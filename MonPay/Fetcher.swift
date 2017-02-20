@@ -29,13 +29,9 @@ class Fetcher: NSObject {
         }
         Alamofire.request("\(self.endpoint)\(url)", method: method, parameters: parameters, encoding: encoding, headers: authRequired ? unifiedHeaders : headers).responseJSON { (response: DataResponse<Any>) in
             if let json = response.result.value as? [String: Any] {
-                if let status = json["status"] as? Bool {
-                    if status == true {
-                        completion(json)
-                    }
-                } else {
-                    if let description = json["description"] as? String {
-                        if description.contains("expired") {
+                if let description = json["description"] as? [String: Any] {
+                    if let token = description["token"] as? String {
+                        if token.contains("expired") {
                             if let refresh_token = Keychain.sharedInstance.get("refresh_token") {
                                 let params: HTTPHeaders = [
                                     "refresh_token": refresh_token
@@ -56,11 +52,17 @@ class Fetcher: NSObject {
                                         completion(json)
                                     }
                                 })
+                            } else {
+                                self.redirectToLogin()
                             }
                         } else {
                             completion(json)
                         }
+                    } else {
+                        completion(json)
                     }
+                } else {
+                    completion(json)
                 }
             }
         }
