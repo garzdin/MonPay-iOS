@@ -11,6 +11,7 @@ import UIKit
 class RecipientTableViewCell: UITableViewCell {
 
     @IBOutlet var profileView: UIView!
+    @IBOutlet var initialsLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var accountLabel: UILabel!
     

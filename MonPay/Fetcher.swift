@@ -185,8 +185,29 @@ class Fetcher: NSObject {
     }
     
     func beneficiaryCreate(params: Parameters, completion: @escaping (_ response: [String: Any]?) -> ()) {
-        self.request(url: "beneficiary/create", method: .post, parameters: params, encoding: JSONEncoding.default, headers: [:], authRequired: true) { (response: [String : Any]?) in
-            completion(response)
+        var params = params
+        if var account = params.removeValue(forKey: "account") as? [String: Any] {
+            self.request(url: "beneficiary/create", method: .post, parameters: params, encoding: JSONEncoding.default, headers: [:], authRequired: true) { (response: [String : Any]?) in
+                if let beneficiary = response?["beneficiary"] as? [String: Any] {
+                    if let id = beneficiary["id"] as? Int {
+                        account["beneficiary"] = id
+                        self.request(url: "account/create", method: .post, parameters: account, encoding: JSONEncoding.default, headers: [:], authRequired: true, completion: { (accountResponse: [String : Any]?) in
+                            if let singleAccount = accountResponse?["account"] as? [String: Any] {
+                                if let accountBeneficiary = singleAccount["beneficiary"] as? Int {
+                                    self.request(url: "beneficiary/\(accountBeneficiary)", method: .get, parameters: [:], encoding: URLEncoding.default, headers: [:], authRequired: true, completion: { (beneficiaryResponse: [String : Any]?) in
+                                        completion(beneficiaryResponse)
+                                    })
+                                }
+                            } else {
+                                completion(accountResponse)
+                            }
+
+                        })
+                    }
+                } else {
+                    completion(response)
+                }
+            }
         }
     }
     

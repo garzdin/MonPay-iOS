@@ -11,7 +11,7 @@ import Alamofire
 
 fileprivate let reuseIdentifier = "recipientCell"
 
-class RecipientsTableViewController: UITableViewController, RecipientDeleteDelegate {
+class RecipientsTableViewController: UITableViewController, AddNewRecipientDelegate, RecipientDeleteDelegate {
     
     var recipients: [Beneficiary] = []
     
@@ -35,8 +35,13 @@ class RecipientsTableViewController: UITableViewController, RecipientDeleteDeleg
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! RecipientTableViewCell
         if let first_name = self.recipients[indexPath.row].first_name, let last_name = self.recipients[indexPath.row].last_name {
             cell.nameLabel.text = "\(first_name) \(last_name)"
+            if let firstNameInitial = first_name.characters.first, let lastNameInitial = last_name.characters.first {
+                cell.initialsLabel.text = "\(firstNameInitial)\(lastNameInitial)"
+            }
         }
-        cell.accountLabel.text = "18927309123701923"
+        if let account = self.recipients[indexPath.row].account?.iban {
+            cell.accountLabel.text = account
+        }
         return cell
     }
     
@@ -50,6 +55,11 @@ class RecipientsTableViewController: UITableViewController, RecipientDeleteDeleg
                 }
             }
         }
+        if segue.identifier == "addNewRecipient" {
+            if let addNewRecipientViewController = segue.destination as? AddNewRecipientViewController {
+                addNewRecipientViewController.delegate = self
+            }
+        }
     }
     
     func didDeleteRecipient(recipient: Beneficiary) {
@@ -57,6 +67,11 @@ class RecipientsTableViewController: UITableViewController, RecipientDeleteDeleg
             self.recipients.remove(at: index)
             self.tableView.reloadData()
         }
+    }
+    
+    func didAddNewRecipient(recipient: Beneficiary) {
+        self.recipients.append(recipient)
+        self.tableView.reloadData()
     }
     
     func getRecipientsData() {

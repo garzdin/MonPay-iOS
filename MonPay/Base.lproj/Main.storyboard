@@ -1936,7 +1936,7 @@
                                             <state key="highlighted" backgroundImage="plus-highlighted"/>
                                             <connections>
                                                 <action selector="addNewAccount:" destination="9pv-A4-QxB" eventType="touchUpInside" id="o2W-We-owp"/>
-                                                <segue destination="tmz-fZ-Wcc" kind="show" id="Bfz-YS-wdf"/>
+                                                <segue destination="tmz-fZ-Wcc" kind="show" identifier="addNewRecipient" id="Bfz-YS-wdf"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -1978,10 +1978,20 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TGJ-uE-dRy">
                                             <rect key="frame" x="28" y="15" width="60" height="60"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Yc-Zo-3YD">
+                                                    <rect key="frame" x="18.333333333333336" y="19" width="23.666666666666664" height="22"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <color key="textColor" red="0.3529411764705882" green="0.43529411764705883" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" red="0.047058823530000002" green="0.1058823529" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="KRo-bW-sIG"/>
                                                 <constraint firstAttribute="width" constant="60" id="Prd-yy-vOd"/>
+                                                <constraint firstItem="3Yc-Zo-3YD" firstAttribute="centerY" secondItem="TGJ-uE-dRy" secondAttribute="centerY" id="fKl-hC-C7C"/>
+                                                <constraint firstItem="3Yc-Zo-3YD" firstAttribute="centerX" secondItem="TGJ-uE-dRy" secondAttribute="centerX" id="l4Q-tl-LgY"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -2014,6 +2024,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="accountLabel" destination="yUZ-SK-KFO" id="z1p-YY-JEv"/>
+                                    <outlet property="initialsLabel" destination="3Yc-Zo-3YD" id="kcj-P7-Sry"/>
                                     <outlet property="nameLabel" destination="1Xo-k8-N9g" id="v9F-UO-TLV"/>
                                     <outlet property="profileView" destination="TGJ-uE-dRy" id="wtz-oN-SbZ"/>
                                     <segue destination="Fme-47-37F" kind="show" identifier="showRecipientDetails" id="1Jz-pl-ZpA"/>
@@ -2049,9 +2060,19 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvi-Gz-Vbz">
                                         <rect key="frame" x="177" y="30" width="60" height="60"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sL7-uh-ckL">
+                                                <rect key="frame" x="18" y="19" width="24" height="22"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <color key="textColor" red="0.3529411764705882" green="0.43529411764705883" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.098039215686274508" green="0.17254901960784313" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="3MO-eE-DrG"/>
+                                            <constraint firstItem="sL7-uh-ckL" firstAttribute="centerX" secondItem="kvi-Gz-Vbz" secondAttribute="centerX" id="4Ie-5S-fCl"/>
+                                            <constraint firstItem="sL7-uh-ckL" firstAttribute="centerY" secondItem="kvi-Gz-Vbz" secondAttribute="centerY" id="Bvw-14-Xwh"/>
                                             <constraint firstAttribute="height" constant="60" id="CFb-m6-cme"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -2153,6 +2174,7 @@
                         <outlet property="emailLabel" destination="z0l-Hl-FmX" id="gLP-u1-LJF"/>
                         <outlet property="entityTypeLabel" destination="oPu-7l-e9w" id="zPG-Fe-hn6"/>
                         <outlet property="ibanLabel" destination="QfC-wQ-uk3" id="f4h-V0-Qe7"/>
+                        <outlet property="initialsLabel" destination="sL7-uh-ckL" id="b3U-Gf-ydX"/>
                         <outlet property="nameLabel" destination="X2M-Kf-JLm" id="ZAe-Ae-5Fx"/>
                     </connections>
                 </viewController>
@@ -2207,6 +2229,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytl-ek-o0j">
+                                <rect key="frame" x="374" y="93.333333333333329" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.2475420552" blue="0.20106874769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hbg-Y3-6EK">
                                 <rect key="frame" x="40" y="128" width="334" height="1"/>
                                 <color key="backgroundColor" red="0.35294117650000001" green="0.43529411759999997" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2286,6 +2314,24 @@
                                     <action selector="addNewRecipientAction:" destination="tmz-fZ-Wcc" eventType="touchUpInside" id="Q8i-xl-EsX"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ku5-aY-UQL">
+                                <rect key="frame" x="374" y="158.33333333333334" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.2475420552" blue="0.20106874769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zle-qN-rHE">
+                                <rect key="frame" x="374" y="223.33333333333334" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.2475420552" blue="0.20106874769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9T-St-cS6">
+                                <rect key="frame" x="374" y="288.33333333333331" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.2475420552" blue="0.20106874769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.098039215686274508" green="0.17254901960784313" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -2293,11 +2339,18 @@
                             <constraint firstItem="eVI-jY-Ues" firstAttribute="top" secondItem="Fcl-SV-oai" secondAttribute="bottom" constant="30" id="1El-F3-E8p"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ChY-1Z-3n6" secondAttribute="trailing" constant="20" id="1L7-3V-pmY"/>
                             <constraint firstItem="IJw-e3-1EJ" firstAttribute="top" secondItem="XAh-Ry-y3j" secondAttribute="bottom" constant="30" id="1iN-bP-tra"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="n9T-St-cS6" secondAttribute="trailing" constant="20" id="65b-at-a3H"/>
                             <constraint firstItem="Fcl-SV-oai" firstAttribute="top" secondItem="moV-hB-UxD" secondAttribute="bottom" constant="30" id="66q-bM-uLa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ytl-ek-o0j" secondAttribute="trailing" constant="20" id="6tw-ew-hbh"/>
+                            <constraint firstItem="qrZ-b7-s3a" firstAttribute="top" secondItem="zle-qN-rHE" secondAttribute="bottom" id="7Kd-vG-TyN"/>
+                            <constraint firstItem="Fcl-SV-oai" firstAttribute="top" secondItem="n9T-St-cS6" secondAttribute="bottom" id="7vS-Kq-2mx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Hbg-Y3-6EK" secondAttribute="trailing" constant="20" id="8MZ-jf-nCz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ku5-aY-UQL" secondAttribute="trailing" constant="20" id="AuE-Ib-lsZ"/>
                             <constraint firstItem="RJr-h9-gsp" firstAttribute="top" secondItem="Hbg-Y3-6EK" secondAttribute="bottom" constant="30" id="B9H-cE-ItK"/>
                             <constraint firstItem="ngn-Lf-coB" firstAttribute="leading" secondItem="6lO-pS-70p" secondAttribute="leadingMargin" constant="20" id="DR9-sB-SPj"/>
+                            <constraint firstItem="RJr-h9-gsp" firstAttribute="top" secondItem="ku5-aY-UQL" secondAttribute="bottom" id="EYP-1d-JOb"/>
                             <constraint firstItem="ngn-Lf-coB" firstAttribute="top" secondItem="Fcl-SV-oai" secondAttribute="bottom" id="HLb-sR-QeX"/>
+                            <constraint firstItem="IJw-e3-1EJ" firstAttribute="top" secondItem="ytl-ek-o0j" secondAttribute="bottom" id="Ig9-dy-OVu"/>
                             <constraint firstItem="IJw-e3-1EJ" firstAttribute="leading" secondItem="6lO-pS-70p" secondAttribute="leadingMargin" constant="20" id="OOa-NW-XTW"/>
                             <constraint firstItem="Qcv-Bb-g4K" firstAttribute="leading" secondItem="6lO-pS-70p" secondAttribute="leadingMargin" constant="20" id="PnP-E2-pna"/>
                             <constraint firstItem="qrZ-b7-s3a" firstAttribute="top" secondItem="Qcv-Bb-g4K" secondAttribute="bottom" constant="30" id="Zdp-kI-VTb"/>
@@ -2309,6 +2362,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Fcl-SV-oai" secondAttribute="trailing" constant="20" id="ffA-hE-11P"/>
                             <constraint firstItem="Qcv-Bb-g4K" firstAttribute="top" secondItem="RJr-h9-gsp" secondAttribute="bottom" id="g7s-tA-62v"/>
                             <constraint firstItem="RJr-h9-gsp" firstAttribute="leading" secondItem="6lO-pS-70p" secondAttribute="leadingMargin" constant="20" id="gIC-qw-eck"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zle-qN-rHE" secondAttribute="trailing" constant="20" id="gre-nn-qCE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RJr-h9-gsp" secondAttribute="trailing" constant="20" id="hQe-HA-nin"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IJw-e3-1EJ" secondAttribute="trailing" constant="20" id="hgc-tT-TYT"/>
                             <constraint firstItem="qrZ-b7-s3a" firstAttribute="leading" secondItem="6lO-pS-70p" secondAttribute="leadingMargin" constant="20" id="ixO-23-QJp"/>
@@ -2321,6 +2375,14 @@
                     </view>
                     <connections>
                         <outlet property="currencyLabel" destination="ChY-1Z-3n6" id="fDg-w1-H6q"/>
+                        <outlet property="recipientBicSwift" destination="Fcl-SV-oai" id="kS3-fv-gHq"/>
+                        <outlet property="recipientBicSwiftErrorLabel" destination="n9T-St-cS6" id="CiN-Ek-bnL"/>
+                        <outlet property="recipientEmail" destination="RJr-h9-gsp" id="23r-ct-H4p"/>
+                        <outlet property="recipientEmailErrorLabel" destination="ku5-aY-UQL" id="qr2-mw-r8T"/>
+                        <outlet property="recipientIban" destination="qrZ-b7-s3a" id="r1N-TQ-EvW"/>
+                        <outlet property="recipientIbanErrorLabel" destination="zle-qN-rHE" id="kJG-f7-dRF"/>
+                        <outlet property="recipientName" destination="IJw-e3-1EJ" id="7JL-mZ-S1q"/>
+                        <outlet property="recipientNameErrorLabel" destination="ytl-ek-o0j" id="tyc-8V-o6K"/>
                         <segue destination="wz7-QN-zzb" kind="presentation" identifier="chooseCurrencyForNewRecipient" id="rA3-A3-Ctk"/>
                     </connections>
                 </viewController>
@@ -2929,6 +2991,6 @@ of an ID document. This document can be either your
         <image name="transfers" width="17" height="17"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SVa-Xn-taY"/>
+        <segue reference="rA3-A3-Ctk"/>
     </inferredMetricsTieBreakers>
 </document>

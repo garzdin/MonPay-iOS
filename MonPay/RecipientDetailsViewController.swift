@@ -17,6 +17,7 @@ class RecipientDetailsViewController: UIViewController {
     
     weak var delegate: RecipientDeleteDelegate?
     
+    @IBOutlet var initialsLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var entityTypeLabel: UILabel!
     @IBOutlet var emailLabel: UILabel!
@@ -39,6 +40,29 @@ class RecipientDetailsViewController: UIViewController {
         if let recipient = self.recipient {
             if let first_name = recipient.first_name, let last_name = recipient.last_name {
                 self.nameLabel.text = "\(first_name) \(last_name)"
+                if let firstNameInitial = first_name.characters.first, let lastNameInitial = last_name.characters.first {
+                    self.initialsLabel.text = "\(firstNameInitial)\(lastNameInitial)"
+                }
+            }
+            if let entityType = recipient.entity_type {
+                switch entityType {
+                case 0:
+                    self.entityTypeLabel.text = "Private"
+                    break
+                case 1:
+                    self.entityTypeLabel.text = "Company"
+                    break
+                default: break
+                }
+            }
+            if let email = recipient.email {
+                self.emailLabel.text = email
+            }
+            if let iban = recipient.account?.iban {
+                self.ibanLabel.text = iban
+            }
+            if let bicSwift = recipient.account?.bic_swift {
+                self.bicSwiftLabel.text = bicSwift
             }
         }
     }
