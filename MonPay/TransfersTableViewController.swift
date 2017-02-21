@@ -11,7 +11,7 @@ import Alamofire
 
 fileprivate let reuseIdentifier = "transferCell"
 
-class TransfersTableViewController: UITableViewController {
+class TransfersTableViewController: UITableViewController, TransferDeleteDelegate {
     
     var transfers: [Transaction] = []
 
@@ -33,12 +33,31 @@ class TransfersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! TransferTableViewCell
-        if let currency = self.transfers[indexPath.row].currency {
-            cell.amountLabel.text = "1000 \(currency)"
+        if let amount = self.transfers[indexPath.row].amount, let currency = self.transfers[indexPath.row].currency {
+            cell.amountLabel.text = "\(amount) \(currency)"
         }
         cell.nameLabel.text = "Jane Doe"
         cell.statusLabel.text = "Completed on 20 Sept 2016"
         return cell
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showTransferDetails" {
+            if let detailsViewController = segue.destination as? TransferDetailsViewController {
+                if let selectedRow = self.tableView.indexPathForSelectedRow?.row {
+                    detailsViewController.delegate = self
+                    detailsViewController.transfer = self.transfers[selectedRow]
+                }
+            }
+        }
+    }
+    
+    func didDeleteTransfer(transfer: Transaction) {
+        if let index = self.transfers.index(of: transfer) {
+            self.transfers.remove(at: index)
+            self.tableView.reloadData()
+        }
     }
     
     func getTransfersData() {

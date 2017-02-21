@@ -29,7 +29,7 @@ class Transaction: NSObject {
         if let reference = values["reference"] as? String {
             self.reference = reference
         }
-        if let amount = values["city"] as? Float {
+        if let amount = values["amount"] as? Float {
             self.amount = amount
         }
         if let currency = values["currency"] as? String {

@@ -1428,7 +1428,7 @@
                                     <outlet property="amountLabel" destination="ytG-0f-CPd" id="seg-ib-8XS"/>
                                     <outlet property="nameLabel" destination="gCk-Bk-q6Z" id="672-Es-gDX"/>
                                     <outlet property="statusLabel" destination="lWI-ND-hSP" id="Xai-KU-Ydh"/>
-                                    <segue destination="sSo-Sd-RDn" kind="show" id="eef-5x-AV5"/>
+                                    <segue destination="sSo-Sd-RDn" kind="show" identifier="showTransferDetails" id="eef-5x-AV5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1461,8 +1461,18 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e4u-h6-2tD">
                                         <rect key="frame" x="177" y="30" width="60" height="60"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0G-Lu-iN9">
+                                                <rect key="frame" x="18" y="19" width="24" height="22"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <color key="textColor" red="0.35294117650000001" green="0.43529411759999997" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="Q0G-Lu-iN9" firstAttribute="centerY" secondItem="e4u-h6-2tD" secondAttribute="centerY" id="2mI-T9-8Ci"/>
+                                            <constraint firstItem="Q0G-Lu-iN9" firstAttribute="centerX" secondItem="e4u-h6-2tD" secondAttribute="centerX" id="UYx-pJ-NYH"/>
                                             <constraint firstAttribute="height" constant="60" id="bOh-SE-DeQ"/>
                                             <constraint firstAttribute="width" constant="60" id="bh9-lq-Znt"/>
                                         </constraints>
@@ -1560,6 +1570,14 @@
                             <constraint firstItem="eTD-wW-NpL" firstAttribute="top" secondItem="cnf-fy-iTh" secondAttribute="bottom" id="vDp-fH-TMR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="amountLabel" destination="Ln5-dy-Atm" id="45Q-B8-MDk"/>
+                        <outlet property="emailLabel" destination="dbi-y4-hgg" id="3ww-f6-Wpv"/>
+                        <outlet property="ibanLabel" destination="8JM-Ry-z4m" id="FeE-4B-rF1"/>
+                        <outlet property="initialsLabel" destination="Q0G-Lu-iN9" id="ufu-LL-tri"/>
+                        <outlet property="nameLabel" destination="Cth-SU-96y" id="oGI-hz-OWF"/>
+                        <outlet property="statusLabel" destination="C34-U4-jKN" id="h71-fL-06T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jK5-2n-3iO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1919,58 +1937,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.098039215686274508" green="0.17254901960784313" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="5HA-jh-gXY">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajW-Ok-5II">
-                                    <rect key="frame" x="28" y="15" width="60" height="60"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKf-1U-esX">
-                                            <rect key="frame" x="15" y="15" width="30" height="30"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="gjF-Lc-W7G"/>
-                                                <constraint firstAttribute="width" constant="30" id="j2i-u8-SKf"/>
-                                            </constraints>
-                                            <state key="normal" backgroundImage="plus"/>
-                                            <state key="highlighted" backgroundImage="plus-highlighted"/>
-                                            <connections>
-                                                <action selector="addNewAccount:" destination="9pv-A4-QxB" eventType="touchUpInside" id="o2W-We-owp"/>
-                                                <segue destination="tmz-fZ-Wcc" kind="show" identifier="addNewRecipient" id="Bfz-YS-wdf"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.047058823530000002" green="0.1058823529" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstItem="KKf-1U-esX" firstAttribute="centerY" secondItem="ajW-Ok-5II" secondAttribute="centerY" id="070-n3-Nfg"/>
-                                        <constraint firstAttribute="height" constant="60" id="FgL-r0-XH4"/>
-                                        <constraint firstAttribute="width" constant="60" id="T7H-u5-YOR"/>
-                                        <constraint firstItem="KKf-1U-esX" firstAttribute="centerX" secondItem="ajW-Ok-5II" secondAttribute="centerX" id="mW6-kB-2fZ"/>
-                                    </constraints>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="30"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add new recipient" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2q-ua-kis">
-                                    <rect key="frame" x="108" y="37" width="116" height="17"/>
-                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                    <color key="textColor" red="0.3529411764705882" green="0.43529411764705883" blue="0.51372549019607838" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="j2q-ua-kis" firstAttribute="leading" secondItem="ajW-Ok-5II" secondAttribute="trailing" constant="20" id="6aG-hK-4EN"/>
-                                <constraint firstItem="ajW-Ok-5II" firstAttribute="centerY" secondItem="5HA-jh-gXY" secondAttribute="centerY" id="QBJ-he-IAL"/>
-                                <constraint firstItem="j2q-ua-kis" firstAttribute="centerY" secondItem="5HA-jh-gXY" secondAttribute="centerY" id="iIf-QC-Rbo"/>
-                                <constraint firstItem="ajW-Ok-5II" firstAttribute="leading" secondItem="5HA-jh-gXY" secondAttribute="leadingMargin" constant="20" id="vpH-ww-4E4"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipientCell" rowHeight="90" id="adJ-O7-Rxk" customClass="RecipientTableViewCell" customModule="MonPay" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="91" width="414" height="90"/>
+                                <rect key="frame" x="0.0" y="1" width="414" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="adJ-O7-Rxk" id="Tig-sG-QlM">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
@@ -2037,7 +2006,13 @@
                             <outlet property="delegate" destination="RHc-Se-YBw" id="rr4-fI-m7Q"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Recipients" id="mR0-WK-xzO"/>
+                    <navigationItem key="navigationItem" title="Recipients" id="mR0-WK-xzO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ykV-00-yPA">
+                            <connections>
+                                <segue destination="tmz-fZ-Wcc" kind="show" id="1nY-hq-eHl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0SD-dH-phg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2991,6 +2966,6 @@ of an ID document. This document can be either your
         <image name="transfers" width="17" height="17"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rA3-A3-Ctk"/>
+        <segue reference="z51-Uv-c9T"/>
     </inferredMetricsTieBreakers>
 </document>
