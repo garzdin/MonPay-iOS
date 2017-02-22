@@ -16,6 +16,10 @@ struct CurrencyPairs {
     let toCurrency: String
 }
 
+protocol ConfirmTransferDelegate: class {
+    func didConfirmTransfer()
+}
+
 class ConfirmViewController: UIViewController {
     
     @IBOutlet var initialsLabel: UILabel!
@@ -28,6 +32,8 @@ class ConfirmViewController: UIViewController {
     
     var transfer: Transaction?
     var pairs: CurrencyPairs?
+    
+    weak var delegate: ConfirmTransferDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +67,7 @@ class ConfirmViewController: UIViewController {
                 "account": account,
                 ]
             Fetcher.sharedInstance.transactionCreate(params: params) { (response: [String : Any]?) in
+                self.delegate?.didConfirmTransfer()
                 self.dismiss(animated: true, completion: nil)
             }
         }

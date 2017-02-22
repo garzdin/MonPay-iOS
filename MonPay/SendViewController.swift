@@ -21,7 +21,7 @@ fileprivate let staticReuseIdentifier = "newAccountCell"
 fileprivate let recipientCellReuseIdentifier = "recipientCell"
 fileprivate let recipientSearchCellReuseIdentifier = "recipientSearchCell"
 
-class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, CurrencyPickerDelegate, AddNewAccountDelegate, AccountDeleteDelegate {
+class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, CurrencyPickerDelegate, AddNewAccountDelegate, AccountDeleteDelegate, ConfirmTransferDelegate {
     
     var accounts: [Account] = []
     var recipients: [Beneficiary] = []
@@ -173,6 +173,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         if segue.identifier == "confirmSend" {
             if let destination = segue.destination as? ConfirmViewController {
+                destination.delegate = self
                 destination.transfer = self.transfer
                 if let fromAmountText = self.fromAmount.text,
                     let toAmountText = self.toAmount.text,
@@ -251,11 +252,21 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    func didConfirmTransfer() {
+        self.fromAmount.text = ""
+        self.toAmount.text = ""
+        for cell in self.recipientsCollectionView.visibleCells.filter({(cell) in return cell is RecipientCollectionViewCell}) as! [RecipientCollectionViewCell] {
+            cell.recipientSelected = false
+            cell.setUnselected()
+        }
+    }
+    
     @IBAction func unwindToSendScreen(segue: UIStoryboardSegue) {}
     
     func getAccounts() {
         Fetcher.sharedInstance.accountList { (response: [String : Any]?) in
             if let accounts = response?["accounts"] as? [Any] {
+                self.accounts = []
                 for account in accounts {
                     if let account = account as? [String: Any] {
                         self.accounts.append(Account(values: account))
@@ -269,6 +280,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func getRecipients() {
         Fetcher.sharedInstance.beneficiaryList { (response: [String : Any]?) in
             if let recipients = response?["beneficiaries"] as? [Any] {
+                self.recipients = []
                 for recipient in recipients {
                     if let recipient = recipient as? [String: Any] {
                         self.recipients.append(Beneficiary(values: recipient))

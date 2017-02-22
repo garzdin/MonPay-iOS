@@ -77,6 +77,7 @@ class RecipientsTableViewController: UITableViewController, AddNewRecipientDeleg
     func getRecipientsData() {
         Fetcher.sharedInstance.beneficiaryList { (response: [String : Any]?) in
             if let beneficiaries = response?["beneficiaries"] as? [Any] {
+                self.recipients = []
                 for beneficiary in beneficiaries {
                     if let beneficiary = beneficiary as? [String: Any] {
                         self.recipients.append(Beneficiary(values: beneficiary))

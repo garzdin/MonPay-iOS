@@ -63,6 +63,7 @@ class TransfersTableViewController: UITableViewController, TransferDeleteDelegat
     func getTransfersData() {
         Fetcher.sharedInstance.transactionList { (response: [String : Any]?) in
             if let transfers = response?["transactions"] as? [Any] {
+                self.transfers = []
                 for transfer in transfers {
                     if let transfer = transfer as? [String: Any] {
                         self.transfers.append(Transaction(values: transfer))

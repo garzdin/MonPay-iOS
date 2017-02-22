@@ -47,7 +47,6 @@ class AccountViewController: UIViewController {
             ]
             Fetcher.sharedInstance.userAddressUpdate(params: params, completion: { (response: [String : Any]?) in
                 // Update interface
-                print(response)
             })
         }
     }
