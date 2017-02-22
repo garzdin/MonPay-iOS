@@ -76,6 +76,10 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 if let iban = self.accounts[indexPath.row].iban {
                     cell.accountNumberLabel.text = iban
                 }
+                if let active = self.accounts[indexPath.row].active {
+                    cell.accountSelected = active
+                    cell.selectedIndicator.isHidden = !active
+                }
                 cell.infoButton.tag = indexPath.row
                 cell.infoButton.addTarget(self, action: #selector(didTapInfoButton(sender:)), for: UIControlEvents.touchUpInside)
                 return cell
