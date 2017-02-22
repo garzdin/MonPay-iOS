@@ -11,6 +11,7 @@ import UIKit
 class RecipientCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var profileView: UIView!
+    @IBOutlet var initialsLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
     
     let selectedView = UIView()

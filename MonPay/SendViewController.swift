@@ -19,7 +19,7 @@ fileprivate let recipientSearchCellReuseIdentifier = "recipientSearchCell"
 class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CurrencyPickerDelegate, AddNewAccountDelegate {
     
     var accounts: [Account] = []
-    let recipients: [String] = ["Adam Smith", "John Doe", "Batman"]
+    var recipients: [Beneficiary] = []
 
     @IBOutlet var accountsCollectionView: AccountsCollectionView!
     @IBOutlet var recipientsCollectionView: RecipientsCollectionView!
@@ -39,6 +39,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
         toCurrencyLabel.isUserInteractionEnabled = true
         toCurrencyLabel.addGestureRecognizer(tapToCurrencyLabel)
         getAccounts()
+        getRecipients()
     }
     
     // MARK: Data delegation
@@ -85,6 +86,12 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 return cell
             } else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: recipientCellReuseIdentifier, for: indexPath) as! RecipientCollectionViewCell
+                if let first_name = self.recipients[indexPath.row].first_name, let last_name = self.recipients[indexPath.row].last_name {
+                    if let firstNameInitial = first_name.characters.first, let lastNameInitial = last_name.characters.first {
+                        cell.initialsLabel.text = "\(firstNameInitial)\(lastNameInitial)"
+                    }
+                    cell.nameLabel.text = "\(first_name) \(last_name)"
+                }
                 return cell
             }
         }
@@ -192,6 +199,19 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
             }
             self.accountsCollectionView.reloadData()
+        }
+    }
+    
+    func getRecipients() {
+        Fetcher.sharedInstance.beneficiaryList { (response: [String : Any]?) in
+            if let recipients = response?["beneficiaries"] as? [Any] {
+                for recipient in recipients {
+                    if let recipient = recipient as? [String: Any] {
+                        self.recipients.append(Beneficiary(values: recipient))
+                    }
+                }
+            }
+            self.recipientsCollectionView.reloadData()
         }
     }
 }

@@ -226,9 +226,19 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Vc-Ec-dg5">
                                                     <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KI4-53-zzo">
+                                                            <rect key="frame" x="18" y="19" width="24" height="22"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                            <color key="textColor" red="0.35294117650000001" green="0.43529411759999997" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
                                                     <color key="backgroundColor" red="0.08235294118" green="0.14117647059999999" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
+                                                        <constraint firstItem="KI4-53-zzo" firstAttribute="centerY" secondItem="5Vc-Ec-dg5" secondAttribute="centerY" id="UeS-1Z-mYf"/>
                                                         <constraint firstAttribute="width" constant="60" id="duR-3c-ZgI"/>
+                                                        <constraint firstItem="KI4-53-zzo" firstAttribute="centerX" secondItem="5Vc-Ec-dg5" secondAttribute="centerX" id="gkD-aZ-kaF"/>
                                                         <constraint firstAttribute="height" constant="60" id="lzP-Cf-w5p"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -255,6 +265,7 @@
                                             <constraint firstAttribute="bottom" secondItem="ogF-iQ-pEy" secondAttribute="bottom" id="ySv-qV-ilw"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="initialsLabel" destination="KI4-53-zzo" id="nqC-7K-pG9"/>
                                             <outlet property="nameLabel" destination="ogF-iQ-pEy" id="5Ux-Ex-0hW"/>
                                             <outlet property="profileView" destination="5Vc-Ec-dg5" id="d6H-NX-H4v"/>
                                         </connections>
@@ -2966,6 +2977,6 @@ of an ID document. This document can be either your
         <image name="transfers" width="17" height="17"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="z51-Uv-c9T"/>
+        <segue reference="SVa-Xn-taY"/>
     </inferredMetricsTieBreakers>
 </document>
