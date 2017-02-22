@@ -43,7 +43,7 @@ class Beneficiary: NSObject {
             self.last_name = last_name
         }
         if let address = values["address"] as? Dictionary<String, Any> {
-            self.address = Address(values: address, entity: self)
+            self.address = Address(values: address)
         }
         if let date_of_birth = values["date_of_birth"] as? String {
             let formatter = DateFormatter()

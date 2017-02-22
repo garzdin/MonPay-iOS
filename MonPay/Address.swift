@@ -17,12 +17,11 @@ class Address: NSObject {
     var state_or_province: String?
     var postal_code: Int?
     var country: String?
-    var entity: NSObject?
     var created_on: Date?
     var updated_on: Date?
     var version: Int?
     
-    init(values: Dictionary<String, Any>, entity: NSObject?) {
+    init(values: Dictionary<String, Any>) {
         super.init()
         if let id = values["id"] as? Int {
             self.id = id
@@ -42,7 +41,6 @@ class Address: NSObject {
         if let country = values["country"] as? String {
             self.country = country
         }
-        self.entity = entity
         if let created_on = values["created_on"] as? String {
             let formatter = DateFormatter()
             formatter.dateFormat = dateTimeFormat

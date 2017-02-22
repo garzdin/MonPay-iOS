@@ -19,6 +19,7 @@ class User: NSObject {
     var date_of_birth: Date?
     var email: String?
     var password: String?
+    var phone_number: String?
     var address: Address?
     var id_type: Int?
     var id_value: String?
@@ -53,8 +54,11 @@ class User: NSObject {
         if let password = values["password"] as? String {
             self.password = password
         }
+        if let phone_number = values["phone_number"] as? String {
+            self.phone_number = phone_number
+        }
         if let address = values["address"] as? Dictionary<String, Any> {
-            self.address = Address(values: address, entity: self)
+            self.address = Address(values: address)
         }
         if let id_type = values["id_type"] as? Int {
             self.id_type = id_type
