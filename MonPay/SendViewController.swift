@@ -9,6 +9,11 @@
 import UIKit
 import Alamofire
 
+struct SenderWithData {
+    let sender: Any
+    let data: Any
+}
+
 // MARK: Reuse identifiers
 
 fileprivate let reuseIdentifier = "accountCell"
@@ -16,7 +21,7 @@ fileprivate let staticReuseIdentifier = "newAccountCell"
 fileprivate let recipientCellReuseIdentifier = "recipientCell"
 fileprivate let recipientSearchCellReuseIdentifier = "recipientSearchCell"
 
-class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CurrencyPickerDelegate, AddNewAccountDelegate {
+class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CurrencyPickerDelegate, AddNewAccountDelegate, AccountDeleteDelegate {
     
     var accounts: [Account] = []
     var recipients: [Beneficiary] = []
@@ -142,12 +147,25 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 destination.delegate = self
             }
         }
+        if segue.identifier == "showAccountDetails" {
+            if let destination = segue.destination as? AccountDetailsViewController {
+                if let payload = sender as? SenderWithData {
+                    if let account = payload.data as? Account {
+                        destination.delegate = self
+                        destination.account = account
+                    }
+                }
+            }
+        }
     }
     
     // MARK: Cell info button tapped action
     
     func didTapInfoButton(sender: UIButton?) {
-        performSegue(withIdentifier: "showAccountDetails", sender: sender)
+        if let index = sender?.tag {
+            let customSender = SenderWithData(sender: sender, data: self.accounts[index])
+            performSegue(withIdentifier: "showAccountDetails", sender: customSender)
+        }
     }
     
     // MARK: Cell add new account button tapped action
@@ -185,6 +203,13 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func didAddNewAccount(account: Account) {
         self.accounts.append(account)
         self.accountsCollectionView.reloadData()
+    }
+    
+    func didDeleteAccount(account: Account) {
+        if let index = self.accounts.index(of: account) {
+            self.accounts.remove(at: index)
+            self.accountsCollectionView.reloadData()
+        }
     }
     
     @IBAction func unwindToSendScreen(segue: UIStoryboardSegue) {}

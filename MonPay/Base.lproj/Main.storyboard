@@ -2736,10 +2736,10 @@ of an ID document. This document can be either your
             </objects>
             <point key="canvasLocation" x="2348" y="752"/>
         </scene>
-        <!--View Controller-->
+        <!--Account Details View Controller-->
         <scene sceneID="tq1-Qh-nvb">
             <objects>
-                <viewController id="f9C-kI-BFs" sceneMemberID="viewController">
+                <viewController id="f9C-kI-BFs" customClass="AccountDetailsViewController" customModule="MonPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KUB-CH-ItR"/>
                         <viewControllerLayoutGuide type="bottom" id="ncv-uZ-wlu"/>
@@ -2755,36 +2755,19 @@ of an ID document. This document can be either your
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eQU-Tb-n05">
-                                            <rect key="frame" x="112.33333333333334" y="275" width="190.66666666666666" height="186"/>
+                                            <rect key="frame" x="112.33333333333334" y="299.33333333333331" width="190.66666666666666" height="137.33333333333337"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Lbz-Oc-Zxu">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nHb-3w-UVw">
                                                     <rect key="frame" x="0.0" y="0.0" width="190.66666666666669" height="38.666666666666686"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cz8-Is-UP1">
-                                                            <rect key="frame" x="74.000000000000014" y="0.0" width="42.666666666666657" height="19.333333333333314"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <color key="textColor" red="0.35294117650000001" green="0.43529411759999997" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scj-90-CYu">
-                                                            <rect key="frame" x="60.666666666666671" y="19.333333333333314" width="69.333333333333329" height="19.333333333333371"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nHb-3w-UVw">
-                                                    <rect key="frame" x="0.0" y="48.666666666666686" width="190.66666666666669" height="38.666666666666629"/>
-                                                    <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IBAN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTM-Hb-QxM">
-                                                            <rect key="frame" x="77.333333333333329" y="0.0" width="36.333333333333343" height="19.333333333333314"/>
+                                                            <rect key="frame" x="77.333333333333329" y="0.0" width="36.333333333333343" height="19.333333333333371"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" red="0.35294117650000001" green="0.43529411759999997" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BG23ADSF981273918273" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cF8-7m-Yg4">
-                                                            <rect key="frame" x="0.0" y="19.333333333333314" width="190.66666666666669" height="19.333333333333314"/>
+                                                            <rect key="frame" x="0.0" y="19.333333333333371" width="190.66666666666669" height="19.333333333333314"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -2792,16 +2775,16 @@ of an ID document. This document can be either your
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WeB-LG-fJJ">
-                                                    <rect key="frame" x="0.0" y="97.333333333333314" width="190.66666666666669" height="38.666666666666686"/>
+                                                    <rect key="frame" x="0.0" y="48.666666666666686" width="190.66666666666669" height="38.666666666666686"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWIFT / BIC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cC3-93-opo">
-                                                            <rect key="frame" x="52.000000000000014" y="0.0" width="86.666666666666671" height="19.333333333333371"/>
+                                                            <rect key="frame" x="52.000000000000014" y="0.0" width="86.666666666666671" height="19.333333333333314"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" red="0.35294117650000001" green="0.43529411759999997" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADSFBGYQAID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hea-FG-Us1">
-                                                            <rect key="frame" x="41.000000000000014" y="19.333333333333371" width="108.99999999999999" height="19.333333333333314"/>
+                                                            <rect key="frame" x="41.000000000000014" y="19.333333333333314" width="108.99999999999999" height="19.333333333333371"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -2809,7 +2792,7 @@ of an ID document. This document can be either your
                                                     </subviews>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GjP-bJ-Q6J" customClass="RoundedButton" customModule="MonPay" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="146" width="190.66666666666669" height="40"/>
+                                                    <rect key="frame" x="0.0" y="97.333333333333371" width="190.66666666666669" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="tkJ-7E-V2C"/>
                                                     </constraints>
@@ -2829,6 +2812,7 @@ of an ID document. This document can be either your
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="didPressChoose:" destination="wz7-QN-zzb" eventType="touchUpInside" id="mON-A5-XGL"/>
+                                                        <action selector="removeAction:" destination="f9C-kI-BFs" eventType="touchUpInside" id="t2r-xG-OHG"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -2863,6 +2847,10 @@ of an ID document. This document can be either your
                             <constraint firstAttribute="trailingMargin" secondItem="Qqn-Sd-3Vh" secondAttribute="trailing" id="wTe-hM-2DH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ibanLabel" destination="cF8-7m-Yg4" id="Zma-Uc-Tv7"/>
+                        <outlet property="swiftLabel" destination="Hea-FG-Us1" id="7Yy-9a-mPn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VMP-MT-MYP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="jie-mi-9Bk" userLabel="Exit" sceneMemberID="exit"/>

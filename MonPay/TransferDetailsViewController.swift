@@ -89,5 +89,4 @@ class TransferDetailsViewController: UIViewController {
             })
         }
     }
-
 }

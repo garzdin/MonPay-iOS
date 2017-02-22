@@ -32,6 +32,7 @@
 		499CD25B1E585B740079D8A5 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499CD25A1E585B740079D8A5 /* Keychain.swift */; };
 		49AD23BD1E41D4AA002FE3C7 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD23BC1E41D4AA002FE3C7 /* PickerView.swift */; };
 		49AD23BF1E41D514002FE3C7 /* CurrencyPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD23BE1E41D514002FE3C7 /* CurrencyPickerViewController.swift */; };
+		49BE68CD1E5DBF880037D225 /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BE68CC1E5DBF880037D225 /* AccountDetailsViewController.swift */; };
 		49C1CEDE1E3E81BB009076D3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C1CEDD1E3E81BB009076D3 /* CameraViewController.swift */; };
 		49C9B70D1E3B620A004CAFEF /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C9B70C1E3B620A004CAFEF /* UnderlinedTextField.swift */; };
 		49E500DA1E4258B7009559CB /* AddNewRecipientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E500D91E4258B7009559CB /* AddNewRecipientViewController.swift */; };
@@ -75,6 +76,7 @@
 		499CD25A1E585B740079D8A5 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		49AD23BC1E41D4AA002FE3C7 /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		49AD23BE1E41D514002FE3C7 /* CurrencyPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyPickerViewController.swift; sourceTree = "<group>"; };
+		49BE68CC1E5DBF880037D225 /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
 		49C1CEDD1E3E81BB009076D3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		49C9B70C1E3B620A004CAFEF /* UnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		49E500D91E4258B7009559CB /* AddNewRecipientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewRecipientViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				49414C6C1E39002000CF1F20 /* ConfirmViewController.swift */,
 				4926CC571E3944550029C736 /* AddNewAccountViewController.swift */,
 				49AD23BE1E41D514002FE3C7 /* CurrencyPickerViewController.swift */,
+				49BE68CC1E5DBF880037D225 /* AccountDetailsViewController.swift */,
 			);
 			name = Send;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4993751D1E3A5DA2008D65F3 /* LoginViewController.swift in Sources */,
+				49BE68CD1E5DBF880037D225 /* AccountDetailsViewController.swift in Sources */,
 				49F986FB1E3DF72000EC57C9 /* TransfersTableViewController.swift in Sources */,
 				4926CC581E3944550029C736 /* AddNewAccountViewController.swift in Sources */,
 				4957AC271E37B0F2006A951A /* AppDelegate.swift in Sources */,
