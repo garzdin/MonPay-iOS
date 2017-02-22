@@ -35,11 +35,21 @@ class AccountViewController: UIViewController {
     
     @IBAction func saveAction(_ sender: UIButton) {
         self.view.endEditing(true)
-        let params: [String : Any] = [:]
-        Fetcher.sharedInstance.userUpdate(params: params, completion: { (response: [String : Any]?) in
-            // Update interface
-            print(response)
-        })
+        if let address = self.addressField.text,
+            let city = self.cityField.text,
+            let postalCode = self.postalCodeField.text,
+            let country = self.countryField.text {
+            let params: [String : Any] = [
+                "address": address,
+                "city": city,
+                "postal_code": postalCode,
+                "country": country
+            ]
+            Fetcher.sharedInstance.userAddressUpdate(params: params, completion: { (response: [String : Any]?) in
+                // Update interface
+                print(response)
+            })
+        }
     }
     
     @IBAction func unwindToAccount(segue: UIStoryboardSegue) {}
@@ -58,6 +68,14 @@ class AccountViewController: UIViewController {
                         dateFormatter.locale = Locale.init(identifier: regionCode)
                     }
                     self.dateOfBirthField.text = dateFormatter.string(from: date_of_birth)
+                }
+                if let address = self.user?.address {
+                    if let postal_code = address.postal_code {
+                        self.postalCodeField.text = "\(postal_code)"
+                    }
+                    self.cityField.text = address.city
+                    self.countryField.text = address.country
+                    self.addressField.text = address.address
                 }
             }
         }

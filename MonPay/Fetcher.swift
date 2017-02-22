@@ -138,6 +138,12 @@ class Fetcher: NSObject {
         }
     }
     
+    func userAddressUpdate(params: Parameters, completion: @escaping (_ response: [String: Any]?) -> ()) {
+        self.request(url: "user/address", method: .post, parameters: params, encoding: JSONEncoding.default, headers: [:], authRequired: true) { (response: [String : Any]?) in
+            completion(response)
+        }
+    }
+    
     // MARK: - Account endpoints
     
     func accountList(completion: @escaping (_ response: [String: Any]?) -> ()) {
