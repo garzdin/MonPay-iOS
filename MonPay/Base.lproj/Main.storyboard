@@ -2041,7 +2041,7 @@
                     <navigationItem key="navigationItem" title="Recipients" id="mR0-WK-xzO">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ykV-00-yPA">
                             <connections>
-                                <segue destination="tmz-fZ-Wcc" kind="show" id="1nY-hq-eHl"/>
+                                <segue destination="tmz-fZ-Wcc" kind="show" identifier="addNewRecipient" id="1nY-hq-eHl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
