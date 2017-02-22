@@ -8,7 +8,7 @@
 
 import Foundation
 
-fileprivate let dateFormat: String = "yyyy-MM-dd HH:mm:ss.S"
+fileprivate let dateTimeFormat: String = "yyyy-MM-dd HH:mm:ss.S"
 
 class Account: NSObject {
     var id: Int?
@@ -43,12 +43,12 @@ class Account: NSObject {
         }
         if let created_on = values["created_on"] as? String {
             let formatter = DateFormatter()
-            formatter.dateFormat = dateFormat
+            formatter.dateFormat = dateTimeFormat
             self.created_on = formatter.date(from: created_on)
         }
         if let updated_on = values["updated_on"] as? String {
             let formatter = DateFormatter()
-            formatter.dateFormat = dateFormat
+            formatter.dateFormat = dateTimeFormat
             self.updated_on = formatter.date(from: updated_on)
         }
         if let version = values["version"] as? Int {

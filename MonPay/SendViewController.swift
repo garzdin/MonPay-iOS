@@ -163,8 +163,10 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func didTapInfoButton(sender: UIButton?) {
         if let index = sender?.tag {
-            let customSender = SenderWithData(sender: sender, data: self.accounts[index])
-            performSegue(withIdentifier: "showAccountDetails", sender: customSender)
+            if let sender = sender {
+                let customSender = SenderWithData(sender: sender, data: self.accounts[index])
+                performSegue(withIdentifier: "showAccountDetails", sender: customSender)
+            }
         }
     }
     

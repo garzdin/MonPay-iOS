@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 
+fileprivate let dateFormat: String = "yyyy-MM-dd"
+
 class AccountViewController: UIViewController {
 
     @IBOutlet var emailField: UnderlinedTextField!
@@ -49,6 +51,14 @@ class AccountViewController: UIViewController {
                 self.emailField.text = self.user?.email
                 self.firstNameField.text = self.user?.first_name
                 self.lastNameField.text = self.user?.last_name
+                if let date_of_birth = self.user?.date_of_birth {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = dateFormat
+                    if let regionCode = Locale.current.regionCode {
+                        dateFormatter.locale = Locale.init(identifier: regionCode)
+                    }
+                    self.dateOfBirthField.text = dateFormatter.string(from: date_of_birth)
+                }
             }
         }
     }
