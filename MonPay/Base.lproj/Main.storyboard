@@ -376,8 +376,10 @@
                     <navigationItem key="navigationItem" title="Send" id="ZMw-hh-HWQ"/>
                     <connections>
                         <outlet property="accountsCollectionView" destination="MJa-bA-OES" id="QYH-eJ-EqH"/>
+                        <outlet property="fromAmount" destination="2pC-Cl-Ve5" id="x6d-ut-45n"/>
                         <outlet property="fromCurrencyLabel" destination="xAB-oX-RCO" id="LoN-xF-Bhn"/>
                         <outlet property="recipientsCollectionView" destination="20H-A1-x1g" id="GuM-Tx-9Qo"/>
+                        <outlet property="toAmount" destination="2a5-uS-KF2" id="AaK-CO-ZJo"/>
                         <outlet property="toCurrencyLabel" destination="yjm-g6-tnc" id="jve-HV-hTj"/>
                         <segue destination="Fay-Lu-WTV" kind="presentation" identifier="confirmSend" modalPresentationStyle="overCurrentContext" id="X36-g3-dcH"/>
                         <segue destination="UE4-Qz-Gnl" kind="presentation" identifier="addNewAccount" modalPresentationStyle="overCurrentContext" id="4X8-GO-Z7s"/>
@@ -1860,9 +1862,19 @@
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JgJ-MR-8Sl">
                                                     <rect key="frame" x="149" y="0.0" width="60" height="60"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32h-er-Jij">
+                                                            <rect key="frame" x="18" y="19" width="24" height="22"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                            <color key="textColor" red="0.35294117650000001" green="0.43529411759999997" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
                                                     <color key="backgroundColor" red="0.082352941176470587" green="0.14117647058823529" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
+                                                        <constraint firstItem="32h-er-Jij" firstAttribute="centerY" secondItem="JgJ-MR-8Sl" secondAttribute="centerY" id="AET-R5-TBX"/>
                                                         <constraint firstAttribute="height" constant="60" id="YHP-tl-rpG"/>
+                                                        <constraint firstItem="32h-er-Jij" firstAttribute="centerX" secondItem="JgJ-MR-8Sl" secondAttribute="centerX" id="e0k-Cn-awW"/>
                                                         <constraint firstAttribute="width" constant="60" id="sdx-gs-H60"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -1934,6 +1946,15 @@
                             <constraint firstItem="ZMd-FW-25f" firstAttribute="top" secondItem="o0B-1E-rhx" secondAttribute="bottom" id="p3J-9L-HP7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="fromCurrencyAmount" destination="yTl-zd-9ua" id="AEI-T3-dtR"/>
+                        <outlet property="fromCurrencyLabel" destination="IZe-lp-mgq" id="TIv-a6-WZd"/>
+                        <outlet property="ibanLabel" destination="Dae-j3-Ul6" id="MmD-mO-U5M"/>
+                        <outlet property="initialsLabel" destination="32h-er-Jij" id="lvo-X3-VWF"/>
+                        <outlet property="nameLabel" destination="PsW-4t-z9W" id="7Xg-91-vbX"/>
+                        <outlet property="toCurrencyAmount" destination="1GA-UM-dFI" id="1vh-FV-v5G"/>
+                        <outlet property="toCurrencyLabel" destination="T4g-IT-hRI" id="IZB-Qh-mMf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3h-pc-QC1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="gMg-dW-c3b" userLabel="Exit" sceneMemberID="exit"/>

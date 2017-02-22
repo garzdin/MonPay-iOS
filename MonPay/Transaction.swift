@@ -17,12 +17,19 @@ class Transaction: NSObject {
     var currency: String?
     var reason: String?
     var completed: Bool?
+    var user: User?
+    var beneficiary: Beneficiary?
     var account: Account?
     var created_on: Date?
     var updated_on: Date?
     var version: Int?
     
-    init(values: Dictionary<String, Any>) {
+    override init() {
+        super.init()
+    }
+    
+    convenience init(values: Dictionary<String, Any>) {
+        self.init()
         if let id = values["id"] as? Int {
             self.id = id
         }

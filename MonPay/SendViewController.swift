@@ -21,15 +21,26 @@ fileprivate let staticReuseIdentifier = "newAccountCell"
 fileprivate let recipientCellReuseIdentifier = "recipientCell"
 fileprivate let recipientSearchCellReuseIdentifier = "recipientSearchCell"
 
-class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CurrencyPickerDelegate, AddNewAccountDelegate, AccountDeleteDelegate {
+class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, CurrencyPickerDelegate, AddNewAccountDelegate, AccountDeleteDelegate {
     
     var accounts: [Account] = []
     var recipients: [Beneficiary] = []
+    var transfer: Transaction = Transaction()
 
     @IBOutlet var accountsCollectionView: AccountsCollectionView!
     @IBOutlet var recipientsCollectionView: RecipientsCollectionView!
     @IBOutlet var fromCurrencyLabel: UILabel!
     @IBOutlet var toCurrencyLabel: UILabel!
+    @IBOutlet var fromAmount: UITextField! {
+        didSet {
+            fromAmount.delegate = self
+        }
+    }
+    @IBOutlet var toAmount: UITextField! {
+        didSet {
+            toAmount.delegate = self
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +94,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     cell.accountNumberLabel.text = iban
                 }
                 if let active = self.accounts[indexPath.row].active {
+                    self.transfer.account = self.accounts[indexPath.row]
                     cell.accountSelected = active
                     cell.selectedIndicator.isHidden = !active
                 }
@@ -115,6 +127,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 if let accountId = self.accounts[indexPath.row].id {
                     Fetcher.sharedInstance.accountActivate(id: accountId, completion: { (response: [String : Any]?) in
                         if let _ = response?["account"] as? [String: Any] {
+                            self.transfer.account = self.accounts[indexPath.row]
                             self.accounts[indexPath.row].active = true
                             cell.accountSelected = true
                             cell.selectedIndicator.isHidden = false
@@ -128,6 +141,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     cell.setUnselected()
                 }
                 if let cell = collectionView.cellForItem(at: indexPath) as? RecipientCollectionViewCell {
+                    self.transfer.beneficiary = self.recipients[indexPath.row]
                     cell.recipientSelected = true
                     cell.setSelected()
                 }
@@ -157,6 +171,29 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
             }
         }
+        if segue.identifier == "confirmSend" {
+            if let destination = segue.destination as? ConfirmViewController {
+                destination.transfer = self.transfer
+                if let fromAmountText = self.fromAmount.text,
+                    let toAmountText = self.toAmount.text,
+                    let fromAmountCurrency = self.fromCurrencyLabel.text,
+                    let toAmountCurrency = self.toCurrencyLabel.text {
+                    if let fromAmount = Float(fromAmountText),
+                        let toAmount = Float(toAmountText) {
+                        let pairs = CurrencyPairs(fromAmount: fromAmount, fromCurrency: fromAmountCurrency, toAmount: toAmount, toCurrency: toAmountCurrency)
+                        destination.pairs = pairs
+                    }
+                }
+            }
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if textField == fromAmount {
+            toAmount.becomeFirstResponder()
+        }
+        return false
     }
     
     // MARK: Cell info button tapped action
