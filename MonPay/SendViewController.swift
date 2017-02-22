@@ -96,8 +96,15 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     cell.accountSelected = false
                 }
                 let cell = collectionView.cellForItem(at: indexPath) as! AccountCollectionViewCell
-                cell.accountSelected = true
-                cell.selectedIndicator.isHidden = false
+                if let accountId = self.accounts[indexPath.row].id {
+                    Fetcher.sharedInstance.accountActivate(id: accountId, completion: { (response: [String : Any]?) in
+                        if let _ = response?["account"] as? [String: Any] {
+                            self.accounts[indexPath.row].active = true
+                            cell.accountSelected = true
+                            cell.selectedIndicator.isHidden = false
+                        }
+                    })
+                }
             }
             if collectionView == recipientsCollectionView {
                 for cell in collectionView.visibleCells.filter({(cell) in return cell is RecipientCollectionViewCell}) as! [RecipientCollectionViewCell] {

@@ -16,6 +16,7 @@ class Account: NSObject {
     var bic_swift: String?
     var currency: String?
     var country: String?
+    var active: Bool?
     var created_on: Date?
     var updated_on: Date?
     var version: Int?
@@ -36,6 +37,9 @@ class Account: NSObject {
         }
         if let country = values["country"] as? String {
             self.country = country
+        }
+        if let active = values["active"] as? Bool {
+            self.active = active
         }
         if let created_on = values["created_on"] as? String {
             let formatter = DateFormatter()

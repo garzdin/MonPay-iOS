@@ -164,6 +164,12 @@ class Fetcher: NSObject {
         }
     }
     
+    func accountActivate(id: Int, completion: @escaping (_ response: [String: Any]?) -> ()) {
+        self.request(url: "account/\(id)/activate", method: .get, parameters: [:], encoding: URLEncoding.default, headers: [:], authRequired: true) { (response: [String : Any]?) in
+            completion(response)
+        }
+    }
+    
     func accountDelete(params: Parameters, completion: @escaping (_ response: [String: Any]?) -> ()) {
         self.request(url: "account/delete", method: .post, parameters: params, encoding: JSONEncoding.default, headers: [:], authRequired: true) { (response: [String : Any]?) in
             completion(response)
