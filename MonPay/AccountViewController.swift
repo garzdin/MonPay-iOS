@@ -33,22 +33,11 @@ class AccountViewController: UIViewController {
     
     @IBAction func saveAction(_ sender: UIButton) {
         self.view.endEditing(true)
-        if let user = user {
-            let params: [String : Any] = [
-                "id": user.id,
-                "update": [
-                    "address": [
-                        "postal_code": postalCodeField.text,
-                        "city": cityField.text,
-                        "country": countryField.text,
-                        "address": addressField.text
-                    ]
-                ]
-            ]
-            Fetcher.sharedInstance.userUpdate(params: params, completion: { (response: [String : Any]?) in
-                // Update interface
-            })
-        }
+        let params: [String : Any] = [:]
+        Fetcher.sharedInstance.userUpdate(params: params, completion: { (response: [String : Any]?) in
+            // Update interface
+            print(response)
+        })
     }
     
     @IBAction func unwindToAccount(segue: UIStoryboardSegue) {}
