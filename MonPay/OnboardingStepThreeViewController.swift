@@ -33,8 +33,6 @@ class OnboardingStepThreeViewController: UIViewController, IDRecognizerDelegate 
     }
 
     @IBAction func registerAction(_ sender: UIButton) {
-        if let user = self.user {
-            
-        }
+        // Send request
     }
 }

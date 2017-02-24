@@ -92,16 +92,4 @@ class User: NSObject {
             self.version = version
         }
     }
-    
-    func serialize() -> [String: Any] {
-        let dict: [String: Any] = [
-            "entity_type": 0,
-            "first_name": self.first_name,
-            "last_name": self.last_name,
-            "date_of_birth": self.date_of_birth,
-            "email": self.email,
-            "password": self.password
-        ]
-        return dict
-    }
 }
