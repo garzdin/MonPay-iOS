@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Alamofire
 
 class OnboardingStepThreeViewController: UIViewController, IDRecognizerDelegate {
+    
+    var user: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +26,15 @@ class OnboardingStepThreeViewController: UIViewController, IDRecognizerDelegate 
     }
     
     func didDetectIDCard(image: UIImage) {
-        print(image.size.width, image.size.height)
+        let data = UIImageJPEGRepresentation(image, 1.0)
+        if let data = data {
+            print("Data:", data)
+        }
     }
 
+    @IBAction func registerAction(_ sender: UIButton) {
+        if let user = self.user {
+            
+        }
+    }
 }

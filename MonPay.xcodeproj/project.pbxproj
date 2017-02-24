@@ -11,6 +11,8 @@
 		490B81FD1E4105BD00BCBC4F /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B81FC1E4105BD00BCBC4F /* AccountSettingsViewController.swift */; };
 		49204D9E1E38B34C00442C74 /* AccountsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49204D9D1E38B34C00442C74 /* AccountsCollectionView.swift */; };
 		49204DA01E38B69500442C74 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49204D9F1E38B69500442C74 /* AccountCollectionViewCell.swift */; };
+		492316AD1E5F428E00831BA6 /* OnboardingStepOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492316AC1E5F428E00831BA6 /* OnboardingStepOneViewController.swift */; };
+		492316AF1E5F429800831BA6 /* OnboardingStepTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492316AE1E5F429800831BA6 /* OnboardingStepTwoViewController.swift */; };
 		4926CC581E3944550029C736 /* AddNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926CC571E3944550029C736 /* AddNewAccountViewController.swift */; };
 		49414C691E38E9FB00CF1F20 /* RecipientsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49414C681E38E9FB00CF1F20 /* RecipientsCollectionView.swift */; };
 		49414C6B1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49414C6A1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift */; };
@@ -27,8 +29,8 @@
 		4957AC301E37B0F2006A951A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4957AC2F1E37B0F2006A951A /* Assets.xcassets */; };
 		4957AC331E37B0F2006A951A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4957AC311E37B0F2006A951A /* LaunchScreen.storyboard */; };
 		495FCBEF1E5E19DB00AED200 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495FCBEE1E5E19DB00AED200 /* TabBarViewController.swift */; };
+		498824DE1E6077E900803C96 /* PushSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498824DD1E6077E900803C96 /* PushSegue.swift */; };
 		499375191E3A4440008D65F3 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499375181E3A4440008D65F3 /* InitialViewController.swift */; };
-		4993751B1E3A4863008D65F3 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4993751A1E3A4863008D65F3 /* RegistrationViewController.swift */; };
 		4993751D1E3A5DA2008D65F3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4993751C1E3A5DA2008D65F3 /* LoginViewController.swift */; };
 		499CD25B1E585B740079D8A5 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499CD25A1E585B740079D8A5 /* Keychain.swift */; };
 		49AD23BD1E41D4AA002FE3C7 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD23BC1E41D4AA002FE3C7 /* PickerView.swift */; };
@@ -54,6 +56,8 @@
 		490B81FC1E4105BD00BCBC4F /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
 		49204D9D1E38B34C00442C74 /* AccountsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsCollectionView.swift; sourceTree = "<group>"; };
 		49204D9F1E38B69500442C74 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
+		492316AC1E5F428E00831BA6 /* OnboardingStepOneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingStepOneViewController.swift; sourceTree = "<group>"; };
+		492316AE1E5F429800831BA6 /* OnboardingStepTwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingStepTwoViewController.swift; sourceTree = "<group>"; };
 		4926CC571E3944550029C736 /* AddNewAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewAccountViewController.swift; sourceTree = "<group>"; };
 		49414C681E38E9FB00CF1F20 /* RecipientsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientsCollectionView.swift; sourceTree = "<group>"; };
 		49414C6A1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -72,8 +76,8 @@
 		4957AC321E37B0F2006A951A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4957AC341E37B0F2006A951A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		495FCBEE1E5E19DB00AED200 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		498824DD1E6077E900803C96 /* PushSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushSegue.swift; sourceTree = "<group>"; };
 		499375181E3A4440008D65F3 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
-		4993751A1E3A4863008D65F3 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		4993751C1E3A5DA2008D65F3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		499CD25A1E585B740079D8A5 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		49AD23BC1E41D4AA002FE3C7 /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
@@ -128,7 +132,6 @@
 			children = (
 				49C1CEDD1E3E81BB009076D3 /* CameraViewController.swift */,
 				499375181E3A4440008D65F3 /* InitialViewController.swift */,
-				4993751A1E3A4863008D65F3 /* RegistrationViewController.swift */,
 				4993751C1E3A5DA2008D65F3 /* LoginViewController.swift */,
 				490B81FF1E41194500BCBC4F /* Registration Steps */,
 			);
@@ -138,6 +141,8 @@
 		490B81FF1E41194500BCBC4F /* Registration Steps */ = {
 			isa = PBXGroup;
 			children = (
+				492316AC1E5F428E00831BA6 /* OnboardingStepOneViewController.swift */,
+				492316AE1E5F429800831BA6 /* OnboardingStepTwoViewController.swift */,
 				490B81FA1E41024B00BCBC4F /* OnboardingStepThreeViewController.swift */,
 			);
 			name = "Registration Steps";
@@ -161,6 +166,7 @@
 				49C9B70C1E3B620A004CAFEF /* UnderlinedTextField.swift */,
 				49F0BC8C1E3BD83F00FB344B /* RoundedButton.swift */,
 				49AD23BC1E41D4AA002FE3C7 /* PickerView.swift */,
+				498824DD1E6077E900803C96 /* PushSegue.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -396,9 +402,9 @@
 				49F986FB1E3DF72000EC57C9 /* TransfersTableViewController.swift in Sources */,
 				4926CC581E3944550029C736 /* AddNewAccountViewController.swift in Sources */,
 				4957AC271E37B0F2006A951A /* AppDelegate.swift in Sources */,
-				4993751B1E3A4863008D65F3 /* RegistrationViewController.swift in Sources */,
 				499CD25B1E585B740079D8A5 /* Keychain.swift in Sources */,
 				4952AA111E575E77006165E7 /* Account.swift in Sources */,
+				492316AD1E5F428E00831BA6 /* OnboardingStepOneViewController.swift in Sources */,
 				4952AA0A1E5751A2006165E7 /* User.swift in Sources */,
 				4952AA0D1E575AAD006165E7 /* Address.swift in Sources */,
 				49414C6B1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift in Sources */,
@@ -411,6 +417,7 @@
 				49F987071E3E0D0E00EC57C9 /* RecipientDetailsViewController.swift in Sources */,
 				495FCBEF1E5E19DB00AED200 /* TabBarViewController.swift in Sources */,
 				49F987031E3E08AE00EC57C9 /* RecipientsTableViewController.swift in Sources */,
+				498824DE1E6077E900803C96 /* PushSegue.swift in Sources */,
 				49AD23BD1E41D4AA002FE3C7 /* PickerView.swift in Sources */,
 				490B81FD1E4105BD00BCBC4F /* AccountSettingsViewController.swift in Sources */,
 				49C1CEDE1E3E81BB009076D3 /* CameraViewController.swift in Sources */,
@@ -419,6 +426,7 @@
 				4952AA131E576294006165E7 /* Transaction.swift in Sources */,
 				49E500DA1E4258B7009559CB /* AddNewRecipientViewController.swift in Sources */,
 				49204D9E1E38B34C00442C74 /* AccountsCollectionView.swift in Sources */,
+				492316AF1E5F429800831BA6 /* OnboardingStepTwoViewController.swift in Sources */,
 				49F987051E3E0AED00EC57C9 /* RecipientTableViewCell.swift in Sources */,
 				49F0BC8D1E3BD83F00FB344B /* RoundedButton.swift in Sources */,
 				49204DA01E38B69500442C74 /* AccountCollectionViewCell.swift in Sources */,

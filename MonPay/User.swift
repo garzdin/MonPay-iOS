@@ -29,8 +29,12 @@ class User: NSObject {
     var updated_on: Date?
     var version: Int?
     
-    init(values: Dictionary<String, Any>) {
+    override init() {
         super.init()
+    }
+    
+    convenience init(values: Dictionary<String, Any>) {
+        self.init()
         if let id = values["id"] as? Int {
             self.id = id
         }
@@ -87,5 +91,17 @@ class User: NSObject {
         if let version = values["version"] as? Int {
             self.version = version
         }
+    }
+    
+    func serialize() -> [String: Any] {
+        let dict: [String: Any] = [
+            "entity_type": 0,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "date_of_birth": self.date_of_birth,
+            "email": self.email,
+            "password": self.password
+        ]
+        return dict
     }
 }

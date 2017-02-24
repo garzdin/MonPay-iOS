@@ -27,6 +27,7 @@ enum DeviceOrientation: Int {
 @IBDesignable class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     @IBOutlet var dismissButton: UIButton!
+    @IBOutlet var captureButton: RoundedButton!
     
     @IBInspectable var rectangleBorderWidth: CGFloat = 2.0 {
         didSet {
@@ -46,6 +47,8 @@ enum DeviceOrientation: Int {
     var highlightView: UIView?
     
     var detector: CIDetector?
+    
+    var detectedImage: UIImage?
     
     weak var delegate: IDRecognizerDelegate?
     
@@ -89,6 +92,7 @@ enum DeviceOrientation: Int {
         self.view.addSubview(highlightView!)
         
         self.view.bringSubview(toFront: self.dismissButton)
+        self.view.bringSubview(toFront: self.captureButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -132,10 +136,12 @@ enum DeviceOrientation: Int {
             DispatchQueue.main.async(execute: { () -> Void in
                 self.highlightView?.frame = frame
                 if frame.width / frame.height > 1.5 {
-                    self.delegate?.didDetectIDCard(image: UIImage(ciImage: outputImage.cropping(to: frame)))
-                    self.dismiss(animated: true, completion: {
-                        self.captureSession.stopRunning()
-                    })
+                    self.detectedImage = UIImage(ciImage: outputImage.cropping(to: frame))
+                    if self.detectedImage?.cgImage == nil {
+                        if let ciImage = self.detectedImage?.ciImage, let cgImage = CIContext(options: nil).createCGImage(ciImage, from: ciImage.extent) {
+                            self.detectedImage = UIImage(cgImage: cgImage)
+                        }
+                    }
                 }
             })
         }
@@ -210,5 +216,14 @@ enum DeviceOrientation: Int {
     
     @IBAction func dismissCameraView(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func captureImage(_ sender: UIButton) {
+        if let image = self.detectedImage {
+            self.delegate?.didDetectIDCard(image: image)
+            self.dismiss(animated: true, completion: {
+                self.captureSession.stopRunning()
+            })
+        }
     }
 }
