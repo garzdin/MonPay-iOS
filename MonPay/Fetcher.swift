@@ -84,8 +84,8 @@ class Fetcher: NSObject {
     
     func uploadFile(file: Data, completion: @escaping (_ response: DataResponse<Any>?, _ error: Error?) -> ()) {
         Alamofire.upload(multipartFormData: { (multipartFormData: MultipartFormData) in
-            multipartFormData.append(file, withName: "image")
-        }, to: "upload/file") { (encodingResult: SessionManager.MultipartFormDataEncodingResult) in
+            multipartFormData.append(file, withName: "image", mimeType: "image/jpeg")
+        }, to: "upload/file", method: .post) { (encodingResult: SessionManager.MultipartFormDataEncodingResult) in
             switch encodingResult {
             case .success(let upload, _, _):
                 upload.responseJSON { response in
@@ -108,12 +108,6 @@ class Fetcher: NSObject {
     
     func authLogin(params: Parameters, completion: @escaping (_ response: [String: Any]?) -> ()) {
         self.request(url: "auth/login", method: .post, parameters: params, encoding: JSONEncoding.default, headers: [:], authRequired: false) { (response: [String : Any]?) in
-            completion(response)
-        }
-    }
-    
-    func authRefresh(params: Parameters, completion: @escaping (_ response: [String: Any]?) -> ()) {
-        self.request(url: "auth/refresh", method: .post, parameters: params, encoding: JSONEncoding.default, headers: [:], authRequired: false) { (response: [String : Any]?) in
             completion(response)
         }
     }

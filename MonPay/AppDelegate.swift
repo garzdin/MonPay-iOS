@@ -13,22 +13,17 @@ import Alamofire
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let dispatchGroup = DispatchGroup()
-    var authenticated: Bool = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        authenticateCheck()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "InitialViewController")
         let rootViewController = storyboard.instantiateViewController(withIdentifier: "RootViewController")
-        dispatchGroup.notify(queue: DispatchQueue.main, execute: {
-            if self.authenticated == true {
-                self.window?.rootViewController = rootViewController
-            } else {
-                self.window?.rootViewController = initialViewController
-            }
-        })
+        if let _ = Keychain.sharedInstance.get("token") {
+            self.window?.rootViewController = rootViewController
+        } else {
+            self.window?.rootViewController = initialViewController
+        }
         return true
     }
 
@@ -52,23 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-    
-    func authenticateCheck() {
-        if let refresh_token = Keychain.sharedInstance.get("refresh_token") {
-            let params: HTTPHeaders = [
-                "refresh_token": refresh_token
-            ]
-            dispatchGroup.enter()
-            Fetcher.sharedInstance.authRefresh(params: params, completion: { (response: [String : Any]?) in
-                if let token = response?["token"] as? String, let refresh_token = response?["refresh_token"] as? String {
-                    Keychain.sharedInstance.set(token, forKey: "token")
-                    Keychain.sharedInstance.set(refresh_token, forKey: "refresh_token")
-                    self.authenticated = true
-                }
-                self.dispatchGroup.leave()
-            })
-        }
     }
 }
 
