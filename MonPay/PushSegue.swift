@@ -21,7 +21,7 @@ class PushSegue: UIStoryboardSegue {
         
         containerView?.addSubview(toViewController.view)
         
-        UIView.animate(withDuration: 0.4, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut, animations: {
             toViewController.view.transform = CGAffineTransform(translationX: 0, y: 0)
         }, completion: { (value: Bool) in
             fromViewController.present(toViewController, animated: false, completion: nil)
