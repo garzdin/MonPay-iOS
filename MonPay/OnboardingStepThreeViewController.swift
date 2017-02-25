@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 
+fileprivate let dateFormat: String = "yyyy-MM-dd"
+
 class OnboardingStepThreeViewController: UIViewController, IDRecognizerDelegate {
     
     var user: User?
@@ -17,7 +19,7 @@ class OnboardingStepThreeViewController: UIViewController, IDRecognizerDelegate 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.alert = UIAlertController(title: "", message: "You account has been created", preferredStyle: .alert)
+        self.alert = UIAlertController(title: "", message: "Your account has been created", preferredStyle: .alert)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -37,32 +39,31 @@ class OnboardingStepThreeViewController: UIViewController, IDRecognizerDelegate 
 
     @IBAction func registerAction(_ sender: UIButton) {
         if let user = user, let image = imageData {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = dateFormat
+            let date_of_birth = dateFormatter.string(from: user.date_of_birth!)
             let params: Parameters = [
                 "email": user.email!,
                 "password": user.password!,
                 "first_name": user.first_name!,
                 "last_name": user.last_name!,
                 "entity_type": 0,
-                "date_of_birth": user.date_of_birth!,
-            ]
-            let addressParams: Parameters = [
-                "address": user.address!.address!,
-                "city": user.address!.city!,
-                "postal_code": user.address!.postal_code!,
-                "country": user.address!.country!
+                "date_of_birth": date_of_birth,
+                "address": [
+                    "address": user.address!.address!,
+                    "city": user.address!.city!,
+                    "postal_code": user.address!.postal_code!,
+                    "country": user.address!.country!
+                ]
             ]
             Fetcher.sharedInstance.authCreate(params: params, completion: { (response: [String : Any]?) in
                 if let _ = response?["user"] as? [String: Any] {
-                    Fetcher.sharedInstance.userAddressUpdate(params: addressParams, completion: { (addressResponse: [String : Any]?) in
-                        if let _ = addressResponse?["address"] as? [String: Any] {
-                            self.present(self.alert!, animated: true, completion: nil)
-                            let when = DispatchTime.now() + 8
-                            DispatchQueue.main.asyncAfter(deadline: when, execute: { 
-                                self.alert?.dismiss(animated: true, completion: { 
-                                    self.dismiss(animated: true, completion: nil)
-                                })
-                            })
-                        }
+                    self.present(self.alert!, animated: true, completion: nil)
+                    let when = DispatchTime.now() + 5
+                    DispatchQueue.main.asyncAfter(deadline: when, execute: {
+                        self.alert?.dismiss(animated: true, completion: {
+                            self.performSegue(withIdentifier: "unwindFromRegistration", sender: self)
+                        })
                     })
                 }
             })

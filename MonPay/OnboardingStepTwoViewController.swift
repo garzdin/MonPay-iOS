@@ -82,59 +82,24 @@ class OnboardingStepTwoViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         switch textField {
         case self.firstNameField:
-            if validateFirstName() == true {
-                self.user?.first_name = self.firstNameField.text
-                self.firstNameError.text = ""
-                self.lastNameField.becomeFirstResponder()
-            }
+            self.lastNameField.becomeFirstResponder()
             break
         case self.lastNameField:
-            if validateLastName() == true {
-                self.user?.last_name = self.lastNameField.text
-                self.lastNameError.text = ""
-                self.dateOfBirthField.becomeFirstResponder()
-            }
+            self.dateOfBirthField.becomeFirstResponder()
             break
         case self.dateOfBirthField:
-            if let dateOfBirth = self.dateOfBirthField.text {
-                let formatter = DateFormatter()
-                formatter.dateFormat = dateFormat
-                self.user?.date_of_birth = formatter.date(from: dateOfBirth)
-                self.dateOfBirthError.text = ""
-                self.postalCodeField.becomeFirstResponder()
-            }
+            self.postalCodeField.becomeFirstResponder()
             break
         case self.postalCodeField:
-            if validatePostalCode() == true {
-                if let postalCode = self.postalCodeField.text {
-                    self.address?.postal_code = Int(postalCode)
-                    self.postalCodeError.text = ""
-                    self.cityField.becomeFirstResponder()
-                }
-            }
+            self.cityField.becomeFirstResponder()
             break
         case self.cityField:
-            if validateCity() == true {
-                self.address?.city = self.cityField.text
-                self.cityError.text = ""
-                self.countryField.becomeFirstResponder()
-            }
+            self.countryField.becomeFirstResponder()
             break
         case self.countryField:
-            if validateCountry() == true {
-                self.address?.country = self.countryField.text
-                self.countryError.text = ""
-                self.addressField.becomeFirstResponder()
-            }
+            self.addressField.becomeFirstResponder()
             break
-        case self.addressField:
-            if validateFirstName() == true && validateLastName() == true && validateDateOfBirth() == true && validatePostalCode() == true && validateCity() == true && validateCountry() == true && validateAddress() == true {
-                self.address?.address = self.addressField.text
-                self.user?.address = self.address
-                self.clearErrors()
-                self.performSegue(withIdentifier: "onboardingStepThree", sender: self)
-            }
-            break
+        case self.addressField: break
         default: break
         }
         return false
@@ -152,7 +117,7 @@ class OnboardingStepTwoViewController: UIViewController, UITextFieldDelegate {
     
     func didChangeDate(sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy"
+        dateFormatter.dateFormat = dateFormat
         self.dateOfBirthField.text = dateFormatter.string(from: sender.date)
     }
     
@@ -170,6 +135,8 @@ class OnboardingStepTwoViewController: UIViewController, UITextFieldDelegate {
             self.firstNameError.text = "First name required"
             self.firstNameField.becomeFirstResponder()
         } else {
+            self.user?.first_name = self.firstNameField.text
+            self.firstNameError.text = ""
             return true
         }
         return false
@@ -180,6 +147,8 @@ class OnboardingStepTwoViewController: UIViewController, UITextFieldDelegate {
             self.lastNameError.text = "Last name required"
             self.lastNameField.becomeFirstResponder()
         } else {
+            self.user?.last_name = self.lastNameField.text
+            self.lastNameError.text = ""
             return true
         }
         return false
@@ -190,7 +159,13 @@ class OnboardingStepTwoViewController: UIViewController, UITextFieldDelegate {
             self.dateOfBirthError.text = "Date required"
             self.dateOfBirthField.becomeFirstResponder()
         } else {
-            return true
+            if let dateOfBirth = self.dateOfBirthField.text {
+                let formatter = DateFormatter()
+                formatter.dateFormat = dateFormat
+                self.user?.date_of_birth = formatter.date(from: dateOfBirth)
+                self.dateOfBirthError.text = ""
+                return true
+            }
         }
         return false
     }
@@ -200,7 +175,11 @@ class OnboardingStepTwoViewController: UIViewController, UITextFieldDelegate {
             self.postalCodeError.text = "Postal code required"
             self.postalCodeField.becomeFirstResponder()
         } else {
-            return true
+            if let postalCode = self.postalCodeField.text {
+                self.address?.postal_code = Int(postalCode)
+                self.postalCodeError.text = ""
+                return true
+            }
         }
         return false
     }
@@ -210,6 +189,8 @@ class OnboardingStepTwoViewController: UIViewController, UITextFieldDelegate {
             self.cityError.text = "City required"
             self.cityField.becomeFirstResponder()
         } else {
+            self.address?.city = self.cityField.text
+            self.cityError.text = ""
             return true
         }
         return false
@@ -220,6 +201,8 @@ class OnboardingStepTwoViewController: UIViewController, UITextFieldDelegate {
             self.countryError.text = "Country required"
             self.countryField.becomeFirstResponder()
         } else {
+            self.address?.country = self.countryField.text
+            self.countryError.text = ""
             return true
         }
         return false
@@ -230,6 +213,8 @@ class OnboardingStepTwoViewController: UIViewController, UITextFieldDelegate {
             self.addressError.text = "Address required"
             self.addressField.becomeFirstResponder()
         } else {
+            self.address?.address = self.addressField.text
+            self.addressError.text = ""
             return true
         }
         return false
@@ -243,6 +228,14 @@ class OnboardingStepTwoViewController: UIViewController, UITextFieldDelegate {
         self.cityError.text = ""
         self.countryError.text = ""
         self.addressError.text = ""
+    }
+    
+    @IBAction func goToStepThree(_ sender: UIButton) {
+        if validateFirstName() == true && validateLastName() == true && validateDateOfBirth() == true && validatePostalCode() == true && validateCity() == true && validateCountry() == true && validateAddress() == true {
+            self.user?.address = self.address
+            self.clearErrors()
+            self.performSegue(withIdentifier: "onboardingStepThree", sender: self)
+        }
     }
     
     @IBAction func unwindToStepTwo(segue: UIStoryboardSegue) {}

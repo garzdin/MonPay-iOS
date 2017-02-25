@@ -48,25 +48,12 @@ class OnboardingStepOneViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         switch textField {
         case self.emailField:
-            if self.validateEmail() == true {
-                self.user?.email = self.emailField.text
-                self.emailErrorLabel.text = ""
-                self.passwordField.becomeFirstResponder()
-            }
+            self.passwordField.becomeFirstResponder()
             break
         case self.passwordField:
-            if self.validatePassword() == true {
-                self.user?.password = self.passwordField.text
-                self.passwordErrorLabel.text = ""
-                self.confirmPasswordField.becomeFirstResponder()
-            }
+            self.confirmPasswordField.becomeFirstResponder()
             break
-        case self.confirmPasswordField:
-            if validateEmail() == true && validatePassword() == true && validateConfirmPassword() == true {
-                self.clearErrors()
-                self.performSegue(withIdentifier: "onboardingStepTwo", sender: self)
-            }
-            break
+        case self.confirmPasswordField: break
         default: break
         }
         return false
@@ -80,6 +67,8 @@ class OnboardingStepOneViewController: UIViewController, UITextFieldDelegate {
             self.emailErrorLabel.text = "Email invalid"
             self.emailField.becomeFirstResponder()
         } else {
+            self.emailErrorLabel.text = ""
+            self.user?.email = self.emailField.text
             return true
         }
         return false
@@ -90,6 +79,8 @@ class OnboardingStepOneViewController: UIViewController, UITextFieldDelegate {
             self.passwordErrorLabel.text = "Password required"
             self.passwordField.becomeFirstResponder()
         } else {
+            self.passwordErrorLabel.text = ""
+            self.user?.password = self.passwordField.text
             return true
         }
         return false
@@ -103,6 +94,7 @@ class OnboardingStepOneViewController: UIViewController, UITextFieldDelegate {
             self.confirmErrorLabel.text = "Passwords don't match"
             self.confirmPasswordField.becomeFirstResponder()
         } else {
+            self.confirmErrorLabel.text = ""
             return true
         }
         return false
@@ -125,6 +117,13 @@ class OnboardingStepOneViewController: UIViewController, UITextFieldDelegate {
         let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
         return emailPredicate.evaluate(with: enteredEmail)
+    }
+    
+    @IBAction func goToStepTwo(_ sender: UIButton) {
+        if validateEmail() == true && validatePassword() == true && validateConfirmPassword() == true {
+            self.clearErrors()
+            self.performSegue(withIdentifier: "onboardingStepTwo", sender: self)
+        }
     }
     
     @IBAction func unwindToStepOne(segue: UIStoryboardSegue) {}
