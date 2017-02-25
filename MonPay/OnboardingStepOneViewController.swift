@@ -25,6 +25,9 @@ class OnboardingStepOneViewController: UIViewController, UITextFieldDelegate {
             confirmPasswordField.delegate = self
         }
     }
+    @IBOutlet var emailErrorLabel: UILabel!
+    @IBOutlet var passwordErrorLabel: UILabel!
+    @IBOutlet var confirmErrorLabel: UILabel!
     
     var user: User?
 
@@ -45,18 +48,35 @@ class OnboardingStepOneViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         switch textField {
         case self.emailField:
-            self.user?.email = self.emailField.text
-            self.passwordField.becomeFirstResponder()
+            if self.emailField.text == "" {
+                self.emailErrorLabel.text = "Email required"
+                self.emailField.becomeFirstResponder()
+            } else if validateEmail(enteredEmail: self.emailField.text!) == false {
+                self.emailErrorLabel.text = "Email invalid"
+                self.emailField.becomeFirstResponder()
+            } else {
+                self.user?.email = self.emailField.text
+                self.passwordField.becomeFirstResponder()
+            }
             break
         case self.passwordField:
-            self.user?.password = self.passwordField.text
-            self.confirmPasswordField.becomeFirstResponder()
+            if self.passwordField.text == "" {
+                self.passwordErrorLabel.text = "Password required"
+                self.passwordField.becomeFirstResponder()
+            } else {
+                self.user?.password = self.passwordField.text
+                self.confirmPasswordField.becomeFirstResponder()
+            }
             break
         case self.confirmPasswordField:
-            if self.checkPassword() == true {
-                self.performSegue(withIdentifier: "onboardingStepTwo", sender: self)
+            if self.confirmPasswordField.text == "" {
+                self.confirmErrorLabel.text = "Confirmation required"
+                self.confirmPasswordField.becomeFirstResponder()
+            } else if self.checkPassword() == false {
+                self.confirmErrorLabel.text = "Passwords don't match"
+                self.confirmPasswordField.becomeFirstResponder()
             } else {
-                // Passwords do not match
+                self.performSegue(withIdentifier: "onboardingStepTwo", sender: self)
             }
             break
         default: break
@@ -69,6 +89,12 @@ class OnboardingStepOneViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         return true
+    }
+    
+    func validateEmail(enteredEmail: String) -> Bool {
+        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
+        return emailPredicate.evaluate(with: enteredEmail)
     }
     
     @IBAction func unwindToStepOne(segue: UIStoryboardSegue) {}

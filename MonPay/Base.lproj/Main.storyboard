@@ -1056,6 +1056,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8z-bG-oib">
+                                <rect key="frame" x="374" y="139.33333333333334" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.2475420552" blue="0.20106874769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MLa-P8-3eI">
                                 <rect key="frame" x="40" y="239" width="334" height="1"/>
                                 <color key="backgroundColor" red="0.35294117650000001" green="0.43529411759999997" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1117,20 +1123,37 @@
                                     <segue destination="HMP-Km-V25" kind="unwind" unwindAction="unwindToInitialScreenWithSegue:" id="ZOd-iu-cya"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ro7-uN-T5P">
+                                <rect key="frame" x="374" y="204.33333333333334" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.2475420552" blue="0.20106874769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sR7-TC-0kv">
+                                <rect key="frame" x="374" y="270" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.2475420552" blue="0.20106874769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.098039215686274508" green="0.17254901960784313" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="g6f-wh-4Ch" secondAttribute="trailing" constant="20" id="0P9-Z5-V33"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ro7-uN-T5P" secondAttribute="trailing" constant="20" id="52O-ub-V4l"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MLa-P8-3eI" secondAttribute="trailing" constant="20" id="7Iv-gg-bF9"/>
                             <constraint firstItem="MLa-P8-3eI" firstAttribute="leading" secondItem="otR-z9-Mmo" secondAttribute="leadingMargin" constant="20" id="AQT-kl-CuW"/>
                             <constraint firstItem="clY-km-WNh" firstAttribute="leading" secondItem="otR-z9-Mmo" secondAttribute="leadingMargin" constant="20" id="Be6-1Z-7DU"/>
                             <constraint firstItem="g6f-wh-4Ch" firstAttribute="top" secondItem="NSk-6r-J3b" secondAttribute="bottom" constant="30" id="Fb6-7v-Ewe"/>
                             <constraint firstItem="NSk-6r-J3b" firstAttribute="top" secondItem="ByW-A8-JNS" secondAttribute="bottom" id="HDV-AO-gnh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sR7-TC-0kv" secondAttribute="trailing" constant="20" id="LuU-qH-lfZ"/>
                             <constraint firstItem="ByW-A8-JNS" firstAttribute="top" secondItem="4w9-Kt-G9b" secondAttribute="bottom" constant="120" id="Mj1-Px-mPq"/>
+                            <constraint firstItem="g6f-wh-4Ch" firstAttribute="top" secondItem="Ro7-uN-T5P" secondAttribute="bottom" id="Nsc-kZ-A52"/>
                             <constraint firstItem="aIY-WC-Kig" firstAttribute="top" secondItem="MLa-P8-3eI" secondAttribute="bottom" constant="30" id="Osv-4k-CEB"/>
                             <constraint firstItem="g6f-wh-4Ch" firstAttribute="leading" secondItem="otR-z9-Mmo" secondAttribute="leadingMargin" constant="20" id="Rh0-yg-WDu"/>
                             <constraint firstItem="clY-km-WNh" firstAttribute="top" secondItem="aIY-WC-Kig" secondAttribute="bottom" id="aUO-0t-TNx"/>
+                            <constraint firstItem="ByW-A8-JNS" firstAttribute="top" secondItem="w8z-bG-oib" secondAttribute="bottom" id="bFw-Q2-33Z"/>
                             <constraint firstItem="MLa-P8-3eI" firstAttribute="top" secondItem="g6f-wh-4Ch" secondAttribute="bottom" id="cWr-bq-5Sl"/>
+                            <constraint firstItem="aIY-WC-Kig" firstAttribute="top" secondItem="sR7-TC-0kv" secondAttribute="bottom" id="d9T-z2-gBk"/>
                             <constraint firstItem="aIY-WC-Kig" firstAttribute="leading" secondItem="otR-z9-Mmo" secondAttribute="leadingMargin" constant="20" id="epz-2f-3OT"/>
                             <constraint firstItem="NSk-6r-J3b" firstAttribute="leading" secondItem="otR-z9-Mmo" secondAttribute="leadingMargin" constant="20" id="g81-SI-Jdp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="clY-km-WNh" secondAttribute="trailing" constant="20" id="gze-Lg-3F6"/>
@@ -1139,13 +1162,17 @@
                             <constraint firstAttribute="trailingMargin" secondItem="ByW-A8-JNS" secondAttribute="trailing" constant="20" id="qFm-aH-rJ1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NSk-6r-J3b" secondAttribute="trailing" constant="20" id="rdU-xE-5qQ"/>
                             <constraint firstItem="8Aw-le-pbB" firstAttribute="top" secondItem="4w9-Kt-G9b" secondAttribute="bottom" constant="20" id="vr6-KT-XTm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="w8z-bG-oib" secondAttribute="trailing" constant="20" id="wLf-gp-XDj"/>
                             <constraint firstItem="ByW-A8-JNS" firstAttribute="leading" secondItem="otR-z9-Mmo" secondAttribute="leadingMargin" constant="20" id="yNm-pP-Lwi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="v6n-Fc-d86"/>
                     <connections>
+                        <outlet property="confirmErrorLabel" destination="sR7-TC-0kv" id="H1V-Kj-84N"/>
                         <outlet property="confirmPasswordField" destination="aIY-WC-Kig" id="1iV-iF-zS6"/>
+                        <outlet property="emailErrorLabel" destination="w8z-bG-oib" id="PSK-0F-487"/>
                         <outlet property="emailField" destination="ByW-A8-JNS" id="9Uj-GT-rSr"/>
+                        <outlet property="passwordErrorLabel" destination="Ro7-uN-T5P" id="Rap-Ie-dIa"/>
                         <outlet property="passwordField" destination="g6f-wh-4Ch" id="Hh4-9H-JCR"/>
                         <segue destination="m7Z-GY-wLW" kind="custom" identifier="onboardingStepTwo" customClass="PushSegue" customModule="MonPay" customModuleProvider="target" id="sDg-cg-dKL"/>
                     </connections>
