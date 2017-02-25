@@ -48,40 +48,70 @@ class OnboardingStepOneViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         switch textField {
         case self.emailField:
-            if self.emailField.text == "" {
-                self.emailErrorLabel.text = "Email required"
-                self.emailField.becomeFirstResponder()
-            } else if validateEmail(enteredEmail: self.emailField.text!) == false {
-                self.emailErrorLabel.text = "Email invalid"
-                self.emailField.becomeFirstResponder()
-            } else {
+            if self.validateEmail() == true {
                 self.user?.email = self.emailField.text
+                self.emailErrorLabel.text = ""
                 self.passwordField.becomeFirstResponder()
             }
             break
         case self.passwordField:
-            if self.passwordField.text == "" {
-                self.passwordErrorLabel.text = "Password required"
-                self.passwordField.becomeFirstResponder()
-            } else {
+            if self.validatePassword() == true {
                 self.user?.password = self.passwordField.text
+                self.passwordErrorLabel.text = ""
                 self.confirmPasswordField.becomeFirstResponder()
             }
             break
         case self.confirmPasswordField:
-            if self.confirmPasswordField.text == "" {
-                self.confirmErrorLabel.text = "Confirmation required"
-                self.confirmPasswordField.becomeFirstResponder()
-            } else if self.checkPassword() == false {
-                self.confirmErrorLabel.text = "Passwords don't match"
-                self.confirmPasswordField.becomeFirstResponder()
-            } else {
+            if validateEmail() == true && validatePassword() == true && validateConfirmPassword() == true {
+                self.clearErrors()
                 self.performSegue(withIdentifier: "onboardingStepTwo", sender: self)
             }
             break
         default: break
         }
         return false
+    }
+    
+    func validateEmail() -> Bool {
+        if self.emailField.text == "" {
+            self.emailErrorLabel.text = "Email required"
+            self.emailField.becomeFirstResponder()
+        } else if validateEmail(enteredEmail: self.emailField.text!) == false {
+            self.emailErrorLabel.text = "Email invalid"
+            self.emailField.becomeFirstResponder()
+        } else {
+            return true
+        }
+        return false
+    }
+    
+    func validatePassword() -> Bool {
+        if self.passwordField.text == "" {
+            self.passwordErrorLabel.text = "Password required"
+            self.passwordField.becomeFirstResponder()
+        } else {
+            return true
+        }
+        return false
+    }
+    
+    func validateConfirmPassword() -> Bool {
+        if self.confirmPasswordField.text == "" {
+            self.confirmErrorLabel.text = "Confirmation required"
+            self.confirmPasswordField.becomeFirstResponder()
+        } else if self.checkPassword() == false {
+            self.confirmErrorLabel.text = "Passwords don't match"
+            self.confirmPasswordField.becomeFirstResponder()
+        } else {
+            return true
+        }
+        return false
+    }
+    
+    func clearErrors() {
+        self.emailErrorLabel.text = ""
+        self.passwordErrorLabel.text = ""
+        self.confirmErrorLabel.text = ""
     }
     
     func checkPassword() -> Bool {
