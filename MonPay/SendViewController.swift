@@ -154,6 +154,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
             if let destination = segue.destination as? CurrencyPickerViewController {
                 destination.delegate = self
                 destination.segueSender = sender
+                destination.data = ["BGN", "EUR", "DKK"]
             }
         }
         if segue.identifier == "addNewAccount" {

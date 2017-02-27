@@ -2503,7 +2503,7 @@
                         <outlet property="recipientIbanErrorLabel" destination="zle-qN-rHE" id="kJG-f7-dRF"/>
                         <outlet property="recipientName" destination="IJw-e3-1EJ" id="7JL-mZ-S1q"/>
                         <outlet property="recipientNameErrorLabel" destination="ytl-ek-o0j" id="tyc-8V-o6K"/>
-                        <segue destination="wz7-QN-zzb" kind="presentation" identifier="chooseCurrencyForNewRecipient" id="rA3-A3-Ctk"/>
+                        <segue destination="wz7-QN-zzb" kind="presentation" identifier="chooseCurrencyForNewRecipient" modalPresentationStyle="overCurrentContext" id="rA3-A3-Ctk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LD2-ug-3Zw" userLabel="First Responder" sceneMemberID="firstResponder"/>

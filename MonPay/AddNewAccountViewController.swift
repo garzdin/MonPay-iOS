@@ -34,6 +34,7 @@ class AddNewAccountViewController: UIViewController, UITextFieldDelegate, Curren
         if segue.identifier == "selectCurrencyForNewAccount" {
             if let destination = segue.destination as? CurrencyPickerViewController {
                 destination.delegate = self
+                destination.data = ["EUR", "BNG", "DKK"]
             }
         }
     }

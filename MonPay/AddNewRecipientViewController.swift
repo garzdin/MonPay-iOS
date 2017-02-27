@@ -45,6 +45,7 @@ class AddNewRecipientViewController: UIViewController, CurrencyPickerDelegate {
         if segue.identifier == "chooseCurrencyForNewRecipient" {
             if let destination = segue.destination as? CurrencyPickerViewController {
                 destination.delegate = self
+                destination.data = ["EUR", "BGN", "DKK"]
             }
         }
     }

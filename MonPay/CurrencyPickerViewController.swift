@@ -20,7 +20,7 @@ class CurrencyPickerViewController: UIViewController, PickerViewDelegate, Picker
     
     var segueSender: Any?
     
-    let currencies = ["USD", "DKK", "BGN"]
+    var data: [String]?
     
     var selectedRow = 0
     
@@ -31,7 +31,7 @@ class CurrencyPickerViewController: UIViewController, PickerViewDelegate, Picker
     }
     
     func pickerViewNumberOfRows(_ pickerView: PickerView) -> Int {
-        return currencies.count
+        return data!.count
     }
     
     func pickerViewHeightForRows(_ pickerView: PickerView) -> CGFloat {
@@ -39,7 +39,7 @@ class CurrencyPickerViewController: UIViewController, PickerViewDelegate, Picker
     }
     
     func pickerView(_ pickerView: PickerView, titleForRow row: Int, index: Int) -> String {
-        let item = currencies[index]
+        let item = data![index]
         return item
     }
     
@@ -60,7 +60,7 @@ class CurrencyPickerViewController: UIViewController, PickerViewDelegate, Picker
     }
     
     @IBAction func didPressChoose(_ sender: UIButton) {
-        delegate?.didSelectCurrency(index: selectedRow, currency: currencies[selectedRow], sender: segueSender)
+        delegate?.didSelectCurrency(index: selectedRow, currency: data![selectedRow], sender: segueSender)
         self.dismiss(animated: true, completion: nil)
     }
     
