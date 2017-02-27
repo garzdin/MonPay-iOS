@@ -82,19 +82,13 @@ class Fetcher: NSObject {
     
     // MARK: - Upload file
     
-    func uploadFile(file: Data, completion: @escaping (_ response: DataResponse<Any>?, _ error: Error?) -> ()) {
-        Alamofire.upload(multipartFormData: { (multipartFormData: MultipartFormData) in
-            multipartFormData.append(file, withName: "image", mimeType: "image/jpeg")
-        }, to: "upload/file", method: .post) { (encodingResult: SessionManager.MultipartFormDataEncodingResult) in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    completion(response, nil)
-                }
-                break
-            case .failure(let encodingError):
-                completion(nil, encodingError)
-            }
+    func uploadFile(file: Data, completion: @escaping (_ progress: Progress?, _ response: DataResponse<Any>?) -> ()) {
+        Alamofire.upload(file, to: "\(self.endpoint)upload/file")
+            .uploadProgress { (progress: Progress) in
+            completion(progress, nil)
+        }
+            .responseJSON { (response: DataResponse<Any>) in
+            completion(nil, response)
         }
     }
     
