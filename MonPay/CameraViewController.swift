@@ -136,7 +136,7 @@ enum DeviceOrientation: Int {
             DispatchQueue.main.async(execute: { () -> Void in
                 self.highlightView?.frame = frame
                 if frame.width / frame.height > 1.5 {
-                    self.detectedImage = UIImage(ciImage: outputImage.cropping(to: frame))
+                    self.detectedImage = UIImage(ciImage: outputImage.cropping(to: feature.bounds))
                     if self.detectedImage?.cgImage == nil {
                         if let ciImage = self.detectedImage?.ciImage, let cgImage = CIContext(options: nil).createCGImage(ciImage, from: ciImage.extent) {
                             self.detectedImage = UIImage(cgImage: cgImage)
