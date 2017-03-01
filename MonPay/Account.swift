@@ -21,8 +21,8 @@ class Account: NSObject {
     var updated_on: Date?
     var version: Int?
     
-    init(values: Dictionary<String, Any>) {
-        super.init()
+    convenience init(values: Dictionary<String, Any>) {
+        self.init()
         if let id = values["id"] as? Int {
             self.id = id
         }

@@ -20,11 +20,7 @@ class Address: NSObject {
     var created_on: Date?
     var updated_on: Date?
     var version: Int?
-    
-    override init() {
-        super.init()
-    }
-    
+
     convenience init(values: Dictionary<String, Any>) {
         self.init()
         if let id = values["id"] as? Int {
