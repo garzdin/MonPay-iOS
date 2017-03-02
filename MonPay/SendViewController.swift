@@ -273,8 +273,8 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         self.accounts.append(Account(values: account))
                     }
                 }
+                self.accountsCollectionView.reloadData()
             }
-            self.accountsCollectionView.reloadData()
         }
     }
     
@@ -287,8 +287,8 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         self.recipients.append(Beneficiary(values: recipient))
                     }
                 }
+                self.recipientsCollectionView.reloadData()
             }
-            self.recipientsCollectionView.reloadData()
         }
     }
 }
