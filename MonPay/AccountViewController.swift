@@ -46,7 +46,7 @@ class AccountViewController: UIViewController {
                 "country": country
             ]
             Fetcher.sharedInstance.userAddressUpdate(params: params, completion: { (response: [String : Any]?) in
-                // Update interface
+                self.getAccountInfo()
             })
         }
     }
