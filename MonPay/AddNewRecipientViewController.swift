@@ -93,7 +93,6 @@ class AddNewRecipientViewController: UIViewController, CurrencyPickerDelegate {
             "first_name": full_name[0],
             "last_name": full_name[1],
             "entity_type": 0,
-            "date_of_birth": "1995-08-11",
             "account": [
                 "iban": self.recipientIban.text,
                 "bic_swift": self.recipientBicSwift.text,
