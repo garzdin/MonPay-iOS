@@ -88,7 +88,7 @@ class Fetcher: NSObject {
             completion(progress, nil)
         }
             .responseJSON { (response: DataResponse<Any>) in
-            completion(nil, response)
+                completion(nil, response)
         }
     }
     
