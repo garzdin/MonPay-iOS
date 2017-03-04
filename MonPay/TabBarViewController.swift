@@ -19,6 +19,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         if let viewController = viewController as? UINavigationController {
             if let viewController = viewController.childViewControllers.first as? SendViewController {
                 viewController.getAccounts()
+                viewController.getCurrencies()
                 viewController.getRecipients()
             }
             if let viewController = viewController.childViewControllers.first as? TransfersTableViewController {

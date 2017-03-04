@@ -51,8 +51,10 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate, CurrencyP
         performSegue(withIdentifier: "selectCurrencyForNewAccount", sender: sender)
     }
     
-    func didSelectCurrency(index: Int, currency: String, sender: Any?) {
-        currencyLabel.text = currency
+    func didSelect(item: Any?, at: Int?, sender: Any?) {
+        if let currency = item as? Currency {
+            currencyLabel.text = currency.isoCode
+        }
     }
     
     @IBAction func addNewAccountAction(_ sender: UIButton) {

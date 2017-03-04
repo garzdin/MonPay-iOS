@@ -170,6 +170,20 @@ class Fetcher: NSObject {
         }
     }
     
+    // MARK: - Currency endpoints
+    
+    func currencyList(completion: @escaping (_ response: [String: Any]?) -> ()) {
+        self.request(url: "currency", method: .get, parameters: [:], encoding: URLEncoding.default, headers: [:], authRequired: true) { (response: [String : Any]?) in
+            completion(response)
+        }
+    }
+    
+    func currencyGet(id: Int, completion: @escaping (_ response: [String: Any]?) -> ()) {
+        self.request(url: "currency/\(id)", method: .get, parameters: [:], encoding: URLEncoding.default, headers: [:], authRequired: true) { (response: [String : Any]?) in
+            completion(response)
+        }
+    }
+    
     // MARK: - Beneficiary endpoints
     
     func beneficiaryList(completion: @escaping (_ response: [String: Any]?) -> ()) {

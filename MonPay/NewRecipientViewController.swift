@@ -26,6 +26,8 @@ class NewRecipientViewController: UIViewController, CurrencyPickerDelegate {
     
     weak var delegate: NewRecipientDelegate?
     
+    var currencies: [Currency] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let backArrow = UIImage(named: "back")
@@ -39,13 +41,14 @@ class NewRecipientViewController: UIViewController, CurrencyPickerDelegate {
         let tapFromCurrencyLabel = UITapGestureRecognizer(target: self, action: #selector(didTapCurrencyLabel(sender:)))
         currencyLabel.isUserInteractionEnabled = true
         currencyLabel.addGestureRecognizer(tapFromCurrencyLabel)
+        getCurrencies()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "chooseCurrencyForNewRecipient" {
             if let destination = segue.destination as? PickerViewController {
                 destination.delegate = self
-                destination.data = ["EUR", "BGN", "DKK"]
+                destination.data = self.currencies
             }
         }
     }
@@ -54,8 +57,10 @@ class NewRecipientViewController: UIViewController, CurrencyPickerDelegate {
         performSegue(withIdentifier: "chooseCurrencyForNewRecipient", sender: sender)
     }
     
-    func didSelectCurrency(index: Int, currency: String, sender: Any?) {
-        currencyLabel.text = currency
+    func didSelect(item: Any?, at: Int?, sender: Any?) {
+        if let currency = item as? Currency {
+            currencyLabel.text = currency.isoCode
+        }
     }
     
     func didPressBackButton(sender: UIBarButtonItem) {
@@ -129,6 +134,19 @@ class NewRecipientViewController: UIViewController, CurrencyPickerDelegate {
                 }
             }
         })
+    }
+    
+    func getCurrencies() {
+        Fetcher.sharedInstance.currencyList { (response: [String : Any]?) in
+            if let currencies = response?["currencies"] as? [Any] {
+                self.currencies = []
+                for currency in currencies {
+                    if let currency = currency as? [String: Any] {
+                        self.currencies.append(Currency(values: currency))
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func unwindToNewRecipient(sender: UIStoryboardSegue) {}

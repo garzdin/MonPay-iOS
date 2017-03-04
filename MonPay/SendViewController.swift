@@ -24,6 +24,7 @@ fileprivate let recipientSearchCellReuseIdentifier = "recipientSearchCell"
 class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, CurrencyPickerDelegate, NewAccountDelegate, AccountDeleteDelegate, ConfirmTransferDelegate {
     
     var accounts: [Account] = []
+    var currencies: [Currency] = []
     var recipients: [Beneficiary] = []
     var transfer: Transaction = Transaction()
 
@@ -55,6 +56,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
         toCurrencyLabel.isUserInteractionEnabled = true
         toCurrencyLabel.addGestureRecognizer(tapToCurrencyLabel)
         getAccounts()
+        getCurrencies()
         getRecipients()
     }
     
@@ -154,7 +156,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
             if let destination = segue.destination as? PickerViewController {
                 destination.delegate = self
                 destination.segueSender = sender
-                destination.data = ["BGN", "EUR", "DKK"]
+                destination.data = self.currencies
             }
         }
         if segue.identifier == "addNewAccount" {
@@ -233,6 +235,16 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
         performSegue(withIdentifier: "chooseCurrency", sender: sender)
     }
     
+    func didSelect(item: Any?, at: Int?, sender: Any?) {
+        if let gesture = sender as? UITapGestureRecognizer {
+            if let label = gesture.view as? UILabel {
+                if let currency = item as? Currency {
+                    label.text = currency.isoCode
+                }
+            }
+        }
+    }
+    
     func didSelectCurrency(index: Int, currency: String, sender: Any?) {
         if let gesture = sender as? UITapGestureRecognizer {
             if let label = gesture.view as? UILabel {
@@ -275,6 +287,19 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     }
                 }
                 self.accountsCollectionView.reloadData()
+            }
+        }
+    }
+    
+    func getCurrencies() {
+        Fetcher.sharedInstance.currencyList { (response: [String : Any]?) in
+            if let currencies = response?["currencies"] as? [Any] {
+                self.currencies = []
+                for currency in currencies {
+                    if let currency = currency as? [String: Any] {
+                        self.currencies.append(Currency(values: currency))
+                    }
+                }
             }
         }
     }

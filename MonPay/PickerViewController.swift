@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CurrencyPickerDelegate: class {
-    func didSelectCurrency(index: Int, currency: String, sender: Any?)
+    func didSelect(item: Any?, at: Int?, sender: Any?)
 }
 
 class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -20,7 +20,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     var segueSender: Any?
     
-    var data: [String]?
+    var data: [Any]?
     
     var selectedRow = 0
     
@@ -40,7 +40,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         label.font = UIFont.systemFont(ofSize: 25.0)
         label.textColor = UIColor(red: 72/255.0, green: 207/255.0, blue: 173/255.0, alpha: 1.0)
         label.textAlignment = NSTextAlignment.center
-        label.text = self.data?[row]
+        if let currencies = data as? [Currency] {
+            label.text = currencies[row].displayName
+        }
         return label
     }
     
@@ -57,7 +59,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     @IBAction func didPressChoose(_ sender: UIButton) {
-        delegate?.didSelectCurrency(index: selectedRow, currency: data![selectedRow], sender: segueSender)
+        delegate?.didSelect(item: data?[selectedRow], at: selectedRow, sender: segueSender)
         self.dismiss(animated: true, completion: nil)
     }
     
