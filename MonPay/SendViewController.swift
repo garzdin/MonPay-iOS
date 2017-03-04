@@ -27,8 +27,8 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var recipients: [Beneficiary] = []
     var transfer: Transaction = Transaction()
 
-    @IBOutlet var accountsCollectionView: AccountsCollectionView!
-    @IBOutlet var recipientsCollectionView: RecipientsCollectionView!
+    @IBOutlet var accountsCollectionView: UICollectionView!
+    @IBOutlet var recipientsCollectionView: UICollectionView!
     @IBOutlet var fromCurrencyLabel: UILabel!
     @IBOutlet var toCurrencyLabel: UILabel!
     @IBOutlet var fromAmount: UITextField! {

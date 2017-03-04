@@ -373,10 +373,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Send" id="ZMw-hh-HWQ"/>
                     <connections>
-                        <outlet property="accountsCollectionView" destination="MJa-bA-OES" id="QYH-eJ-EqH"/>
+                        <outlet property="accountsCollectionView" destination="MJa-bA-OES" id="Sgm-YM-62h"/>
                         <outlet property="fromAmount" destination="2pC-Cl-Ve5" id="x6d-ut-45n"/>
                         <outlet property="fromCurrencyLabel" destination="xAB-oX-RCO" id="LoN-xF-Bhn"/>
-                        <outlet property="recipientsCollectionView" destination="20H-A1-x1g" id="GuM-Tx-9Qo"/>
+                        <outlet property="recipientsCollectionView" destination="20H-A1-x1g" id="Vfj-Ri-hfR"/>
                         <outlet property="toAmount" destination="2a5-uS-KF2" id="AaK-CO-ZJo"/>
                         <outlet property="toCurrencyLabel" destination="yjm-g6-tnc" id="jve-HV-hTj"/>
                         <segue destination="Fay-Lu-WTV" kind="presentation" identifier="confirmSend" modalPresentationStyle="overCurrentContext" id="X36-g3-dcH"/>
@@ -2937,7 +2937,7 @@ of an ID document. This document can be either your
                                                     <rect key="frame" x="0.0" y="0.0" width="190.66666666666669" height="38.666666666666686"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IBAN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTM-Hb-QxM">
-                                                            <rect key="frame" x="77" y="0.0" width="36.333333333333343" height="19.333333333333314"/>
+                                                            <rect key="frame" x="77.333333333333343" y="0.0" width="36.333333333333314" height="19.333333333333314"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" red="0.35294117650000001" green="0.43529411759999997" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -2960,7 +2960,7 @@ of an ID document. This document can be either your
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADSFBGYQAID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hea-FG-Us1">
-                                                            <rect key="frame" x="40.666666666666657" y="19.333333333333314" width="109.00000000000003" height="19.333333333333314"/>
+                                                            <rect key="frame" x="41" y="19.333333333333314" width="109" height="19.333333333333314"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>

@@ -9,12 +9,10 @@
 /* Begin PBXBuildFile section */
 		490B81FB1E41024B00BCBC4F /* OnboardingStepThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B81FA1E41024B00BCBC4F /* OnboardingStepThreeViewController.swift */; };
 		490B81FD1E4105BD00BCBC4F /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B81FC1E4105BD00BCBC4F /* AccountSettingsViewController.swift */; };
-		49204D9E1E38B34C00442C74 /* AccountsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49204D9D1E38B34C00442C74 /* AccountsCollectionView.swift */; };
 		49204DA01E38B69500442C74 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49204D9F1E38B69500442C74 /* AccountCollectionViewCell.swift */; };
 		492316AD1E5F428E00831BA6 /* OnboardingStepOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492316AC1E5F428E00831BA6 /* OnboardingStepOneViewController.swift */; };
 		492316AF1E5F429800831BA6 /* OnboardingStepTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492316AE1E5F429800831BA6 /* OnboardingStepTwoViewController.swift */; };
 		4926CC581E3944550029C736 /* AddNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926CC571E3944550029C736 /* AddNewAccountViewController.swift */; };
-		49414C691E38E9FB00CF1F20 /* RecipientsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49414C681E38E9FB00CF1F20 /* RecipientsCollectionView.swift */; };
 		49414C6B1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49414C6A1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift */; };
 		49414C6D1E39002000CF1F20 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49414C6C1E39002000CF1F20 /* ConfirmViewController.swift */; };
 		4952AA0A1E5751A2006165E7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4952AA091E5751A2006165E7 /* User.swift */; };
@@ -54,12 +52,10 @@
 		170A0CC36D3E05B3159E4B17 /* Pods_MonPay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MonPay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		490B81FA1E41024B00BCBC4F /* OnboardingStepThreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingStepThreeViewController.swift; sourceTree = "<group>"; };
 		490B81FC1E4105BD00BCBC4F /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
-		49204D9D1E38B34C00442C74 /* AccountsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsCollectionView.swift; sourceTree = "<group>"; };
 		49204D9F1E38B69500442C74 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
 		492316AC1E5F428E00831BA6 /* OnboardingStepOneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingStepOneViewController.swift; sourceTree = "<group>"; };
 		492316AE1E5F429800831BA6 /* OnboardingStepTwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingStepTwoViewController.swift; sourceTree = "<group>"; };
 		4926CC571E3944550029C736 /* AddNewAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewAccountViewController.swift; sourceTree = "<group>"; };
-		49414C681E38E9FB00CF1F20 /* RecipientsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientsCollectionView.swift; sourceTree = "<group>"; };
 		49414C6A1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientCollectionViewCell.swift; sourceTree = "<group>"; };
 		49414C6C1E39002000CF1F20 /* ConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		4952AA091E5751A2006165E7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -175,9 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				4957AC281E37B0F2006A951A /* SendViewController.swift */,
-				49204D9D1E38B34C00442C74 /* AccountsCollectionView.swift */,
 				49204D9F1E38B69500442C74 /* AccountCollectionViewCell.swift */,
-				49414C681E38E9FB00CF1F20 /* RecipientsCollectionView.swift */,
 				49414C6A1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift */,
 				49414C6C1E39002000CF1F20 /* ConfirmViewController.swift */,
 				4926CC571E3944550029C736 /* AddNewAccountViewController.swift */,
@@ -422,10 +416,8 @@
 				490B81FD1E4105BD00BCBC4F /* AccountSettingsViewController.swift in Sources */,
 				49C1CEDE1E3E81BB009076D3 /* CameraViewController.swift in Sources */,
 				499375191E3A4440008D65F3 /* InitialViewController.swift in Sources */,
-				49414C691E38E9FB00CF1F20 /* RecipientsCollectionView.swift in Sources */,
 				4952AA131E576294006165E7 /* Transaction.swift in Sources */,
 				49E500DA1E4258B7009559CB /* AddNewRecipientViewController.swift in Sources */,
-				49204D9E1E38B34C00442C74 /* AccountsCollectionView.swift in Sources */,
 				492316AF1E5F429800831BA6 /* OnboardingStepTwoViewController.swift in Sources */,
 				49F987051E3E0AED00EC57C9 /* RecipientTableViewCell.swift in Sources */,
 				49F0BC8D1E3BD83F00FB344B /* RoundedButton.swift in Sources */,
