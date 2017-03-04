@@ -260,6 +260,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.recipientSelected = false
             cell.setUnselected()
         }
+        self.transfer = Transaction()
     }
     
     @IBAction func unwindToSendScreen(segue: UIStoryboardSegue) {}
