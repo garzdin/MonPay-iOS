@@ -23,18 +23,22 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate, CurrencyP
     
     weak var delegate: NewAccountDelegate?
     
+    var currencies: [Currency] = []
+    var selectedCurrency: Currency?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapCurrencyLabel = UITapGestureRecognizer(target: self, action: #selector(didTapCurrencyLabel(sender:)))
         currencyLabel.isUserInteractionEnabled = true
         currencyLabel.addGestureRecognizer(tapCurrencyLabel)
+        getCurrencies()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectCurrencyForNewAccount" {
             if let destination = segue.destination as? PickerViewController {
                 destination.delegate = self
-                destination.data = ["EUR", "BNG", "DKK"]
+                destination.data = self.currencies
             }
         }
     }
@@ -53,7 +57,21 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate, CurrencyP
     
     func didSelect(item: Any?, at: Int?, sender: Any?) {
         if let currency = item as? Currency {
+            self.selectedCurrency = currency
             currencyLabel.text = currency.isoCode
+        }
+    }
+    
+    func getCurrencies() {
+        Fetcher.sharedInstance.currencyList { (response: [String : Any]?) in
+            if let currencies = response?["currencies"] as? [Any] {
+                self.currencies = []
+                for currency in currencies {
+                    if let currency = currency as? [String: Any] {
+                        self.currencies.append(Currency(values: currency))
+                    }
+                }
+            }
         }
     }
     
@@ -68,11 +86,11 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate, CurrencyP
             self.bicSwiftErrorLabel.text = "BIC/SWIFT required"
             return
         }
-        let params = [
-            "iban": ibanTextField.text,
-            "bic_swift": bicSwiftTextField.text,
-            "currency": currencyLabel.text,
-            "country": Locale.current.regionCode
+        let params: [String: Any] = [
+            "iban": ibanTextField.text!,
+            "bic_swift": bicSwiftTextField!.text!,
+            "currency": self.selectedCurrency?.id,
+            "country": Locale.current.regionCode!
         ]
         Fetcher.sharedInstance.accountCreate(params: params) { (response: [String : Any]?) in
             if let account = response?["account"] as? [String: Any] {
