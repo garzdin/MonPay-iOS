@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-protocol AddNewAccountDelegate: class {
+protocol NewAccountDelegate: class {
     func didAddNewAccount(account: Account)
 }
 
@@ -21,7 +21,7 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate, CurrencyP
     @IBOutlet var ibanErrorLabel: UILabel!
     @IBOutlet var bicSwiftErrorLabel: UILabel!
     
-    weak var delegate: AddNewAccountDelegate?
+    weak var delegate: NewAccountDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

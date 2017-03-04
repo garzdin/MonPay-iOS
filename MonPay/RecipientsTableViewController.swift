@@ -11,7 +11,7 @@ import Alamofire
 
 fileprivate let reuseIdentifier = "recipientCell"
 
-class RecipientsTableViewController: UITableViewController, AddNewRecipientDelegate, RecipientDeleteDelegate {
+class RecipientsTableViewController: UITableViewController, NewRecipientDelegate, RecipientDeleteDelegate {
     
     var recipients: [Beneficiary] = []
     

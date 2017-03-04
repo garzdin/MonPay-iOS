@@ -36,7 +36,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="accountCell" id="k5p-A0-xqT" customClass="AccountCollectionViewCell" customModule="MonPay" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="13" width="200" height="50"/>
+                                        <rect key="frame" x="20" y="12.666666666666666" width="200" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
@@ -89,7 +89,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="newAccountCell" id="mfs-mg-13x">
-                                        <rect key="frame" x="240" y="13" width="200" height="50"/>
+                                        <rect key="frame" x="240" y="12.666666666666666" width="200" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
@@ -2303,7 +2303,7 @@
         <!--New Recipient-->
         <scene sceneID="rvf-7Z-Tv4">
             <objects>
-                <viewController title="New Recipient" id="tmz-fZ-Wcc" customClass="AddNewRecipientViewController" customModule="MonPay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="New Recipient" id="tmz-fZ-Wcc" customClass="NewRecipientViewController" customModule="MonPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XAh-Ry-y3j"/>
                         <viewControllerLayoutGuide type="bottom" id="rOH-CZ-6Pl"/>
@@ -3142,6 +3142,6 @@ of an ID document. This document can be either your
         <image name="transfers" width="17" height="17"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="z51-Uv-c9T"/>
+        <segue reference="rA3-A3-Ctk"/>
     </inferredMetricsTieBreakers>
 </document>

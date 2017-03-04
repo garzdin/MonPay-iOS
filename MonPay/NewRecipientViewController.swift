@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol AddNewRecipientDelegate: class {
+protocol NewRecipientDelegate: class {
     func didAddNewRecipient(recipient: Beneficiary)
 }
 
@@ -24,7 +24,7 @@ class NewRecipientViewController: UIViewController, CurrencyPickerDelegate {
     @IBOutlet var recipientBicSwiftErrorLabel: UILabel!
     @IBOutlet var currencyLabel: UILabel!
     
-    weak var delegate: AddNewRecipientDelegate?
+    weak var delegate: NewRecipientDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

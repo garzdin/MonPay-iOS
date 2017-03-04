@@ -21,7 +21,7 @@ fileprivate let staticReuseIdentifier = "newAccountCell"
 fileprivate let recipientCellReuseIdentifier = "recipientCell"
 fileprivate let recipientSearchCellReuseIdentifier = "recipientSearchCell"
 
-class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, CurrencyPickerDelegate, AddNewAccountDelegate, AccountDeleteDelegate, ConfirmTransferDelegate {
+class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, CurrencyPickerDelegate, NewAccountDelegate, AccountDeleteDelegate, ConfirmTransferDelegate {
     
     var accounts: [Account] = []
     var recipients: [Beneficiary] = []

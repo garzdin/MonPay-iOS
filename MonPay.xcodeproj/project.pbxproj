@@ -36,7 +36,7 @@
 		49BE68CD1E5DBF880037D225 /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BE68CC1E5DBF880037D225 /* AccountDetailsViewController.swift */; };
 		49C1CEDE1E3E81BB009076D3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C1CEDD1E3E81BB009076D3 /* CameraViewController.swift */; };
 		49C9B70D1E3B620A004CAFEF /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C9B70C1E3B620A004CAFEF /* UnderlinedTextField.swift */; };
-		49E500DA1E4258B7009559CB /* AddNewRecipientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E500D91E4258B7009559CB /* AddNewRecipientViewController.swift */; };
+		49E500DA1E4258B7009559CB /* NewRecipientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E500D91E4258B7009559CB /* NewRecipientViewController.swift */; };
 		49F0BC8D1E3BD83F00FB344B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F0BC8C1E3BD83F00FB344B /* RoundedButton.swift */; };
 		49F986FB1E3DF72000EC57C9 /* TransfersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F986FA1E3DF72000EC57C9 /* TransfersTableViewController.swift */; };
 		49F986FD1E3DF91400EC57C9 /* TransferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F986FC1E3DF91400EC57C9 /* TransferTableViewCell.swift */; };
@@ -81,7 +81,7 @@
 		49BE68CC1E5DBF880037D225 /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
 		49C1CEDD1E3E81BB009076D3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		49C9B70C1E3B620A004CAFEF /* UnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
-		49E500D91E4258B7009559CB /* AddNewRecipientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewRecipientViewController.swift; sourceTree = "<group>"; };
+		49E500D91E4258B7009559CB /* NewRecipientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewRecipientViewController.swift; sourceTree = "<group>"; };
 		49F0BC8C1E3BD83F00FB344B /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		49F986FA1E3DF72000EC57C9 /* TransfersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransfersTableViewController.swift; sourceTree = "<group>"; };
 		49F986FC1E3DF91400EC57C9 /* TransferTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferTableViewCell.swift; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 				49F987021E3E08AE00EC57C9 /* RecipientsTableViewController.swift */,
 				49F987041E3E0AED00EC57C9 /* RecipientTableViewCell.swift */,
 				49F987061E3E0D0E00EC57C9 /* RecipientDetailsViewController.swift */,
-				49E500D91E4258B7009559CB /* AddNewRecipientViewController.swift */,
+				49E500D91E4258B7009559CB /* NewRecipientViewController.swift */,
 			);
 			name = Recipients;
 			sourceTree = "<group>";
@@ -417,7 +417,7 @@
 				49C1CEDE1E3E81BB009076D3 /* CameraViewController.swift in Sources */,
 				499375191E3A4440008D65F3 /* InitialViewController.swift in Sources */,
 				4952AA131E576294006165E7 /* Transaction.swift in Sources */,
-				49E500DA1E4258B7009559CB /* AddNewRecipientViewController.swift in Sources */,
+				49E500DA1E4258B7009559CB /* NewRecipientViewController.swift in Sources */,
 				492316AF1E5F429800831BA6 /* OnboardingStepTwoViewController.swift in Sources */,
 				49F987051E3E0AED00EC57C9 /* RecipientTableViewCell.swift in Sources */,
 				49F0BC8D1E3BD83F00FB344B /* RoundedButton.swift in Sources */,
