@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MJa-bA-OES" customClass="AccountsCollectionView" customModule="MonPay" customModuleProvider="target">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MJa-bA-OES">
                                 <rect key="frame" x="0.0" y="64" width="414" height="75"/>
                                 <color key="backgroundColor" red="0.047058823529411764" green="0.10588235294117647" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -202,7 +202,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="20H-A1-x1g" customClass="RecipientsCollectionView" customModule="MonPay" customModuleProvider="target">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="20H-A1-x1g">
                                 <rect key="frame" x="0.0" y="306" width="414" height="115"/>
                                 <color key="backgroundColor" red="0.047058823529411764" green="0.10588235294117647" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1707,10 +1707,10 @@
             </objects>
             <point key="canvasLocation" x="-794" y="2337"/>
         </scene>
-        <!--Add New Account View Controller-->
+        <!--New Account View Controller-->
         <scene sceneID="7Ss-zo-fSr">
             <objects>
-                <viewController id="UE4-Qz-Gnl" customClass="AddNewAccountViewController" customModule="MonPay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="UE4-Qz-Gnl" customClass="NewAccountViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="h8Q-4E-7ag"/>
                         <viewControllerLayoutGuide type="bottom" id="xbs-vd-BFY"/>
@@ -3033,10 +3033,10 @@ of an ID document. This document can be either your
             </objects>
             <point key="canvasLocation" x="-4894.202898550725" y="2334.7826086956525"/>
         </scene>
-        <!--Currency Picker View Controller-->
+        <!--Picker View Controller-->
         <scene sceneID="ATf-nm-55b">
             <objects>
-                <viewController id="wz7-QN-zzb" customClass="CurrencyPickerViewController" customModule="MonPay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wz7-QN-zzb" customClass="PickerViewController" customModule="MonPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wUD-Ev-gfr"/>
                         <viewControllerLayoutGuide type="bottom" id="xaS-RG-yzA"/>
@@ -3142,6 +3142,6 @@ of an ID document. This document can be either your
         <image name="transfers" width="17" height="17"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SVa-Xn-taY"/>
+        <segue reference="z51-Uv-c9T"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -151,14 +151,14 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "chooseCurrency" {
-            if let destination = segue.destination as? CurrencyPickerViewController {
+            if let destination = segue.destination as? PickerViewController {
                 destination.delegate = self
                 destination.segueSender = sender
                 destination.data = ["BGN", "EUR", "DKK"]
             }
         }
         if segue.identifier == "addNewAccount" {
-            if let destination = segue.destination as? AddNewAccountViewController {
+            if let destination = segue.destination as? NewAccountViewController {
                 destination.delegate = self
             }
         }

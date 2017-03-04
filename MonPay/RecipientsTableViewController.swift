@@ -56,8 +56,8 @@ class RecipientsTableViewController: UITableViewController, AddNewRecipientDeleg
             }
         }
         if segue.identifier == "addNewRecipient" {
-            if let addNewRecipientViewController = segue.destination as? AddNewRecipientViewController {
-                addNewRecipientViewController.delegate = self
+            if let newRecipientViewController = segue.destination as? NewRecipientViewController {
+                newRecipientViewController.delegate = self
             }
         }
     }

@@ -1,5 +1,5 @@
 //
-//  AddNewRecipientViewController.swift
+//  NewRecipientViewController.swift
 //  MonPay
 //
 //  Created by Teodor on 01/02/2017.
@@ -12,7 +12,7 @@ protocol AddNewRecipientDelegate: class {
     func didAddNewRecipient(recipient: Beneficiary)
 }
 
-class AddNewRecipientViewController: UIViewController, CurrencyPickerDelegate {
+class NewRecipientViewController: UIViewController, CurrencyPickerDelegate {
 
     @IBOutlet var recipientName: UnderlinedTextField!
     @IBOutlet var recipientEmail: UnderlinedTextField!
@@ -43,7 +43,7 @@ class AddNewRecipientViewController: UIViewController, CurrencyPickerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "chooseCurrencyForNewRecipient" {
-            if let destination = segue.destination as? CurrencyPickerViewController {
+            if let destination = segue.destination as? PickerViewController {
                 destination.delegate = self
                 destination.data = ["EUR", "BGN", "DKK"]
             }

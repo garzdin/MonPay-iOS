@@ -1,5 +1,5 @@
 //
-//  CurrencyPickerViewController.swift
+//  PickerViewController.swift
 //  MonPay
 //
 //  Created by Teodor on 01/02/2017.
@@ -12,7 +12,7 @@ protocol CurrencyPickerDelegate: class {
     func didSelectCurrency(index: Int, currency: String, sender: Any?)
 }
 
-class CurrencyPickerViewController: UIViewController, PickerViewDelegate, PickerViewDataSource {
+class PickerViewController: UIViewController, PickerViewDelegate, PickerViewDataSource {
 
     @IBOutlet var pickerView: PickerView!
     

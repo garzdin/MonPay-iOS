@@ -1,5 +1,5 @@
 //
-//  AddNewAccountViewController.swift
+//  NewAccountViewController.swift
 //  MonPay
 //
 //  Created by Teodor on 25/01/2017.
@@ -13,7 +13,7 @@ protocol AddNewAccountDelegate: class {
     func didAddNewAccount(account: Account)
 }
 
-class AddNewAccountViewController: UIViewController, UITextFieldDelegate, CurrencyPickerDelegate {
+class NewAccountViewController: UIViewController, UITextFieldDelegate, CurrencyPickerDelegate {
 
     @IBOutlet var ibanTextField: UnderlinedTextField!
     @IBOutlet var bicSwiftTextField: UnderlinedTextField!
@@ -32,7 +32,7 @@ class AddNewAccountViewController: UIViewController, UITextFieldDelegate, Curren
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectCurrencyForNewAccount" {
-            if let destination = segue.destination as? CurrencyPickerViewController {
+            if let destination = segue.destination as? PickerViewController {
                 destination.delegate = self
                 destination.data = ["EUR", "BNG", "DKK"]
             }
