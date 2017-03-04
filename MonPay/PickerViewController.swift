@@ -12,9 +12,9 @@ protocol CurrencyPickerDelegate: class {
     func didSelectCurrency(index: Int, currency: String, sender: Any?)
 }
 
-class PickerViewController: UIViewController, PickerViewDelegate, PickerViewDataSource {
+class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    @IBOutlet var pickerView: PickerView!
+    @IBOutlet var pickerView: UIPickerView!
     
     weak var delegate: CurrencyPickerDelegate?
     
@@ -30,33 +30,30 @@ class PickerViewController: UIViewController, PickerViewDelegate, PickerViewData
         pickerView.dataSource = self
     }
     
-    func pickerViewNumberOfRows(_ pickerView: PickerView) -> Int {
-        return data!.count
-    }
-    
-    func pickerViewHeightForRows(_ pickerView: PickerView) -> CGFloat {
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 30.0
     }
     
-    func pickerView(_ pickerView: PickerView, titleForRow row: Int, index: Int) -> String {
-        let item = data![index]
-        return item
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let frame = CGRect(x: 0, y: 0, width: pickerView.rowSize(forComponent: component).width, height: pickerView.rowSize(forComponent: component).height)
+        let label = UILabel(frame: frame)
+        label.font = UIFont.systemFont(ofSize: 25.0)
+        label.textColor = UIColor(red: 72/255.0, green: 207/255.0, blue: 173/255.0, alpha: 1.0)
+        label.textAlignment = NSTextAlignment.center
+        label.text = self.data?[row]
+        return label
     }
     
-    func pickerView(_ pickerView: PickerView, didSelectRow row: Int, index: Int) {
-        selectedRow = row
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
     
-    func pickerView(_ pickerView: PickerView, styleForLabel label: UILabel, highlighted: Bool) {
-        label.textAlignment = .center
-        
-        if highlighted {
-            label.font = UIFont.systemFont(ofSize: 25.0)
-            label.textColor = UIColor(red: 72/255.0, green: 207/255.0, blue: 173/255.0, alpha: 1.0)
-        } else {
-            label.font = UIFont.systemFont(ofSize: 15.0)
-            label.textColor = UIColor(red: 72/255.0, green: 207/255.0, blue: 173/255.0, alpha: 0.5)
-        }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.data!.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.selectedRow = row
     }
     
     @IBAction func didPressChoose(_ sender: UIButton) {
