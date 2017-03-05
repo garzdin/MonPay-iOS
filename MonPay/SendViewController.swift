@@ -34,6 +34,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     @IBOutlet var toAmountErrorLabel: UILabel!
     @IBOutlet var feeLabel: UILabel!
+    @IBOutlet var sendButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,8 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let tapToCurrencyLabel = UITapGestureRecognizer(target: self, action: #selector(didTapToCurrencyLabel(sender:)))
         toCurrencyLabel.isUserInteractionEnabled = true
         toCurrencyLabel.addGestureRecognizer(tapToCurrencyLabel)
+        sendButton.isEnabled = false
+        sendButton.backgroundColor = UIColor(red: 90/255.0, green: 111/255.0, blue: 131/255.0, alpha: 1.0)
         self.refreshData()
     }
     
@@ -178,6 +181,8 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     let fee = conversion["fee"] as? Float {
                     self.toAmount.text = "\(toAmount - fee)"
                     self.feeLabel.text = "\(fee) \(fromCurrency)"
+                    self.sendButton.isEnabled = true
+                    self.sendButton.backgroundColor = UIColor(red: 72/255.0, green: 207/255.0, blue: 173/255.0, alpha: 1.0)
                 }
             }
         }

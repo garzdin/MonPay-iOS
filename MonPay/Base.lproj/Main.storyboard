@@ -236,7 +236,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thE-Cd-7pH">
                                 <rect key="frame" x="0.0" y="376" width="414" height="60"/>
-                                <color key="backgroundColor" red="0.28235294117647058" green="0.81176470588235294" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.28235294119999998" green="0.81176470590000005" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="AZ4-LG-ZQY"/>
                                 </constraints>
@@ -309,6 +309,7 @@
                         <outlet property="fromCurrencyLabel" destination="xAB-oX-RCO" id="LoN-xF-Bhn"/>
                         <outlet property="recipientsCollectionView" destination="20H-A1-x1g" id="GuM-Tx-9Qo"/>
                         <outlet property="recipientsErrorLabel" destination="0tZ-99-iya" id="5e1-Qp-FfW"/>
+                        <outlet property="sendButton" destination="thE-Cd-7pH" id="6KG-m3-WgF"/>
                         <outlet property="toAmount" destination="2a5-uS-KF2" id="AaK-CO-ZJo"/>
                         <outlet property="toAmountErrorLabel" destination="zFg-Fb-wFy" id="6cB-bU-13y"/>
                         <outlet property="toCurrencyLabel" destination="yjm-g6-tnc" id="jve-HV-hTj"/>
