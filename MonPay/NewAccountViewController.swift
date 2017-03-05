@@ -15,8 +15,16 @@ protocol NewAccountDelegate: class {
 
 class NewAccountViewController: UIViewController, UITextFieldDelegate, PickerDelegate {
 
-    @IBOutlet var ibanTextField: UnderlinedTextField!
-    @IBOutlet var bicSwiftTextField: UnderlinedTextField!
+    @IBOutlet var ibanTextField: UnderlinedTextField! {
+        didSet {
+            ibanTextField.delegate = self
+        }
+    }
+    @IBOutlet var bicSwiftTextField: UnderlinedTextField! {
+        didSet {
+            bicSwiftTextField.delegate = self
+        }
+    }
     @IBOutlet var currencyLabel: UILabel!
     @IBOutlet var ibanErrorLabel: UILabel!
     @IBOutlet var bicSwiftErrorLabel: UILabel!
