@@ -22,11 +22,17 @@ class TransferDetailsViewController: UIViewController {
     @IBOutlet var statusLabel: UILabel!
     
     var transaction: Transaction?
+    var beneficiary: Beneficiary?
     
     weak var delegate: TransactionDeleteDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        for beneficiary in DataStore.shared.beneficiaries {
+            if beneficiary.id == transaction?.beneficiary {
+                self.beneficiary = beneficiary
+            }
+        }
         let backArrow = UIImage(named: "back")
         let backButton = UIButton(type: .custom)
         backButton.frame = CGRect(x: 0, y: 20, width: 8, height: 16)
@@ -37,7 +43,7 @@ class TransferDetailsViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "delete"), style: .plain, target: self, action: #selector(didPressDelete(sender:)))
         if let transaction = self.transaction {
-            if let first_name = transaction.beneficiary?.first_name, let last_name = transaction.beneficiary?.last_name {
+            if let first_name = self.beneficiary?.first_name, let last_name = self.beneficiary?.last_name {
                 self.nameLabel.text = "\(first_name) \(last_name)"
                 if let firstNameInitial = first_name.characters.first, let lastNameInitial = last_name.characters.first {
                     self.initialsLabel.text = "\(firstNameInitial)\(lastNameInitial)"
@@ -46,10 +52,10 @@ class TransferDetailsViewController: UIViewController {
             if let amount = transaction.amount, let currency = transaction.currency {
                 self.amountLabel.text = "\(amount) \(currency)"
             }
-            if let email = self.transaction?.beneficiary?.email {
+            if let email = self.beneficiary?.email {
                 self.emailLabel.text = email
             }
-            if let iban = self.transaction?.beneficiary?.account?.iban {
+            if let iban = self.beneficiary?.account?.iban {
                 self.ibanLabel.text = iban
             }
             if let status = transaction.completed {

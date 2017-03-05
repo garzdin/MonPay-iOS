@@ -16,8 +16,6 @@ class Beneficiary: NSObject {
     var email: String?
     var first_name: String?
     var last_name: String?
-    var address: Address?
-    var date_of_birth: Date?
     var id_type: Int?
     var id_value: String?
     var account: Account?
@@ -41,14 +39,6 @@ class Beneficiary: NSObject {
         }
         if let last_name = values["last_name"] as? String {
             self.last_name = last_name
-        }
-        if let address = values["address"] as? Dictionary<String, Any> {
-            self.address = Address(values: address)
-        }
-        if let date_of_birth = values["date_of_birth"] as? String {
-            let formatter = DateFormatter()
-            formatter.dateFormat = dateTimeFormat
-            self.date_of_birth = formatter.date(from: date_of_birth)
         }
         if let id_type = values["id_type"] as? Int {
             self.id_type = id_type

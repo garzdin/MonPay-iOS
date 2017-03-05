@@ -94,7 +94,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 cell.setUnselected()
             }
             if let cell = collectionView.cellForItem(at: indexPath) as? RecipientCollectionViewCell {
-                self.transaction.beneficiary = DataStore.shared.beneficiaries[indexPath.row]
+                self.transaction.beneficiary = DataStore.shared.beneficiaries[indexPath.row].id
                 cell.recipientSelected = true
                 cell.setSelected()
             }

@@ -17,9 +17,8 @@ class Transaction: NSObject {
     var currency: String?
     var reason: String?
     var completed: Bool?
-    var user: User?
-    var beneficiary: Beneficiary?
-    var account: Account?
+    var beneficiary: Int?
+    var account: Int?
     var created_on: Date?
     var updated_on: Date?
     var version: Int?
@@ -43,6 +42,12 @@ class Transaction: NSObject {
         }
         if let completed = values["completed"] as? Bool {
             self.completed = completed
+        }
+        if let beneficiary = values["beneficiary"] as? Int {
+            self.beneficiary = beneficiary
+        }
+        if let account = values["account"] as? Int {
+            self.account = account
         }
         if let created_on = values["created_on"] as? String {
             let formatter = DateFormatter()

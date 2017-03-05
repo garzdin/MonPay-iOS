@@ -32,19 +32,25 @@ class ConfirmViewController: UIViewController {
     
     var transaction: Transaction?
     var pairs: CurrencyPairs?
+    var beneficiary: Beneficiary?
     
     weak var delegate: ConfirmTransactionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        for beneficiary in DataStore.shared.beneficiaries {
+            if beneficiary.id == transaction?.beneficiary {
+                self.beneficiary = beneficiary
+            }
+        }
         if self.transaction != nil && self.pairs != nil {
-            if let first_name = self.transaction?.beneficiary?.first_name, let last_name = self.transaction?.beneficiary?.last_name {
+            if let first_name = self.beneficiary?.first_name, let last_name = self.beneficiary?.last_name {
                 if let firstNameInitial = first_name.characters.first, let lastNameInitial = last_name.characters.first {
                     self.initialsLabel.text = "\(firstNameInitial)\(lastNameInitial)"
                 }
                 self.nameLabel.text = "\(first_name) \(last_name)"
             }
-            self.ibanLabel.text = self.transaction?.beneficiary?.account?.iban
+            self.ibanLabel.text = self.beneficiary?.account?.iban
             self.fromCurrencyLabel.text = self.pairs?.fromCurrency
             self.toCurrencyLabel.text = self.pairs?.toCurrency
             if let fromAmountCurrency = self.pairs?.fromAmount, let toAmountCurrency = self.pairs?.toAmount {
@@ -57,14 +63,13 @@ class ConfirmViewController: UIViewController {
     @IBAction func confirm(_ sender: UIButton) {
         if let amount = pairs?.fromAmount,
             let currency = pairs?.fromCurrency,
-            let beneficiary = transaction?.beneficiary?.id,
-            let account = transaction?.beneficiary?.account?.id {
+            let beneficiary = self.beneficiary {
             let params: Parameters = [
                 "amount": amount,
                 "currency": currency,
-                "reason": "Transaction \(pairs?.fromAmount) \(pairs?.fromCurrency) to \(transaction?.beneficiary?.first_name)",
-                "beneficiary": beneficiary,
-                "account": account,
+                "reason": "Transaction \(pairs?.fromAmount) \(pairs?.fromCurrency) to \(beneficiary.first_name)",
+                "beneficiary": beneficiary.id!,
+                "account": beneficiary.account!,
                 ]
             Fetcher.sharedInstance.transactionCreate(params: params) { (response: [String : Any]?) in
                 if let transaction = response?["transaction"] as? [String: Any] {

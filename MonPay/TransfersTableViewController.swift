@@ -36,11 +36,15 @@ class TransfersTableViewController: UITableViewController, TransactionDeleteDele
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! TransferTableViewCell
-        if let amount = DataStore.shared.transactions[indexPath.row].amount, let currency = DataStore.shared.transactions[indexPath.row].currency {
+        if let id = DataStore.shared.transactions[indexPath.row].id, let amount = DataStore.shared.transactions[indexPath.row].amount, let currency = DataStore.shared.transactions[indexPath.row].currency, let status = DataStore.shared.transactions[indexPath.row].completed {
+            for beneficiary in DataStore.shared.beneficiaries {
+                if beneficiary.id == id {
+                    cell.nameLabel.text = "\(beneficiary.first_name) \(beneficiary.last_name)"
+                }
+            }
             cell.amountLabel.text = "\(amount) \(currency)"
+            cell.statusLabel.text = status ? "Completed on 20 Sept 2016" : "Processing"
         }
-        cell.nameLabel.text = "Jane Doe"
-        cell.statusLabel.text = "Completed on 20 Sept 2016"
         return cell
     }
     
