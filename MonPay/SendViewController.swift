@@ -30,6 +30,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
             toAmount.delegate = self
         }
     }
+    @IBOutlet var feeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,9 +129,39 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if textField == fromAmount {
-            toAmount.becomeFirstResponder()
+            createConversion()
         }
         return false
+    }
+    
+    func createConversion() {
+        var fromCurrencyId: Int = 0
+        var toCurrencyId: Int = 0
+        let amount = Float(self.fromAmount.text!)
+        for currency in DataStore.shared.currencies {
+            if currency.isoCode == fromCurrencyLabel.text {
+                fromCurrencyId = currency.id!
+            }
+            if currency.isoCode == toCurrencyLabel.text {
+                toCurrencyId = currency.id!
+            }
+        }
+        let params: Parameters = [
+            "from": fromCurrencyId,
+            "to": toCurrencyId,
+            "amount": amount ?? 0
+        ]
+        Fetcher.sharedInstance.conversionCreate(params: params) { (response: [String : Any]?) in
+            if let conversion = response?["conversion"] as? [String: Any],
+                let fromCurrency = conversion["from_currency"] as? String,
+                let _ = conversion["to_currency"] as? String,
+                let _ = conversion["from_amount"] as? Float,
+                let toAmount = conversion["to_amount"] as? Float,
+                let fee = conversion["fee"] as? Float {
+                self.toAmount.text = "\(toAmount - fee)"
+                self.feeLabel.text = "\(fee) \(fromCurrency)"
+            }
+        }
     }
     
     // MARK: Transfer intiated

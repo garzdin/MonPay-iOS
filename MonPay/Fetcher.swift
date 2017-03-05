@@ -184,6 +184,13 @@ class Fetcher: NSObject {
         }
     }
     
+    // MARK: - Conversion endpoints
+    func conversionCreate(params: Parameters, completion: @escaping (_ response: [String: Any]?) -> ()) {
+        self.request(url: "convert", method: .post, parameters: params, encoding: JSONEncoding.default, headers: [:], authRequired: true) { (response: [String : Any]?) in
+            completion(response)
+        }
+    }
+    
     // MARK: - Beneficiary endpoints
     
     func beneficiaryList(completion: @escaping (_ response: [String: Any]?) -> ()) {

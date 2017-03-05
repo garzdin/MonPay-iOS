@@ -246,7 +246,6 @@
 		4957AC251E37B0F2006A951A /* MonPay */ = {
 			isa = PBXGroup;
 			children = (
-				4907D0991E6C1ED500229E6D /* DataStore.swift */,
 				4952AA0B1E57560D006165E7 /* Models */,
 				499CD25C1E585BEE0079D8A5 /* Utils */,
 				490B82011E41197D00BCBC4F /* Components */,
@@ -264,6 +263,7 @@
 		499CD25C1E585BEE0079D8A5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4907D0991E6C1ED500229E6D /* DataStore.swift */,
 				499CD25A1E585B740079D8A5 /* Keychain.swift */,
 				4955F8D01E5A2B5600111540 /* Fetcher.swift */,
 			);
