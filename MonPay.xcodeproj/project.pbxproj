@@ -161,6 +161,7 @@
 		490B82011E41197D00BCBC4F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				49AD23BE1E41D514002FE3C7 /* PickerViewController.swift */,
 				49C9B70C1E3B620A004CAFEF /* UnderlinedTextField.swift */,
 				49F0BC8C1E3BD83F00FB344B /* RoundedButton.swift */,
 				498824DD1E6077E900803C96 /* PushSegue.swift */,
@@ -172,10 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				4957AC281E37B0F2006A951A /* SendViewController.swift */,
-				49204D9F1E38B69500442C74 /* AccountCollectionViewCell.swift */,
 				49414C6A1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift */,
 				49414C6C1E39002000CF1F20 /* ConfirmViewController.swift */,
-				49AD23BE1E41D514002FE3C7 /* PickerViewController.swift */,
 			);
 			name = Send;
 			sourceTree = "<group>";
@@ -205,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				49F987001E3E05F700EC57C9 /* AccountViewController.swift */,
+				49204D9F1E38B69500442C74 /* AccountCollectionViewCell.swift */,
 				49BE68CC1E5DBF880037D225 /* AccountDetailsViewController.swift */,
 				4926CC571E3944550029C736 /* NewAccountViewController.swift */,
 				490B81FC1E4105BD00BCBC4F /* AccountSettingsViewController.swift */,
