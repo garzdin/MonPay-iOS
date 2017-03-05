@@ -226,6 +226,12 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func didConfirm(transation: Transaction) {
         self.fromAmount.text = ""
         self.toAmount.text = ""
+        self.fromAmountErrorLabel.text = ""
+        self.toAmountErrorLabel.text = ""
+        self.fromCurrencyLabel.text = "NONE"
+        self.toCurrencyLabel.text = ""
+        self.sendButton.isEnabled = false
+        self.sendButton.backgroundColor = UIColor(red: 90/255.0, green: 111/255.0, blue: 131/255.0, alpha: 1.0)
         for cell in self.recipientsCollectionView.visibleCells.filter({(cell) in return cell is RecipientCollectionViewCell}) as! [RecipientCollectionViewCell] {
             cell.recipientSelected = false
             cell.setUnselected()
