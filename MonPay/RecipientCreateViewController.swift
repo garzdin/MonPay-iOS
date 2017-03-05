@@ -123,7 +123,7 @@ class RecipientCreateViewController: UIViewController, UITextFieldDelegate, Pick
             self.recipientNameErrorLabel.text = "Provide first and last name"
             return
         }
-        var currencyId: Int = 0
+        var currencyId: Int?
         for currency in DataStore.shared.currencies {
             if currency.isoCode == self.currencyLabel.text {
                 currencyId = currency.id!
