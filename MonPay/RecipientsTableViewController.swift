@@ -11,7 +11,7 @@ import Alamofire
 
 fileprivate let reuseIdentifier = "recipientCell"
 
-class RecipientsTableViewController: UITableViewController, NewRecipientDelegate, RecipientDeleteDelegate {
+class RecipientsTableViewController: UITableViewController, BeneficiaryCreateDelegate, RecipientDeleteDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +59,7 @@ class RecipientsTableViewController: UITableViewController, NewRecipientDelegate
             }
         }
         if segue.identifier == "addNewRecipient" {
-            if let newRecipientViewController = segue.destination as? NewRecipientViewController {
+            if let newRecipientViewController = segue.destination as? RecipientCreateViewController {
                 newRecipientViewController.delegate = self
             }
         }
@@ -72,8 +72,8 @@ class RecipientsTableViewController: UITableViewController, NewRecipientDelegate
         }
     }
     
-    func didAddNewRecipient(recipient: Beneficiary) {
-        DataStore.shared.beneficiaries.append(recipient)
+    func didAdd(beneficiary: Beneficiary) {
+        DataStore.shared.beneficiaries.append(beneficiary)
         self.tableView.reloadData()
     }
 }

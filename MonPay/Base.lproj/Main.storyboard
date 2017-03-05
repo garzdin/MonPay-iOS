@@ -44,19 +44,19 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHG-z2-56o">
-                                <rect key="frame" x="40" y="100.66666666666669" width="37" height="19.333333333333329"/>
+                                <rect key="frame" x="40" y="100" width="37" height="19.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                 <color key="textColor" red="0.3529411764705882" green="0.43529411764705883" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BGN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAB-oX-RCO">
-                                <rect key="frame" x="340.33333333333326" y="100.66666666666669" width="33.666666666666686" height="19.333333333333329"/>
+                                <rect key="frame" x="340" y="100" width="33.666666666666686" height="19.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.28235294117647058" green="0.81176470588235294" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=".00" textAlignment="right" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="2a5-uS-KF2" customClass="UnderlinedTextField" customModule="MonPay" customModuleProvider="target">
-                                <rect key="frame" x="57.666666666666657" y="139" width="282.33333333333337" height="34"/>
+                                <rect key="frame" x="57" y="139" width="282.33333333333331" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="xTe-Cz-wTN"/>
                                 </constraints>
@@ -77,19 +77,19 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfD-pw-mC3">
-                                <rect key="frame" x="40" y="145.66666666666663" width="17.666666666666664" height="19.333333333333343"/>
+                                <rect key="frame" x="40" y="145" width="17.666666666666664" height="19.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                 <color key="textColor" red="0.35294117650000001" green="0.43529411759999997" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EUR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjm-g6-tnc">
-                                <rect key="frame" x="343" y="145.66666666666663" width="31" height="19.333333333333343"/>
+                                <rect key="frame" x="343" y="145" width="31" height="19.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.28235294117647058" green="0.81176470588235294" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="BAf-Z0-Mt3">
-                                <rect key="frame" x="137.66666666666669" y="184" width="139.00000000000006" height="17"/>
+                                <rect key="frame" x="137" y="184" width="139" height="17"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You'll pay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mr0-vu-AvT">
                                         <rect key="frame" x="0.0" y="0.0" width="60" height="17"/>
@@ -98,13 +98,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXO-74-N85">
-                                        <rect key="frame" x="64" y="0.0" width="28.666666666666686" height="17"/>
+                                        <rect key="frame" x="64" y="0.0" width="28.666666666666657" height="17"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                         <color key="textColor" red="0.28235294117647058" green="0.81176470588235294" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="in fees" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZp-o9-qZB">
-                                        <rect key="frame" x="96.666666666666686" y="0.0" width="42.333333333333343" height="17"/>
+                                        <rect key="frame" x="96.666666666666657" y="0.0" width="42.333333333333343" height="17"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                         <color key="textColor" red="0.3529411764705882" green="0.43529411764705883" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -228,6 +228,12 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tZ-99-iya">
+                                <rect key="frame" x="374" y="214" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.2475420552" blue="0.20106874769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thE-Cd-7pH">
                                 <rect key="frame" x="0.0" y="376" width="414" height="60"/>
                                 <color key="backgroundColor" red="0.28235294117647058" green="0.81176470588235294" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -247,6 +253,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="thE-Cd-7pH" secondAttribute="trailing" id="1BJ-p6-Ucq"/>
                             <constraint firstItem="20H-A1-x1g" firstAttribute="top" secondItem="BAf-Z0-Mt3" secondAttribute="bottom" constant="30" id="1Nq-yg-CjS"/>
+                            <constraint firstItem="0tZ-99-iya" firstAttribute="top" secondItem="fZp-o9-qZB" secondAttribute="bottom" constant="13" id="21f-10-l4l"/>
                             <constraint firstItem="20H-A1-x1g" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="2nI-fs-K8x"/>
                             <constraint firstItem="2pC-Cl-Ve5" firstAttribute="leading" secondItem="xHG-z2-56o" secondAttribute="trailing" id="3eg-Lv-eD8"/>
                             <constraint firstItem="hlN-xD-leb" firstAttribute="top" secondItem="2a5-uS-KF2" secondAttribute="bottom" id="3gg-OY-Cvd"/>
@@ -263,6 +270,7 @@
                             <constraint firstItem="2a5-uS-KF2" firstAttribute="leading" secondItem="kfD-pw-mC3" secondAttribute="trailing" id="ZME-kd-6XK"/>
                             <constraint firstItem="0Zw-cJ-CBO" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="20" id="cUx-bt-taW"/>
                             <constraint firstItem="thE-Cd-7pH" firstAttribute="top" secondItem="20H-A1-x1g" secondAttribute="bottom" constant="30" id="cs1-hx-bDp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0tZ-99-iya" secondAttribute="trailing" constant="20" id="dkZ-D4-oQT"/>
                             <constraint firstItem="BAf-Z0-Mt3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="20" id="ePJ-Xs-3Ky"/>
                             <constraint firstItem="xHG-z2-56o" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="20" id="hlU-Mh-Nnw"/>
                             <constraint firstItem="BAf-Z0-Mt3" firstAttribute="top" secondItem="hlN-xD-leb" secondAttribute="bottom" constant="10" id="ifK-sf-MkA"/>
@@ -283,6 +291,7 @@
                         <outlet property="fromAmount" destination="2pC-Cl-Ve5" id="x6d-ut-45n"/>
                         <outlet property="fromCurrencyLabel" destination="xAB-oX-RCO" id="LoN-xF-Bhn"/>
                         <outlet property="recipientsCollectionView" destination="20H-A1-x1g" id="GuM-Tx-9Qo"/>
+                        <outlet property="recipientsErrorLabel" destination="0tZ-99-iya" id="5e1-Qp-FfW"/>
                         <outlet property="toAmount" destination="2a5-uS-KF2" id="AaK-CO-ZJo"/>
                         <outlet property="toCurrencyLabel" destination="yjm-g6-tnc" id="jve-HV-hTj"/>
                         <segue destination="Fay-Lu-WTV" kind="presentation" identifier="confirmSend" modalPresentationStyle="overCurrentContext" id="X36-g3-dcH"/>
@@ -650,7 +659,7 @@
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
                                         <color key="value" red="0.35294117650000001" green="0.43529411759999997" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1313,7 +1322,7 @@
             </objects>
             <point key="canvasLocation" x="-491" y="-1010"/>
         </scene>
-        <!--Transfers-->
+        <!--Transactions-->
         <scene sceneID="Io5-mZ-mEj">
             <objects>
                 <tableViewController id="LYG-h3-lfN" customClass="TransfersTableViewController" customModule="MonPay" customModuleProvider="target" sceneMemberID="viewController">
@@ -1372,7 +1381,7 @@
                             <outlet property="delegate" destination="LYG-h3-lfN" id="LmL-K6-fCz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Transfers" id="Uza-qM-4YZ"/>
+                    <navigationItem key="navigationItem" title="Transactions" id="Uza-qM-4YZ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ndp-Vm-nlA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2113,7 +2122,7 @@
         <!--New Recipient-->
         <scene sceneID="rvf-7Z-Tv4">
             <objects>
-                <viewController title="New Recipient" id="tmz-fZ-Wcc" customClass="AddNewRecipientViewController" customModule="MonPay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="New Recipient" id="tmz-fZ-Wcc" customClass="RecipientCreateViewController" customModule="MonPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XAh-Ry-y3j"/>
                         <viewControllerLayoutGuide type="bottom" id="rOH-CZ-6Pl"/>
@@ -2129,7 +2138,7 @@
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
                                         <color key="value" red="0.3529411764705882" green="0.43529411764705883" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2150,7 +2159,7 @@
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
                                         <color key="value" red="0.3529411764705882" green="0.43529411764705883" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2177,7 +2186,7 @@
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
                                         <color key="value" red="0.3529411764705882" green="0.43529411764705883" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2211,7 +2220,7 @@
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
                                         <color key="value" red="0.3529411764705882" green="0.43529411764705883" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2620,11 +2629,11 @@ of an ID document. This document can be either your
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Transfers-->
+        <!--Transactions-->
         <scene sceneID="emC-gc-G3Y">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="txG-Sj-ZtJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Transfers" image="transfers" id="cPa-gy-q4n">
+                    <tabBarItem key="tabBarItem" title="Transactions" image="transfers" id="cPa-gy-q4n">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-5"/>
                     </tabBarItem>
                     <toolbarItems/>

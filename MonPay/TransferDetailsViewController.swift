@@ -8,8 +8,8 @@
 
 import UIKit
 
-protocol TransferDeleteDelegate: class {
-    func didDeleteTransfer(transfer: Transaction)
+protocol TransactionDeleteDelegate: class {
+    func didDelete(transaction: Transaction)
 }
 
 class TransferDetailsViewController: UIViewController {
@@ -23,7 +23,7 @@ class TransferDetailsViewController: UIViewController {
     
     var transaction: Transaction?
     
-    weak var delegate: TransferDeleteDelegate?
+    weak var delegate: TransactionDeleteDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,8 +64,8 @@ class TransferDetailsViewController: UIViewController {
     }
     
     func didPressDelete(sender: UIBarButtonItem) {
-        if let transfer = self.transaction, let amount = transfer.amount, let currency = transfer.currency {
-            let alert = UIAlertController(title: "Are you sure?", message: "Would you like to delete the transfer of \(amount) \(currency) from your transfer history?", preferredStyle: UIAlertControllerStyle.alert)
+        if let transaction = self.transaction, let amount = transaction.amount, let currency = transaction.currency {
+            let alert = UIAlertController(title: "Are you sure?", message: "Would you like to delete the transaction of \(amount) \(currency) from your transaction history?", preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive, handler: { (action: UIAlertAction!) in
                 self.confirmDelete(sender: alert)
             })
@@ -79,13 +79,13 @@ class TransferDetailsViewController: UIViewController {
     }
     
     func confirmDelete(sender: UIAlertController) {
-        if let transfer = self.transaction {
+        if let transaction = self.transaction {
             let params = [
-                "id": transfer.id
+                "id": transaction.id
             ]
             Fetcher.sharedInstance.transactionDelete(params: params, completion: { (response: [String : Any]?) in
                 _ = self.navigationController?.popViewController(animated: true)
-                self.delegate?.didDeleteTransfer(transfer: transfer)
+                self.delegate?.didDelete(transaction: transaction)
             })
         }
     }

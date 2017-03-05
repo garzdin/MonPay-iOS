@@ -11,7 +11,7 @@ import Alamofire
 
 fileprivate let reuseIdentifier = "transferCell"
 
-class TransfersTableViewController: UITableViewController, TransferDeleteDelegate {
+class TransfersTableViewController: UITableViewController, TransactionDeleteDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +56,8 @@ class TransfersTableViewController: UITableViewController, TransferDeleteDelegat
         }
     }
     
-    func didDeleteTransfer(transfer: Transaction) {
-        if let index = DataStore.shared.transactions.index(of: transfer) {
+    func didDelete(transaction: Transaction) {
+        if let index = DataStore.shared.transactions.index(of: transaction) {
             DataStore.shared.transactions.remove(at: index)
             self.tableView.reloadData()
         }

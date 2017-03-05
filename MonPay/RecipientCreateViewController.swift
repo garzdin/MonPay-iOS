@@ -8,23 +8,39 @@
 
 import UIKit
 
-protocol NewRecipientDelegate: class {
-    func didAddNewRecipient(recipient: Beneficiary)
+protocol BeneficiaryCreateDelegate: class {
+    func didAdd(beneficiary: Beneficiary)
 }
 
-class NewRecipientViewController: UIViewController, PickerDelegate {
+class RecipientCreateViewController: UIViewController, UITextFieldDelegate, PickerDelegate {
 
-    @IBOutlet var recipientName: UnderlinedTextField!
-    @IBOutlet var recipientEmail: UnderlinedTextField!
-    @IBOutlet var recipientIban: UnderlinedTextField!
-    @IBOutlet var recipientBicSwift: UnderlinedTextField!
+    @IBOutlet var recipientName: UnderlinedTextField! {
+        didSet {
+            recipientName.delegate = self
+        }
+    }
+    @IBOutlet var recipientEmail: UnderlinedTextField! {
+        didSet {
+            recipientEmail.delegate = self
+        }
+    }
+    @IBOutlet var recipientIban: UnderlinedTextField! {
+        didSet {
+            recipientIban.delegate = self
+        }
+    }
+    @IBOutlet var recipientBicSwift: UnderlinedTextField! {
+        didSet {
+            recipientBicSwift.delegate = self
+        }
+    }
     @IBOutlet var recipientNameErrorLabel: UILabel!
     @IBOutlet var recipientEmailErrorLabel: UILabel!
     @IBOutlet var recipientIbanErrorLabel: UILabel!
     @IBOutlet var recipientBicSwiftErrorLabel: UILabel!
     @IBOutlet var currencyLabel: UILabel!
     
-    weak var delegate: NewRecipientDelegate?
+    weak var delegate: BeneficiaryCreateDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +64,23 @@ class NewRecipientViewController: UIViewController, PickerDelegate {
                 destination.data = DataStore.shared.currencies
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        switch textField {
+        case recipientName:
+            recipientEmail.becomeFirstResponder()
+            break
+        case recipientEmail:
+            recipientIban.becomeFirstResponder()
+            break
+        case recipientIban:
+            recipientBicSwift.becomeFirstResponder()
+            break
+        default: break
+        }
+        return false
     }
     
     func didTapCurrencyLabel(sender: UILabel) {
@@ -90,22 +123,28 @@ class NewRecipientViewController: UIViewController, PickerDelegate {
             self.recipientNameErrorLabel.text = "Provide first and last name"
             return
         }
+        var currencyId: Int = 0
+        for currency in DataStore.shared.currencies {
+            if currency.isoCode == self.currencyLabel.text {
+                currencyId = currency.id!
+            }
+        }
         let params: [String : Any] = [
             "email": self.recipientEmail.text!,
             "first_name": full_name[0],
             "last_name": full_name[1],
             "entity_type": 0,
             "account": [
-                "iban": self.recipientIban.text,
-                "bic_swift": self.recipientBicSwift.text,
-                "currency": self.currencyLabel.text,
-                "country": Locale.current.regionCode
+                "iban": self.recipientIban.text!,
+                "bic_swift": self.recipientBicSwift.text!,
+                "currency": currencyId,
+                "country": Locale.current.regionCode!
             ]
         ]
         Fetcher.sharedInstance.beneficiaryCreate(params: params, completion: { (response: [String : Any]?) in
             if let beneficiary = response?["beneficiary"] as? [String: Any] {
                 let newBeneficiary = Beneficiary(values: beneficiary)
-                self.delegate?.didAddNewRecipient(recipient: newBeneficiary)
+                self.delegate?.didAdd(beneficiary: newBeneficiary)
                 _ = self.navigationController?.popViewController(animated: true)
             } else {
                 if let description = response?["description"] as? [String: Any] {

@@ -13,11 +13,12 @@ import Alamofire
 fileprivate let cellReuseIdentifier = "recipientCell"
 fileprivate let staticCellReuseIdentifier = "recipientSearchCell"
 
-class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, PickerDelegate, ConfirmTransferDelegate {
+class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, PickerDelegate, ConfirmTransactionDelegate {
     
-    var transfer: Transaction = Transaction()
+    var transaction: Transaction = Transaction()
 
     @IBOutlet var recipientsCollectionView: UICollectionView!
+    @IBOutlet var recipientsErrorLabel: UILabel!
     @IBOutlet var fromCurrencyLabel: UILabel!
     @IBOutlet var toCurrencyLabel: UILabel!
     @IBOutlet var fromAmount: UITextField! {
@@ -93,7 +94,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 cell.setUnselected()
             }
             if let cell = collectionView.cellForItem(at: indexPath) as? RecipientCollectionViewCell {
-                self.transfer.beneficiary = DataStore.shared.beneficiaries[indexPath.row]
+                self.transaction.beneficiary = DataStore.shared.beneficiaries[indexPath.row]
                 cell.recipientSelected = true
                 cell.setSelected()
             }
@@ -111,7 +112,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if segue.identifier == "confirmSend" {
             if let destination = segue.destination as? ConfirmViewController {
                 destination.delegate = self
-                destination.transfer = self.transfer
+                destination.transaction = self.transaction
                 if let fromAmountText = self.fromAmount.text,
                     let toAmountText = self.toAmount.text,
                     let fromAmountCurrency = self.fromCurrencyLabel.text,
@@ -164,10 +165,15 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    // MARK: Transfer intiated
+    // MARK: Transaction intiated
     
     @IBAction func goToConfirmScreen(_ sender: UIButton) {
-        performSegue(withIdentifier: "confirmSend", sender: sender)
+        self.recipientsErrorLabel.text = ""
+        if self.transaction.beneficiary == nil {
+            self.recipientsErrorLabel.text = "Please select a beneficiary"
+        } else {
+            performSegue(withIdentifier: "confirmSend", sender: sender)
+        }
     }
     
     // MARK: From currency label tap
@@ -200,14 +206,14 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    func didConfirmTransfer() {
+    func didConfirm(transation: Transaction) {
         self.fromAmount.text = ""
         self.toAmount.text = ""
         for cell in self.recipientsCollectionView.visibleCells.filter({(cell) in return cell is RecipientCollectionViewCell}) as! [RecipientCollectionViewCell] {
             cell.recipientSelected = false
             cell.setUnselected()
         }
-        self.transfer = Transaction()
+        self.transaction = Transaction()
     }
     
     @IBAction func unwindToSendScreen(segue: UIStoryboardSegue) {}
