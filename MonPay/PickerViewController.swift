@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CurrencyPickerDelegate: class {
+protocol PickerDelegate: class {
     func didSelect(item: Any?, at: Int?, sender: Any?)
 }
 
@@ -16,7 +16,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 
     @IBOutlet var pickerView: UIPickerView!
     
-    weak var delegate: CurrencyPickerDelegate?
+    weak var delegate: PickerDelegate?
     
     var segueSender: Any?
     

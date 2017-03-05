@@ -12,7 +12,7 @@ protocol NewRecipientDelegate: class {
     func didAddNewRecipient(recipient: Beneficiary)
 }
 
-class NewRecipientViewController: UIViewController, CurrencyPickerDelegate {
+class NewRecipientViewController: UIViewController, PickerDelegate {
 
     @IBOutlet var recipientName: UnderlinedTextField!
     @IBOutlet var recipientEmail: UnderlinedTextField!
@@ -25,8 +25,6 @@ class NewRecipientViewController: UIViewController, CurrencyPickerDelegate {
     @IBOutlet var currencyLabel: UILabel!
     
     weak var delegate: NewRecipientDelegate?
-    
-    var currencies: [Currency] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,14 +39,13 @@ class NewRecipientViewController: UIViewController, CurrencyPickerDelegate {
         let tapFromCurrencyLabel = UITapGestureRecognizer(target: self, action: #selector(didTapCurrencyLabel(sender:)))
         currencyLabel.isUserInteractionEnabled = true
         currencyLabel.addGestureRecognizer(tapFromCurrencyLabel)
-        getCurrencies()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "chooseCurrencyForNewRecipient" {
             if let destination = segue.destination as? PickerViewController {
                 destination.delegate = self
-                destination.data = self.currencies
+                destination.data = DataStore.shared.currencies
             }
         }
     }
@@ -134,19 +131,6 @@ class NewRecipientViewController: UIViewController, CurrencyPickerDelegate {
                 }
             }
         })
-    }
-    
-    func getCurrencies() {
-        Fetcher.sharedInstance.currencyList { (response: [String : Any]?) in
-            if let currencies = response?["currencies"] as? [Any] {
-                self.currencies = []
-                for currency in currencies {
-                    if let currency = currency as? [String: Any] {
-                        self.currencies.append(Currency(values: currency))
-                    }
-                }
-            }
-        }
     }
     
     @IBAction func unwindToNewRecipient(sender: UIStoryboardSegue) {}

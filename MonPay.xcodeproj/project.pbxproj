@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4907D09A1E6C1ED500229E6D /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4907D0991E6C1ED500229E6D /* DataStore.swift */; };
 		490B81FB1E41024B00BCBC4F /* OnboardingStepThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B81FA1E41024B00BCBC4F /* OnboardingStepThreeViewController.swift */; };
 		490B81FD1E4105BD00BCBC4F /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B81FC1E4105BD00BCBC4F /* AccountSettingsViewController.swift */; };
 		49204DA01E38B69500442C74 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49204D9F1E38B69500442C74 /* AccountCollectionViewCell.swift */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		170A0CC36D3E05B3159E4B17 /* Pods_MonPay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MonPay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4907D0991E6C1ED500229E6D /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		490B81FA1E41024B00BCBC4F /* OnboardingStepThreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingStepThreeViewController.swift; sourceTree = "<group>"; };
 		490B81FC1E4105BD00BCBC4F /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
 		49204D9F1E38B69500442C74 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -173,9 +175,7 @@
 				49204D9F1E38B69500442C74 /* AccountCollectionViewCell.swift */,
 				49414C6A1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift */,
 				49414C6C1E39002000CF1F20 /* ConfirmViewController.swift */,
-				4926CC571E3944550029C736 /* NewAccountViewController.swift */,
 				49AD23BE1E41D514002FE3C7 /* PickerViewController.swift */,
-				49BE68CC1E5DBF880037D225 /* AccountDetailsViewController.swift */,
 			);
 			name = Send;
 			sourceTree = "<group>";
@@ -205,6 +205,8 @@
 			isa = PBXGroup;
 			children = (
 				49F987001E3E05F700EC57C9 /* AccountViewController.swift */,
+				49BE68CC1E5DBF880037D225 /* AccountDetailsViewController.swift */,
+				4926CC571E3944550029C736 /* NewAccountViewController.swift */,
 				490B81FC1E4105BD00BCBC4F /* AccountSettingsViewController.swift */,
 			);
 			name = Account;
@@ -244,6 +246,7 @@
 		4957AC251E37B0F2006A951A /* MonPay */ = {
 			isa = PBXGroup;
 			children = (
+				4907D0991E6C1ED500229E6D /* DataStore.swift */,
 				4952AA0B1E57560D006165E7 /* Models */,
 				499CD25C1E585BEE0079D8A5 /* Utils */,
 				490B82011E41197D00BCBC4F /* Components */,
@@ -416,6 +419,7 @@
 				49C1CEDE1E3E81BB009076D3 /* CameraViewController.swift in Sources */,
 				499375191E3A4440008D65F3 /* InitialViewController.swift in Sources */,
 				4952AA131E576294006165E7 /* Transaction.swift in Sources */,
+				4907D09A1E6C1ED500229E6D /* DataStore.swift in Sources */,
 				49E500DA1E4258B7009559CB /* NewRecipientViewController.swift in Sources */,
 				49ABF5D81E6AF511000F12E2 /* Currency.swift in Sources */,
 				492316AF1E5F429800831BA6 /* OnboardingStepTwoViewController.swift in Sources */,

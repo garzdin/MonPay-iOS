@@ -9,26 +9,14 @@
 import UIKit
 import Alamofire
 
-struct SenderWithData {
-    let sender: Any
-    let data: Any
-}
-
 // MARK: Reuse identifiers
+fileprivate let cellReuseIdentifier = "recipientCell"
+fileprivate let staticCellReuseIdentifier = "recipientSearchCell"
 
-fileprivate let reuseIdentifier = "accountCell"
-fileprivate let staticReuseIdentifier = "newAccountCell"
-fileprivate let recipientCellReuseIdentifier = "recipientCell"
-fileprivate let recipientSearchCellReuseIdentifier = "recipientSearchCell"
-
-class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, CurrencyPickerDelegate, NewAccountDelegate, AccountDeleteDelegate, ConfirmTransferDelegate {
+class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, PickerDelegate, ConfirmTransferDelegate {
     
-    var accounts: [Account] = []
-    var currencies: [Currency] = []
-    var recipients: [Beneficiary] = []
     var transfer: Transaction = Transaction()
 
-    @IBOutlet var accountsCollectionView: UICollectionView!
     @IBOutlet var recipientsCollectionView: UICollectionView!
     @IBOutlet var fromCurrencyLabel: UILabel!
     @IBOutlet var toCurrencyLabel: UILabel!
@@ -45,8 +33,6 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.accountsCollectionView.delegate = self
-        self.accountsCollectionView.dataSource = self
         self.recipientsCollectionView.delegate = self
         self.recipientsCollectionView.dataSource = self
         let tapFromCurrencyLabel = UITapGestureRecognizer(target: self, action: #selector(didTapFromCurrencyLabel(sender:)))
@@ -55,9 +41,14 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let tapToCurrencyLabel = UITapGestureRecognizer(target: self, action: #selector(didTapToCurrencyLabel(sender:)))
         toCurrencyLabel.isUserInteractionEnabled = true
         toCurrencyLabel.addGestureRecognizer(tapToCurrencyLabel)
-        getAccounts()
-        getCurrencies()
-        getRecipients()
+        self.refreshData()
+    }
+    
+    func refreshData() {
+        DataStore.shared.getBeneficiaries { 
+            self.recipientsCollectionView.reloadData()
+        }
+        DataStore.shared.getCurrencies(completion: nil)
     }
     
     // MARK: Data delegation
@@ -68,11 +59,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            if collectionView == accountsCollectionView {
-                return self.accounts.count
-            } else {
-                return self.recipients.count
-            }
+            return DataStore.shared.beneficiaries.count
         } else {
             return 1
         }
@@ -82,37 +69,17 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 1 {
-            if collectionView == accountsCollectionView {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: staticReuseIdentifier, for: indexPath)
-                return cell
-            } else {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: recipientSearchCellReuseIdentifier, for: indexPath)
-                return cell
-            }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: staticCellReuseIdentifier, for: indexPath)
+            return cell
         } else {
-            if collectionView == accountsCollectionView {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AccountCollectionViewCell
-                if let iban = self.accounts[indexPath.row].iban {
-                    cell.accountNumberLabel.text = iban
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! RecipientCollectionViewCell
+            if let first_name = DataStore.shared.beneficiaries[indexPath.row].first_name, let last_name = DataStore.shared.beneficiaries[indexPath.row].last_name {
+                if let firstNameInitial = first_name.characters.first, let lastNameInitial = last_name.characters.first {
+                    cell.initialsLabel.text = "\(firstNameInitial)\(lastNameInitial)"
                 }
-                if let active = self.accounts[indexPath.row].active {
-                    self.transfer.account = self.accounts[indexPath.row]
-                    cell.accountSelected = active
-                    cell.selectedIndicator.isHidden = !active
-                }
-                cell.infoButton.tag = indexPath.row
-                cell.infoButton.addTarget(self, action: #selector(didTapInfoButton(sender:)), for: UIControlEvents.touchUpInside)
-                return cell
-            } else {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: recipientCellReuseIdentifier, for: indexPath) as! RecipientCollectionViewCell
-                if let first_name = self.recipients[indexPath.row].first_name, let last_name = self.recipients[indexPath.row].last_name {
-                    if let firstNameInitial = first_name.characters.first, let lastNameInitial = last_name.characters.first {
-                        cell.initialsLabel.text = "\(firstNameInitial)\(lastNameInitial)"
-                    }
-                    cell.nameLabel.text = "\(first_name) \(last_name)"
-                }
-                return cell
+                cell.nameLabel.text = "\(first_name) \(last_name)"
             }
+            return cell
         }
     }
     
@@ -120,33 +87,14 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            if collectionView == accountsCollectionView {
-                for cell in collectionView.visibleCells.filter({(cell) in return cell is AccountCollectionViewCell}) as! [AccountCollectionViewCell] {
-                    cell.selectedIndicator.isHidden = true
-                    cell.accountSelected = false
-                }
-                let cell = collectionView.cellForItem(at: indexPath) as! AccountCollectionViewCell
-                if let accountId = self.accounts[indexPath.row].id {
-                    Fetcher.sharedInstance.accountActivate(id: accountId, completion: { (response: [String : Any]?) in
-                        if let _ = response?["account"] as? [String: Any] {
-                            self.transfer.account = self.accounts[indexPath.row]
-                            self.accounts[indexPath.row].active = true
-                            cell.accountSelected = true
-                            cell.selectedIndicator.isHidden = false
-                        }
-                    })
-                }
+            for cell in collectionView.visibleCells.filter({(cell) in return cell is RecipientCollectionViewCell}) as! [RecipientCollectionViewCell] {
+                cell.recipientSelected = false
+                cell.setUnselected()
             }
-            if collectionView == recipientsCollectionView {
-                for cell in collectionView.visibleCells.filter({(cell) in return cell is RecipientCollectionViewCell}) as! [RecipientCollectionViewCell] {
-                    cell.recipientSelected = false
-                    cell.setUnselected()
-                }
-                if let cell = collectionView.cellForItem(at: indexPath) as? RecipientCollectionViewCell {
-                    self.transfer.beneficiary = self.recipients[indexPath.row]
-                    cell.recipientSelected = true
-                    cell.setSelected()
-                }
+            if let cell = collectionView.cellForItem(at: indexPath) as? RecipientCollectionViewCell {
+                self.transfer.beneficiary = DataStore.shared.beneficiaries[indexPath.row]
+                cell.recipientSelected = true
+                cell.setSelected()
             }
         }
     }
@@ -156,22 +104,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
             if let destination = segue.destination as? PickerViewController {
                 destination.delegate = self
                 destination.segueSender = sender
-                destination.data = self.currencies
-            }
-        }
-        if segue.identifier == "addNewAccount" {
-            if let destination = segue.destination as? NewAccountViewController {
-                destination.delegate = self
-            }
-        }
-        if segue.identifier == "showAccountDetails" {
-            if let destination = segue.destination as? AccountDetailsViewController {
-                if let payload = sender as? SenderWithData {
-                    if let account = payload.data as? Account {
-                        destination.delegate = self
-                        destination.account = account
-                    }
-                }
+                destination.data = DataStore.shared.beneficiaries
             }
         }
         if segue.identifier == "confirmSend" {
@@ -198,23 +131,6 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
             toAmount.becomeFirstResponder()
         }
         return false
-    }
-    
-    // MARK: Cell info button tapped action
-    
-    func didTapInfoButton(sender: UIButton?) {
-        if let index = sender?.tag {
-            if let sender = sender {
-                let customSender = SenderWithData(sender: sender, data: self.accounts[index])
-                performSegue(withIdentifier: "showAccountDetails", sender: customSender)
-            }
-        }
-    }
-    
-    // MARK: Cell add new account button tapped action
-    
-    @IBAction func addNewAccount(_ sender: UIButton) {
-        performSegue(withIdentifier: "addNewAccount", sender: sender)
     }
     
     // MARK: Transfer intiated
@@ -253,18 +169,6 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    func didAddNewAccount(account: Account) {
-        self.accounts.append(account)
-        self.accountsCollectionView.reloadData()
-    }
-    
-    func didDeleteAccount(account: Account) {
-        if let index = self.accounts.index(of: account) {
-            self.accounts.remove(at: index)
-            self.accountsCollectionView.reloadData()
-        }
-    }
-    
     func didConfirmTransfer() {
         self.fromAmount.text = ""
         self.toAmount.text = ""
@@ -276,46 +180,5 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     @IBAction func unwindToSendScreen(segue: UIStoryboardSegue) {}
-    
-    func getAccounts() {
-        Fetcher.sharedInstance.accountList { (response: [String : Any]?) in
-            if let accounts = response?["accounts"] as? [Any] {
-                self.accounts = []
-                for account in accounts {
-                    if let account = account as? [String: Any] {
-                        self.accounts.append(Account(values: account))
-                    }
-                }
-                self.accountsCollectionView.reloadData()
-            }
-        }
-    }
-    
-    func getCurrencies() {
-        Fetcher.sharedInstance.currencyList { (response: [String : Any]?) in
-            if let currencies = response?["currencies"] as? [Any] {
-                self.currencies = []
-                for currency in currencies {
-                    if let currency = currency as? [String: Any] {
-                        self.currencies.append(Currency(values: currency))
-                    }
-                }
-            }
-        }
-    }
-    
-    func getRecipients() {
-        Fetcher.sharedInstance.beneficiaryList { (response: [String : Any]?) in
-            if let recipients = response?["beneficiaries"] as? [Any] {
-                self.recipients = []
-                for recipient in recipients {
-                    if let recipient = recipient as? [String: Any] {
-                        self.recipients.append(Beneficiary(values: recipient))
-                    }
-                }
-                self.recipientsCollectionView.reloadData()
-            }
-        }
-    }
 }
 

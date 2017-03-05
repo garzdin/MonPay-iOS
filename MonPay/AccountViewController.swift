@@ -9,74 +9,148 @@
 import UIKit
 import Alamofire
 
-fileprivate let dateFormat: String = "yyyy-MM-dd"
+struct SenderWithData {
+    let sender: Any
+    let data: Any
+}
 
-class AccountViewController: UIViewController {
+fileprivate let reuseIdentifier = "accountCell"
+fileprivate let staticReuseIdentifier = "newAccountCell"
 
-    @IBOutlet var emailField: UnderlinedTextField!
-    @IBOutlet var firstNameField: UnderlinedTextField!
-    @IBOutlet var lastNameField: UnderlinedTextField!
-    @IBOutlet var dateOfBirthField: UnderlinedTextField!
-    @IBOutlet var postalCodeField: UnderlinedTextField!
-    @IBOutlet var cityField: UnderlinedTextField!
-    @IBOutlet var countryField: UnderlinedTextField!
-    @IBOutlet var addressField: UnderlinedTextField!
+class AccountViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, NewAccountDelegate, AccountDeleteDelegate  {
+
+    @IBOutlet var initialsLabel: UILabel!
+    @IBOutlet var nameLabel: UILabel!
     
-    var user: User?
+    @IBOutlet var accountsCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.getAccountInfo()
-        emailField.isEnabled = false
-        firstNameField.isEnabled = false
-        lastNameField.isEnabled = false
-        dateOfBirthField.isEnabled = false
+        self.accountsCollectionView.delegate = self
+        self.accountsCollectionView.dataSource = self
+        self.setupUser()
     }
     
-    @IBAction func saveAction(_ sender: UIButton) {
-        self.view.endEditing(true)
-        if let address = self.addressField.text,
-            let city = self.cityField.text,
-            let postalCode = self.postalCodeField.text,
-            let country = self.countryField.text {
-            let params: [String : Any] = [
-                "address": address,
-                "city": city,
-                "postal_code": postalCode,
-                "country": country
-            ]
-            Fetcher.sharedInstance.userAddressUpdate(params: params, completion: { (response: [String : Any]?) in
-                self.getAccountInfo()
-            })
-        }
-    }
-    
-    @IBAction func unwindToAccount(segue: UIStoryboardSegue) {}
-    
-    func getAccountInfo() {
-        Fetcher.sharedInstance.userGet { (response: [String : Any]?) in
-            if let user = response?["user"] as? [String: Any] {
-                self.user = User(values: user)
-                self.emailField.text = self.user?.email
-                self.firstNameField.text = self.user?.first_name
-                self.lastNameField.text = self.user?.last_name
-                if let date_of_birth = self.user?.date_of_birth {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = dateFormat
-                    if let regionCode = Locale.current.regionCode {
-                        dateFormatter.locale = Locale.init(identifier: regionCode)
-                    }
-                    self.dateOfBirthField.text = dateFormatter.string(from: date_of_birth)
-                }
-                if let address = self.user?.address {
-                    if let postal_code = address.postal_code {
-                        self.postalCodeField.text = "\(postal_code)"
-                    }
-                    self.cityField.text = address.city
-                    self.countryField.text = address.country
-                    self.addressField.text = address.address
+    func setupUser() {
+        if let user = DataStore.shared.user {
+            if let first_name = user.first_name, let last_name = user.last_name {
+                self.nameLabel.text = "\(first_name) \(last_name)"
+                if let firstNameInitial = first_name.characters.first, let lastNameInitial = last_name.characters.first {
+                    self.initialsLabel.text = "\(firstNameInitial)\(lastNameInitial)"
                 }
             }
         }
     }
+    
+    func refreshData() {
+        DataStore.shared.getUser {
+            self.setupUser()
+        }
+        DataStore.shared.getAccounts { 
+            self.accountsCollectionView.reloadData()
+        }
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 0 {
+            return DataStore.shared.accounts.count
+        } else {
+            return 1
+        }
+    }
+    
+    // MARK: Cells setup
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.section == 1 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: staticReuseIdentifier, for: indexPath)
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as!AccountCollectionViewCell
+            if let iban = DataStore.shared.accounts[indexPath.row].iban {
+                cell.accountNumberLabel.text = iban
+            }
+            if let active = DataStore.shared.accounts[indexPath.row].active {
+                cell.accountSelected = active
+                cell.selectedIndicator.isHidden = !active
+            }
+            cell.infoButton.tag = indexPath.row
+            cell.infoButton.addTarget(self, action: #selector(didTapInfoButton(sender:)), for: UIControlEvents.touchUpInside)
+            return cell
+        }
+    }
+    
+    // MARK: Cells indication
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            for cell in collectionView.visibleCells.filter({(cell) in return cell is AccountCollectionViewCell}) as! [AccountCollectionViewCell] {
+                cell.selectedIndicator.isHidden = true
+                cell.accountSelected = false
+            }
+            let cell = collectionView.cellForItem(at: indexPath) as! AccountCollectionViewCell
+            if let accountId = DataStore.shared.accounts[indexPath.row].id {
+                Fetcher.sharedInstance.accountActivate(id: accountId, completion: { (response: [String : Any]?) in
+                    if let _ = response?["account"] as? [String: Any] {
+                        DataStore.shared.accounts[indexPath.row].active = true
+                        cell.accountSelected = true
+                        cell.selectedIndicator.isHidden = false
+                    }
+                })
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addNewAccount" {
+            if let destination = segue.destination as? NewAccountViewController {
+                destination.delegate = self
+            }
+        }
+        if segue.identifier == "showAccountDetails" {
+            if let destination = segue.destination as? AccountDetailsViewController {
+                if let payload = sender as? SenderWithData {
+                    if let account = payload.data as? Account {
+                        destination.delegate = self
+                        destination.account = account
+                    }
+                }
+            }
+        }
+    }
+    
+    // MARK: Cell info button tapped action
+    
+    func didTapInfoButton(sender: UIButton?) {
+        if let index = sender?.tag {
+            if let sender = sender {
+                let customSender = SenderWithData(sender: sender, data: DataStore.shared.accounts[index])
+                performSegue(withIdentifier: "showAccountDetails", sender: customSender)
+            }
+        }
+    }
+    
+    // MARK: Cell add new account button tapped action
+    
+    @IBAction func addNewAccount(_ sender: UIButton) {
+        performSegue(withIdentifier: "addNewAccount", sender: sender)
+    }
+    
+    func didAddNewAccount(account: Account) {
+        DataStore.shared.accounts.append(account)
+        self.accountsCollectionView.reloadData()
+    }
+    
+    func didDeleteAccount(account: Account) {
+        if let index = DataStore.shared.accounts.index(of: account) {
+            DataStore.shared.accounts.remove(at: index)
+            self.accountsCollectionView.reloadData()
+        }
+    }
+    
+    @IBAction func unwindToAccount(segue: UIStoryboardSegue) {}
 }

@@ -13,7 +13,7 @@ protocol NewAccountDelegate: class {
     func didAddNewAccount(account: Account)
 }
 
-class NewAccountViewController: UIViewController, UITextFieldDelegate, CurrencyPickerDelegate {
+class NewAccountViewController: UIViewController, UITextFieldDelegate, PickerDelegate {
 
     @IBOutlet var ibanTextField: UnderlinedTextField!
     @IBOutlet var bicSwiftTextField: UnderlinedTextField!
@@ -23,7 +23,6 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate, CurrencyP
     
     weak var delegate: NewAccountDelegate?
     
-    var currencies: [Currency] = []
     var selectedCurrency: Currency?
     
     override func viewDidLoad() {
@@ -31,14 +30,13 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate, CurrencyP
         let tapCurrencyLabel = UITapGestureRecognizer(target: self, action: #selector(didTapCurrencyLabel(sender:)))
         currencyLabel.isUserInteractionEnabled = true
         currencyLabel.addGestureRecognizer(tapCurrencyLabel)
-        getCurrencies()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectCurrencyForNewAccount" {
             if let destination = segue.destination as? PickerViewController {
                 destination.delegate = self
-                destination.data = self.currencies
+                destination.data = DataStore.shared.currencies
             }
         }
     }
@@ -59,19 +57,6 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate, CurrencyP
         if let currency = item as? Currency {
             self.selectedCurrency = currency
             currencyLabel.text = currency.isoCode
-        }
-    }
-    
-    func getCurrencies() {
-        Fetcher.sharedInstance.currencyList { (response: [String : Any]?) in
-            if let currencies = response?["currencies"] as? [Any] {
-                self.currencies = []
-                for currency in currencies {
-                    if let currency = currency as? [String: Any] {
-                        self.currencies.append(Currency(values: currency))
-                    }
-                }
-            }
         }
     }
     

@@ -12,13 +12,16 @@ import Alamofire
 fileprivate let reuseIdentifier = "transferCell"
 
 class TransfersTableViewController: UITableViewController, TransferDeleteDelegate {
-    
-    var transfers: [Transaction] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.contentInset = UIEdgeInsetsMake(15, 0, 0, 0)
-        self.getTransfersData()
+    }
+    
+    func refreshData() {
+        DataStore.shared.getTransactions { 
+            self.tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
@@ -28,12 +31,12 @@ class TransfersTableViewController: UITableViewController, TransferDeleteDelegat
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return transfers.count
+        return DataStore.shared.transactions.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! TransferTableViewCell
-        if let amount = self.transfers[indexPath.row].amount, let currency = self.transfers[indexPath.row].currency {
+        if let amount = DataStore.shared.transactions[indexPath.row].amount, let currency = DataStore.shared.transactions[indexPath.row].currency {
             cell.amountLabel.text = "\(amount) \(currency)"
         }
         cell.nameLabel.text = "Jane Doe"
@@ -47,29 +50,15 @@ class TransfersTableViewController: UITableViewController, TransferDeleteDelegat
             if let detailsViewController = segue.destination as? TransferDetailsViewController {
                 if let selectedRow = self.tableView.indexPathForSelectedRow?.row {
                     detailsViewController.delegate = self
-                    detailsViewController.transfer = self.transfers[selectedRow]
+                    detailsViewController.transaction = DataStore.shared.transactions[selectedRow]
                 }
             }
         }
     }
     
     func didDeleteTransfer(transfer: Transaction) {
-        if let index = self.transfers.index(of: transfer) {
-            self.transfers.remove(at: index)
-            self.tableView.reloadData()
-        }
-    }
-    
-    func getTransfersData() {
-        Fetcher.sharedInstance.transactionList { (response: [String : Any]?) in
-            if let transfers = response?["transactions"] as? [Any] {
-                self.transfers = []
-                for transfer in transfers {
-                    if let transfer = transfer as? [String: Any] {
-                        self.transfers.append(Transaction(values: transfer))
-                    }
-                }
-            }
+        if let index = DataStore.shared.transactions.index(of: transfer) {
+            DataStore.shared.transactions.remove(at: index)
             self.tableView.reloadData()
         }
     }

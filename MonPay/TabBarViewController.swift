@@ -17,19 +17,17 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if let viewController = viewController as? UINavigationController {
-            if let viewController = viewController.childViewControllers.first as? SendViewController {
-                viewController.getAccounts()
-                viewController.getCurrencies()
-                viewController.getRecipients()
+            if let sendViewController = viewController.childViewControllers.first as? SendViewController {
+                sendViewController.refreshData()
             }
-            if let viewController = viewController.childViewControllers.first as? TransfersTableViewController {
-                viewController.getTransfersData()
+            if let transactionsViewController = viewController.childViewControllers.first as? TransfersTableViewController {
+                transactionsViewController.refreshData()
             }
-            if let viewController = viewController.childViewControllers.first as? RecipientsTableViewController {
-                viewController.getRecipientsData()
+            if let beneficiariesViewController = viewController.childViewControllers.first as? RecipientsTableViewController {
+                beneficiariesViewController.refreshData()
             }
-            if let viewController = viewController.childViewControllers.first as? AccountViewController {
-                viewController.getAccountInfo()
+            if let accountViewController = viewController.childViewControllers.first as? AccountViewController {
+                accountViewController.refreshData()
             }
         }
     }

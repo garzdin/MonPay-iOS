@@ -21,7 +21,7 @@ class TransferDetailsViewController: UIViewController {
     @IBOutlet var ibanLabel: UILabel!
     @IBOutlet var statusLabel: UILabel!
     
-    var transfer: Transaction?
+    var transaction: Transaction?
     
     weak var delegate: TransferDeleteDelegate?
     
@@ -36,23 +36,23 @@ class TransferDetailsViewController: UIViewController {
         backButton.sizeToFit()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "delete"), style: .plain, target: self, action: #selector(didPressDelete(sender:)))
-        if let transfer = self.transfer {
-//            if let first_name = transfer.beneficiary.first_name, let last_name = transfer.beneficiary.last_name {
-//                self.nameLabel.text = "\(first_name) \(last_name)"
-//                if let firstNameInitial = first_name.characters.first, let lastNameInitial = last_name.characters.first {
-//                    self.initialsLabel.text = "\(firstNameInitial)\(lastNameInitial)"
-//                }
-//            }
-            if let amount = transfer.amount, let currency = transfer.currency {
+        if let transaction = self.transaction {
+            if let first_name = transaction.beneficiary?.first_name, let last_name = transaction.beneficiary?.last_name {
+                self.nameLabel.text = "\(first_name) \(last_name)"
+                if let firstNameInitial = first_name.characters.first, let lastNameInitial = last_name.characters.first {
+                    self.initialsLabel.text = "\(firstNameInitial)\(lastNameInitial)"
+                }
+            }
+            if let amount = transaction.amount, let currency = transaction.currency {
                 self.amountLabel.text = "\(amount) \(currency)"
             }
-//            if let email = transfer.beneficiary.email {
-//                self.emailLabel.text = email
-//            }
-//            if let iban = transfer.beneficiary.account?.iban {
-//                self.ibanLabel.text = iban
-//            }
-            if let status = transfer.completed {
+            if let email = self.transaction?.beneficiary?.email {
+                self.emailLabel.text = email
+            }
+            if let iban = self.transaction?.beneficiary?.account?.iban {
+                self.ibanLabel.text = iban
+            }
+            if let status = transaction.completed {
                 self.statusLabel.text = status ? "Completed" : "Processing"
             }
         }
@@ -64,7 +64,7 @@ class TransferDetailsViewController: UIViewController {
     }
     
     func didPressDelete(sender: UIBarButtonItem) {
-        if let transfer = self.transfer, let amount = transfer.amount, let currency = transfer.currency {
+        if let transfer = self.transaction, let amount = transfer.amount, let currency = transfer.currency {
             let alert = UIAlertController(title: "Are you sure?", message: "Would you like to delete the transfer of \(amount) \(currency) from your transfer history?", preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive, handler: { (action: UIAlertAction!) in
                 self.confirmDelete(sender: alert)
@@ -79,7 +79,7 @@ class TransferDetailsViewController: UIViewController {
     }
     
     func confirmDelete(sender: UIAlertController) {
-        if let transfer = self.transfer {
+        if let transfer = self.transaction {
             let params = [
                 "id": transfer.id
             ]
