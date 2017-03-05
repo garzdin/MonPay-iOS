@@ -22,7 +22,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     var data: [Any]?
     
-    var selectedRow: Int?
+    var selectedRow: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,10 +59,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     @IBAction func didPressChoose(_ sender: UIButton) {
-        if let selectedRow = self.selectedRow {
-            delegate?.didSelect(item: data?[selectedRow], at: selectedRow, sender: segueSender)
-            self.dismiss(animated: true, completion: nil)
-        }
+        delegate?.didSelect(item: data?[selectedRow], at: selectedRow, sender: segueSender)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func dismissAction(_ sender: UIButton) {
