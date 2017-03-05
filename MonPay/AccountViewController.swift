@@ -76,7 +76,9 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
             }
             if let active = DataStore.shared.accounts[indexPath.row].active {
                 cell.accountSelected = active
-                cell.selectedIndicator.isHidden = !active
+                if active == true {
+                    cell.setSelected(collectionView: collectionView, cell: cell)
+                }
             }
             cell.infoButton.tag = indexPath.row
             cell.infoButton.addTarget(self, action: #selector(didTapInfoButton(sender:)), for: UIControlEvents.touchUpInside)
@@ -89,7 +91,7 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             for cell in collectionView.visibleCells.filter({(cell) in return cell is AccountCollectionViewCell}) as! [AccountCollectionViewCell] {
-                cell.selectedIndicator.isHidden = true
+                cell.setDeselected()
                 cell.accountSelected = false
             }
             let cell = collectionView.cellForItem(at: indexPath) as! AccountCollectionViewCell
@@ -98,7 +100,7 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
                     if let _ = response?["account"] as? [String: Any] {
                         DataStore.shared.accounts[indexPath.row].active = true
                         cell.accountSelected = true
-                        cell.selectedIndicator.isHidden = false
+                        cell.setSelected(collectionView: collectionView, cell: cell)
                     }
                 })
             }

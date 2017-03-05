@@ -412,25 +412,15 @@
                                                     </constraints>
                                                     <state key="normal" image="info"/>
                                                 </button>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTd-Gk-Haa">
-                                                    <rect key="frame" x="3" y="97" width="144" height="3"/>
-                                                    <color key="backgroundColor" red="0.28235294119999998" green="0.81176470590000005" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="3" id="cY6-Kz-zS0"/>
-                                                    </constraints>
-                                                </view>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="L5x-LV-igB" secondAttribute="bottom" id="9fx-hS-h6t"/>
                                             <constraint firstItem="L5x-LV-igB" firstAttribute="top" secondItem="56H-vj-EqS" secondAttribute="top" id="AJe-kt-UGW"/>
-                                            <constraint firstAttribute="bottom" secondItem="bTd-Gk-Haa" secondAttribute="bottom" id="Ezt-ID-xaa"/>
                                             <constraint firstItem="FSu-JE-LPs" firstAttribute="top" secondItem="56H-vj-EqS" secondAttribute="top" constant="8" id="PTe-xy-YFs"/>
                                             <constraint firstItem="IbS-Rc-uet" firstAttribute="leading" secondItem="56H-vj-EqS" secondAttribute="leadingMargin" id="Xzy-9f-Vzr"/>
                                             <constraint firstItem="IbS-Rc-uet" firstAttribute="centerY" secondItem="56H-vj-EqS" secondAttribute="centerY" id="cMf-lI-dua"/>
-                                            <constraint firstAttribute="trailing" secondItem="bTd-Gk-Haa" secondAttribute="trailing" constant="3" id="cXZ-Om-J0G"/>
                                             <constraint firstAttribute="trailing" secondItem="FSu-JE-LPs" secondAttribute="trailing" constant="5" id="pwD-bk-fLc"/>
-                                            <constraint firstItem="bTd-Gk-Haa" firstAttribute="leading" secondItem="56H-vj-EqS" secondAttribute="leading" constant="3" id="rU7-3D-g4U"/>
                                             <constraint firstItem="IbS-Rc-uet" firstAttribute="centerX" secondItem="56H-vj-EqS" secondAttribute="centerX" id="ujV-OS-WCT"/>
                                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="IbS-Rc-uet" secondAttribute="trailing" id="urn-iI-quy"/>
                                             <constraint firstAttribute="trailing" secondItem="L5x-LV-igB" secondAttribute="trailing" id="yHn-iN-psB"/>
@@ -440,7 +430,6 @@
                                         <connections>
                                             <outlet property="accountNumberLabel" destination="IbS-Rc-uet" id="zeo-Ix-Gj4"/>
                                             <outlet property="infoButton" destination="FSu-JE-LPs" id="S6p-CO-8yy"/>
-                                            <outlet property="selectedIndicator" destination="bTd-Gk-Haa" id="nkz-A0-hBE"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="newAccountCell" id="nZe-IH-J9z">
