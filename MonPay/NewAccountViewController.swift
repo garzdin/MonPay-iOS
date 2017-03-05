@@ -71,6 +71,10 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate, PickerDel
             self.bicSwiftErrorLabel.text = "BIC/SWIFT required"
             return
         }
+        if self.currencyLabel.text == "NONE" {
+            self.ibanErrorLabel.text = "Please select a currency"
+            return
+        }
         let params: [String: Any] = [
             "iban": ibanTextField.text!,
             "bic_swift": bicSwiftTextField!.text!,

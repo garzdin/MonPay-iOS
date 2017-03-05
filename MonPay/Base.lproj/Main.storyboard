@@ -1574,7 +1574,7 @@
                                                     </constraints>
                                                 </view>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="IBAN" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="2fV-Y5-vLE" customClass="UnderlinedTextField" customModule="MonPay" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="321" height="34"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="310.33333333333331" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="T6s-Hq-vob"/>
                                                     </constraints>
@@ -1587,8 +1587,8 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BGN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odV-D0-CTl">
-                                                    <rect key="frame" x="324" y="6" width="34" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NONE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odV-D0-CTl">
+                                                    <rect key="frame" x="313.33333333333326" y="6" width="44.666666666666686" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.28235294117647058" green="0.81176470588235294" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2968,6 +2968,6 @@ of an ID document. This document can be either your
         <image name="transfers" width="17" height="17"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SVa-Xn-taY"/>
+        <segue reference="z51-Uv-c9T"/>
     </inferredMetricsTieBreakers>
 </document>
