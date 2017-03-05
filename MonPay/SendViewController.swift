@@ -26,11 +26,13 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
             fromAmount.delegate = self
         }
     }
+    @IBOutlet var fromAmountErrorLabel: UILabel!
     @IBOutlet var toAmount: UITextField! {
         didSet {
             toAmount.delegate = self
         }
     }
+    @IBOutlet var toAmountErrorLabel: UILabel!
     @IBOutlet var feeLabel: UILabel!
     
     override func viewDidLoad() {
@@ -106,7 +108,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
             if let destination = segue.destination as? PickerViewController {
                 destination.delegate = self
                 destination.segueSender = sender
-                destination.data = DataStore.shared.beneficiaries
+                destination.data = DataStore.shared.currencies
             }
         }
         if segue.identifier == "confirmSend" {
@@ -136,8 +138,22 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func createConversion() {
-        var fromCurrencyId: Int = 0
-        var toCurrencyId: Int = 0
+        self.fromAmountErrorLabel.text = ""
+        self.toAmountErrorLabel.text = ""
+        if self.fromAmount.text == "" {
+            self.fromAmountErrorLabel.text = "Please enter an amount"
+            return
+        }
+        if self.fromCurrencyLabel.text == "NONE" {
+            self.fromAmountErrorLabel.text = "Please select a currency"
+            return
+        }
+        if self.toCurrencyLabel.text == "NONE" {
+            self.toAmountErrorLabel.text = "Please select a currency"
+            return
+        }
+        var fromCurrencyId: Int?
+        var toCurrencyId: Int?
         let amount = Float(self.fromAmount.text!)
         for currency in DataStore.shared.currencies {
             if currency.isoCode == fromCurrencyLabel.text {
@@ -147,20 +163,22 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 toCurrencyId = currency.id!
             }
         }
-        let params: Parameters = [
-            "from": fromCurrencyId,
-            "to": toCurrencyId,
-            "amount": amount ?? 0
-        ]
-        Fetcher.sharedInstance.conversionCreate(params: params) { (response: [String : Any]?) in
-            if let conversion = response?["conversion"] as? [String: Any],
-                let fromCurrency = conversion["from_currency"] as? String,
-                let _ = conversion["to_currency"] as? String,
-                let _ = conversion["from_amount"] as? Float,
-                let toAmount = conversion["to_amount"] as? Float,
-                let fee = conversion["fee"] as? Float {
-                self.toAmount.text = "\(toAmount - fee)"
-                self.feeLabel.text = "\(fee) \(fromCurrency)"
+        if let fromCurrencyId = fromCurrencyId, let toCurrencyId = toCurrencyId {
+            let params: Parameters = [
+                "from": fromCurrencyId,
+                "to": toCurrencyId,
+                "amount": amount ?? 0
+            ]
+            Fetcher.sharedInstance.conversionCreate(params: params) { (response: [String : Any]?) in
+                if let conversion = response?["conversion"] as? [String: Any],
+                    let fromCurrency = conversion["from_currency"] as? String,
+                    let _ = conversion["to_currency"] as? String,
+                    let _ = conversion["from_amount"] as? Float,
+                    let toAmount = conversion["to_amount"] as? Float,
+                    let fee = conversion["fee"] as? Float {
+                    self.toAmount.text = "\(toAmount - fee)"
+                    self.feeLabel.text = "\(fee) \(fromCurrency)"
+                }
             }
         }
     }
@@ -189,19 +207,13 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func didSelect(item: Any?, at: Int?, sender: Any?) {
+        self.fromAmountErrorLabel.text = ""
+        self.toAmountErrorLabel.text = ""
         if let gesture = sender as? UITapGestureRecognizer {
             if let label = gesture.view as? UILabel {
                 if let currency = item as? Currency {
                     label.text = currency.isoCode
                 }
-            }
-        }
-    }
-    
-    func didSelectCurrency(index: Int, currency: String, sender: Any?) {
-        if let gesture = sender as? UITapGestureRecognizer {
-            if let label = gesture.view as? UILabel {
-                label.text = currency
             }
         }
     }
