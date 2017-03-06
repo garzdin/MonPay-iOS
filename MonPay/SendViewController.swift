@@ -241,6 +241,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func didConfirm(transation: Transaction) {
         self.resetInterface()
+        self.view.endEditing(true)
         for cell in self.recipientsCollectionView.visibleCells.filter({(cell) in return cell is RecipientCollectionViewCell}) as! [RecipientCollectionViewCell] {
             cell.recipientSelected = false
             cell.setUnselected()
