@@ -120,11 +120,23 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 destination.transaction = self.transaction
                 if let fromAmountText = self.fromAmount.text,
                     let toAmountText = self.toAmount.text,
-                    let fromAmountCurrency = self.fromCurrencyLabel.text,
-                    let toAmountCurrency = self.toCurrencyLabel.text {
+                    let fromAmountCurrencyText = self.fromCurrencyLabel.text,
+                    let toAmountCurrencyText = self.toCurrencyLabel.text {
+                    var fromAmountCurrency: Currency?
+                    var toAmountCurrency: Currency?
+                    for currency in DataStore.shared.currencies {
+                        if currency.isoCode == fromAmountCurrencyText {
+                            fromAmountCurrency = currency
+                        }
+                        if currency.isoCode == toAmountCurrencyText {
+                            toAmountCurrency = currency
+                        }
+                    }
                     if let fromAmount = Float(fromAmountText),
-                        let toAmount = Float(toAmountText) {
-                        let pairs = CurrencyPairs(fromAmount: fromAmount, fromCurrency: fromAmountCurrency, toAmount: toAmount, toCurrency: toAmountCurrency)
+                        let toAmount = Float(toAmountText),
+                        let fromCurrency = fromAmountCurrency,
+                        let toCurrency = toAmountCurrency {
+                        let pairs = CurrencyPairs(fromAmount: fromAmount, fromCurrency: fromCurrency, toAmount: toAmount, toCurrency: toCurrency)
                         destination.pairs = pairs
                     }
                 }

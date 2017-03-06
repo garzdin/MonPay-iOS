@@ -36,15 +36,7 @@ class RecipientsTableViewController: UITableViewController, BeneficiaryCreateDel
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! RecipientTableViewCell
-        if let first_name = DataStore.shared.beneficiaries[indexPath.row].first_name, let last_name = DataStore.shared.beneficiaries[indexPath.row].last_name {
-            cell.nameLabel.text = "\(first_name) \(last_name)"
-            if let firstNameInitial = first_name.characters.first, let lastNameInitial = last_name.characters.first {
-                cell.initialsLabel.text = "\(firstNameInitial)\(lastNameInitial)"
-            }
-        }
-        if let account = DataStore.shared.beneficiaries[indexPath.row].account?.iban {
-            cell.accountLabel.text = account
-        }
+        cell.setupCell(beneficiary: DataStore.shared.beneficiaries[indexPath.row])
         return cell
     }
     

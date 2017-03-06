@@ -37,14 +37,18 @@ class RecipientDetailsViewController: UIViewController {
         backButton.sizeToFit()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "delete"), style: .plain, target: self, action: #selector(didPressDelete(sender:)))
-        if let recipient = self.recipient {
-            if let first_name = recipient.first_name, let last_name = recipient.last_name {
-                self.nameLabel.text = "\(first_name) \(last_name)"
-                if let firstNameInitial = first_name.characters.first, let lastNameInitial = last_name.characters.first {
+        self.setupDetailsFor(beneficiary: self.recipient)
+    }
+    
+    func setupDetailsFor(beneficiary: Beneficiary?) {
+        if let beneficiary = beneficiary {
+            if let firstName = beneficiary.first_name, let lastName = beneficiary.last_name {
+                self.nameLabel.text = "\(firstName) \(lastName)"
+                if let firstNameInitial = firstName.characters.first, let lastNameInitial = lastName.characters.first {
                     self.initialsLabel.text = "\(firstNameInitial)\(lastNameInitial)"
                 }
             }
-            if let entityType = recipient.entity_type {
+            if let entityType = beneficiary.entity_type {
                 switch entityType {
                 case 0:
                     self.entityTypeLabel.text = "Private"
@@ -55,13 +59,13 @@ class RecipientDetailsViewController: UIViewController {
                 default: break
                 }
             }
-            if let email = recipient.email {
+            if let email = beneficiary.email {
                 self.emailLabel.text = email
             }
-            if let iban = recipient.account?.iban {
+            if let iban = beneficiary.account?.iban {
                 self.ibanLabel.text = iban
             }
-            if let bicSwift = recipient.account?.bic_swift {
+            if let bicSwift = beneficiary.account?.bic_swift {
                 self.bicSwiftLabel.text = bicSwift
             }
         }

@@ -11,9 +11,9 @@ import Alamofire
 
 struct CurrencyPairs {
     let fromAmount: Float
-    let fromCurrency: String
+    let fromCurrency: Currency
     let toAmount: Float
-    let toCurrency: String
+    let toCurrency: Currency
 }
 
 protocol ConfirmTransactionDelegate: class {
@@ -51,8 +51,8 @@ class ConfirmViewController: UIViewController {
                 self.nameLabel.text = "\(first_name) \(last_name)"
             }
             self.ibanLabel.text = self.beneficiary?.account?.iban
-            self.fromCurrencyLabel.text = self.pairs?.fromCurrency
-            self.toCurrencyLabel.text = self.pairs?.toCurrency
+            self.fromCurrencyLabel.text = self.pairs?.fromCurrency.isoCode
+            self.toCurrencyLabel.text = self.pairs?.toCurrency.isoCode
             if let fromAmountCurrency = self.pairs?.fromAmount, let toAmountCurrency = self.pairs?.toAmount {
                 self.fromCurrencyAmount.text = "\(fromAmountCurrency)"
                 self.toCurrencyAmount.text = "\(toAmountCurrency)"
@@ -66,11 +66,11 @@ class ConfirmViewController: UIViewController {
             let beneficiary = self.beneficiary {
             let params: Parameters = [
                 "amount": amount,
-                "currency": currency,
+                "currency": currency.id,
                 "reason": "Transaction \(pairs?.fromAmount) \(pairs?.fromCurrency) to \(beneficiary.first_name)",
-                "beneficiary": beneficiary.id!,
-                "account": beneficiary.account!,
-                ]
+                "beneficiary": beneficiary.id,
+                "account": beneficiary.account?.id,
+            ]
             Fetcher.sharedInstance.transactionCreate(params: params) { (response: [String : Any]?) in
                 if let transaction = response?["transaction"] as? [String: Any] {
                     self.delegate?.didConfirm(transation: Transaction(values: transaction))

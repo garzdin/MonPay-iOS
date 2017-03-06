@@ -14,7 +14,7 @@ class Transaction: NSObject {
     var id: Int?
     var reference: String?
     var amount: Float?
-    var currency: String?
+    var currency: Int?
     var reason: String?
     var completed: Bool?
     var beneficiary: Int?
@@ -34,7 +34,7 @@ class Transaction: NSObject {
         if let amount = values["amount"] as? Float {
             self.amount = amount
         }
-        if let currency = values["currency"] as? String {
+        if let currency = values["currency"] as? Int {
             self.currency = currency
         }
         if let reason = values["reason"] as? String {

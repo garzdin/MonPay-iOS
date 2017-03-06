@@ -12,6 +12,8 @@ protocol TransactionDeleteDelegate: class {
     func didDelete(transaction: Transaction)
 }
 
+fileprivate let dateTimeFormat: String = "yyyy-MM-dd HH:mm:ss.S"
+
 class TransferDetailsViewController: UIViewController {
 
     @IBOutlet var initialsLabel: UILabel!
@@ -22,17 +24,13 @@ class TransferDetailsViewController: UIViewController {
     @IBOutlet var statusLabel: UILabel!
     
     var transaction: Transaction?
-    var beneficiary: Beneficiary?
     
     weak var delegate: TransactionDeleteDelegate?
     
+    let dateFormatter = DateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        for beneficiary in DataStore.shared.beneficiaries {
-            if beneficiary.id == transaction?.beneficiary {
-                self.beneficiary = beneficiary
-            }
-        }
         let backArrow = UIImage(named: "back")
         let backButton = UIButton(type: .custom)
         backButton.frame = CGRect(x: 0, y: 20, width: 8, height: 16)
@@ -42,27 +40,45 @@ class TransferDetailsViewController: UIViewController {
         backButton.sizeToFit()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "delete"), style: .plain, target: self, action: #selector(didPressDelete(sender:)))
+        self.dateFormatter.dateFormat = dateTimeFormat
+        self.setupDetailsFor(transaction: self.transaction)
+    }
+    
+    func setupDetailsFor(transaction: Transaction?) {
         if let transaction = self.transaction {
-            if let first_name = self.beneficiary?.first_name, let last_name = self.beneficiary?.last_name {
-                self.nameLabel.text = "\(first_name) \(last_name)"
-                if let firstNameInitial = first_name.characters.first, let lastNameInitial = last_name.characters.first {
-                    self.initialsLabel.text = "\(firstNameInitial)\(lastNameInitial)"
+            if transaction.beneficiary != nil {
+                for beneficiary in DataStore.shared.beneficiaries {
+                    if beneficiary.id == transaction.beneficiary {
+                        if let firstName = beneficiary.first_name, let lastName = beneficiary.last_name {
+                            self.nameLabel.text = "\(firstName) \(lastName)"
+                            if let firstNameInitial = firstName.characters.first, let lastNameInitial = lastName.characters.first {
+                                self.initialsLabel.text = "\(firstNameInitial)\(lastNameInitial)"
+                            }
+                        }
+                        if let email = beneficiary.email {
+                            self.emailLabel.text = email
+                        }
+                        if let iban = beneficiary.account?.iban {
+                            self.ibanLabel.text = iban
+                        }
+                    }
                 }
             }
-            if let amount = transaction.amount, let currency = transaction.currency {
-                self.amountLabel.text = "\(amount) \(currency)"
+            if let amount = transaction.amount, let currencyId = transaction.currency {
+                for currency in DataStore.shared.currencies {
+                    if currency.id == currencyId {
+                        if let isoCode = currency.isoCode {
+                            self.amountLabel.text = "\(amount) \(isoCode)"
+                        }
+                    }
+                }
             }
-            if let email = self.beneficiary?.email {
-                self.emailLabel.text = email
-            }
-            if let iban = self.beneficiary?.account?.iban {
-                self.ibanLabel.text = iban
-            }
-            if let status = transaction.completed {
-                self.statusLabel.text = status ? "Completed" : "Processing"
+            if let updatedOn = transaction.updated_on {
+                self.statusLabel.text = self.dateFormatter.string(from: updatedOn)
+            } else {
+                self.statusLabel.text = "Processing"
             }
         }
-        
     }
     
     func didPressBackButton(sender: UIBarButtonItem) {

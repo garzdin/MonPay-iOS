@@ -35,4 +35,18 @@ class RecipientTableViewCell: UITableViewCell {
             profileView.backgroundColor = UIColor(red: 12/255.0, green: 27/255.0, blue: 42/255.0, alpha: 1.0)
         }
     }
+    
+    func setupCell(beneficiary: Beneficiary?) {
+        if let beneficiary = beneficiary {
+            if let firstName = beneficiary.first_name, let lastName = beneficiary.last_name {
+                self.nameLabel.text = "\(firstName) \(lastName)"
+                if let firstNameInitial = firstName.characters.first, let lastNameInitial = lastName.characters.first {
+                    self.initialsLabel.text = "\(firstNameInitial)\(lastNameInitial)"
+                }
+            }
+            if let account = beneficiary.account?.iban {
+                self.accountLabel.text = account
+            }
+        }
+    }
 }
