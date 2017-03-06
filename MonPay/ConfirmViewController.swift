@@ -63,13 +63,14 @@ class ConfirmViewController: UIViewController {
     @IBAction func confirm(_ sender: UIButton) {
         if let amount = pairs?.fromAmount,
             let currency = pairs?.fromCurrency,
-            let beneficiary = self.beneficiary {
+            let beneficiary = self.beneficiary,
+            let account = beneficiary.account {
             let params: Parameters = [
                 "amount": amount,
-                "currency": currency.id,
+                "currency": currency.id!,
                 "reason": "Transaction \(pairs?.fromAmount) \(pairs?.fromCurrency) to \(beneficiary.first_name)",
-                "beneficiary": beneficiary.id,
-                "account": beneficiary.account?.id,
+                "beneficiary": beneficiary.id!,
+                "account": account.id!,
             ]
             Fetcher.sharedInstance.transactionCreate(params: params) { (response: [String : Any]?) in
                 if let transaction = response?["transaction"] as? [String: Any] {

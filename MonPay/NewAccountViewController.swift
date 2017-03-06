@@ -83,17 +83,19 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate, PickerDel
             self.ibanErrorLabel.text = "Please select a currency"
             return
         }
-        let params: [String: Any] = [
-            "iban": ibanTextField.text!,
-            "bic_swift": bicSwiftTextField!.text!,
-            "currency": self.selectedCurrency?.id,
-            "country": Locale.current.regionCode!
-        ]
-        Fetcher.sharedInstance.accountCreate(params: params) { (response: [String : Any]?) in
-            if let account = response?["account"] as? [String: Any] {
-                let newAccount = Account(values: account)
-                self.delegate?.didAddNewAccount(account: newAccount)
-                self.dismiss(animated: true, completion: nil)
+        if let selectedCurrency = self.selectedCurrency {
+            let params: Parameters = [
+                "iban": ibanTextField.text!,
+                "bic_swift": bicSwiftTextField!.text!,
+                "currency": selectedCurrency.id!,
+                "country": Locale.current.regionCode!
+            ]
+            Fetcher.sharedInstance.accountCreate(params: params) { (response: [String : Any]?) in
+                if let account = response?["account"] as? [String: Any] {
+                    let newAccount = Account(values: account)
+                    self.delegate?.didAddNewAccount(account: newAccount)
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
         }
     }

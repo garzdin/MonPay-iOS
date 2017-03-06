@@ -146,55 +146,59 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        if textField == fromAmount {
-            createConversion()
-        }
         return false
     }
     
-    func createConversion() {
-        self.fromAmountErrorLabel.text = ""
-        self.toAmountErrorLabel.text = ""
-        if self.fromAmount.text == "" {
-            self.fromAmountErrorLabel.text = "Please enter an amount"
-            return
-        }
-        if self.fromCurrencyLabel.text == "NONE" {
-            self.fromAmountErrorLabel.text = "Please select a currency"
-            return
-        }
-        if self.toCurrencyLabel.text == "NONE" {
-            self.toAmountErrorLabel.text = "Please select a currency"
-            return
-        }
-        var fromCurrencyId: Int?
-        var toCurrencyId: Int?
-        let amount = Float(self.fromAmount.text!)
-        for currency in DataStore.shared.currencies {
-            if currency.isoCode == fromCurrencyLabel.text {
-                fromCurrencyId = currency.id!
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let text: NSString = (textField.text ?? "") as NSString
+        let resultString = text.replacingCharacters(in: range, with: string)
+        self.createConversion(amount: resultString)
+        return true
+    }
+    
+    func createConversion(amount: String) {
+        if amount == "" {
+            self.resetFields()
+            self.resetFees()
+            self.resetButton()
+        } else {
+            if self.fromCurrencyLabel.text == "NONE" {
+                self.fromAmountErrorLabel.text = "Please select a currency"
+                return
             }
-            if currency.isoCode == toCurrencyLabel.text {
-                toCurrencyId = currency.id!
+            if self.toCurrencyLabel.text == "NONE" {
+                self.toAmountErrorLabel.text = "Please select a currency"
+                return
             }
-        }
-        if let fromCurrencyId = fromCurrencyId, let toCurrencyId = toCurrencyId {
-            let params: Parameters = [
-                "from": fromCurrencyId,
-                "to": toCurrencyId,
-                "amount": amount ?? 0
-            ]
-            Fetcher.sharedInstance.conversionCreate(params: params) { (response: [String : Any]?) in
-                if let conversion = response?["conversion"] as? [String: Any],
-                    let fromCurrency = conversion["from_currency"] as? String,
-                    let _ = conversion["to_currency"] as? String,
-                    let _ = conversion["from_amount"] as? Float,
-                    let toAmount = conversion["to_amount"] as? Float,
-                    let fee = conversion["fee"] as? Float {
-                    self.toAmount.text = "\(toAmount - fee)"
-                    self.feeLabel.text = "\(fee) \(fromCurrency)"
-                    self.sendButton.isEnabled = true
-                    self.sendButton.backgroundColor = UIColor(red: 72/255.0, green: 207/255.0, blue: 173/255.0, alpha: 1.0)
+            var fromCurrencyId: Int?
+            var toCurrencyId: Int?
+            let amount = Float(amount)
+            for currency in DataStore.shared.currencies {
+                if currency.isoCode == fromCurrencyLabel.text {
+                    fromCurrencyId = currency.id!
+                }
+                if currency.isoCode == toCurrencyLabel.text {
+                    toCurrencyId = currency.id!
+                }
+            }
+            if let fromCurrencyId = fromCurrencyId, let toCurrencyId = toCurrencyId {
+                let params: Parameters = [
+                    "from": fromCurrencyId,
+                    "to": toCurrencyId,
+                    "amount": amount ?? 0
+                ]
+                Fetcher.sharedInstance.conversionCreate(params: params) { (response: [String : Any]?) in
+                    if let conversion = response?["conversion"] as? [String: Any],
+                        let fromCurrency = conversion["from_currency"] as? String,
+                        let _ = conversion["to_currency"] as? String,
+                        let _ = conversion["from_amount"] as? Float,
+                        let toAmount = conversion["to_amount"] as? Float,
+                        let fee = conversion["fee"] as? Float {
+                        self.toAmount.text = "\(toAmount - fee)"
+                        self.feeLabel.text = "\(fee) \(fromCurrency)"
+                        self.sendButton.isEnabled = true
+                        self.sendButton.backgroundColor = UIColor(red: 72/255.0, green: 207/255.0, blue: 173/255.0, alpha: 1.0)
+                    }
                 }
             }
         }
@@ -236,19 +240,45 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func didConfirm(transation: Transaction) {
-        self.fromAmount.text = ""
-        self.toAmount.text = ""
-        self.fromAmountErrorLabel.text = ""
-        self.toAmountErrorLabel.text = ""
-        self.fromCurrencyLabel.text = "NONE"
-        self.toCurrencyLabel.text = ""
-        self.sendButton.isEnabled = false
-        self.sendButton.backgroundColor = UIColor(red: 90/255.0, green: 111/255.0, blue: 131/255.0, alpha: 1.0)
+        self.resetInterface()
         for cell in self.recipientsCollectionView.visibleCells.filter({(cell) in return cell is RecipientCollectionViewCell}) as! [RecipientCollectionViewCell] {
             cell.recipientSelected = false
             cell.setUnselected()
         }
         self.transaction = Transaction()
+    }
+    
+    func resetFields() {
+        self.fromAmount.text = ""
+        self.toAmount.text = ""
+        self.fromAmountErrorLabel.text = ""
+        self.toAmountErrorLabel.text = ""
+    }
+    
+    func resetCurrencies() {
+        self.fromCurrencyLabel.text = "NONE"
+        self.toCurrencyLabel.text = "NONE"
+    }
+    
+    func resetFees() {
+        self.feeLabel.text = "0.0"
+    }
+    
+    func resetBeneficiary() {
+        self.recipientsErrorLabel.text = ""
+    }
+    
+    func resetButton() {
+        self.sendButton.isEnabled = false
+        self.sendButton.backgroundColor = UIColor(red: 90/255.0, green: 111/255.0, blue: 131/255.0, alpha: 1.0)
+    }
+    
+    func resetInterface() {
+        self.resetFields()
+        self.resetCurrencies()
+        self.resetFees()
+        self.resetBeneficiary()
+        self.resetButton()
     }
     
     @IBAction func unwindToSendScreen(segue: UIStoryboardSegue) {}

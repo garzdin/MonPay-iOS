@@ -129,47 +129,49 @@ class RecipientCreateViewController: UIViewController, UITextFieldDelegate, Pick
                 currencyId = currency.id!
             }
         }
-        let params: [String : Any] = [
-            "email": self.recipientEmail.text!,
-            "first_name": full_name[0],
-            "last_name": full_name[1],
-            "entity_type": 0,
-            "account": [
-                "iban": self.recipientIban.text!,
-                "bic_swift": self.recipientBicSwift.text!,
-                "currency": currencyId,
-                "country": Locale.current.regionCode!
+        if let currencyId = currencyId {
+            let params: [String : Any] = [
+                "email": self.recipientEmail.text!,
+                "first_name": full_name[0],
+                "last_name": full_name[1],
+                "entity_type": 0,
+                "account": [
+                    "iban": self.recipientIban.text!,
+                    "bic_swift": self.recipientBicSwift.text!,
+                    "currency": currencyId,
+                    "country": Locale.current.regionCode!
+                ]
             ]
-        ]
-        Fetcher.sharedInstance.beneficiaryCreate(params: params, completion: { (response: [String : Any]?) in
-            if let beneficiary = response?["beneficiary"] as? [String: Any] {
-                let newBeneficiary = Beneficiary(values: beneficiary)
-                self.delegate?.didAdd(beneficiary: newBeneficiary)
-                _ = self.navigationController?.popViewController(animated: true)
-            } else {
-                if let description = response?["description"] as? [String: Any] {
-                    for error in description {
-                        if let errors = error.value as? [String] {
-                            switch error.key {
-                            case "email":
-                                self.recipientEmailErrorLabel.text = errors[0]
-                                break
-                            case "first_name":
-                                self.recipientNameErrorLabel.text = errors[0]
-                                break
-                            case "last_name":
-                                self.recipientNameErrorLabel.text = errors[0]
-                                break
-                            case "iban":
-                                self.recipientIbanErrorLabel.text = errors[0]
-                                break
-                            default: break
+            Fetcher.sharedInstance.beneficiaryCreate(params: params, completion: { (response: [String : Any]?) in
+                if let beneficiary = response?["beneficiary"] as? [String: Any] {
+                    let newBeneficiary = Beneficiary(values: beneficiary)
+                    self.delegate?.didAdd(beneficiary: newBeneficiary)
+                    _ = self.navigationController?.popViewController(animated: true)
+                } else {
+                    if let description = response?["description"] as? [String: Any] {
+                        for error in description {
+                            if let errors = error.value as? [String] {
+                                switch error.key {
+                                case "email":
+                                    self.recipientEmailErrorLabel.text = errors[0]
+                                    break
+                                case "first_name":
+                                    self.recipientNameErrorLabel.text = errors[0]
+                                    break
+                                case "last_name":
+                                    self.recipientNameErrorLabel.text = errors[0]
+                                    break
+                                case "iban":
+                                    self.recipientIbanErrorLabel.text = errors[0]
+                                    break
+                                default: break
+                                }
                             }
                         }
                     }
                 }
-            }
-        })
+            })
+        }
     }
     
     @IBAction func unwindToNewRecipient(sender: UIStoryboardSegue) {}
