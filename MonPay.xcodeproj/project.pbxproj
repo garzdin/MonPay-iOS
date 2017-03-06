@@ -29,6 +29,7 @@
 		4957AC331E37B0F2006A951A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4957AC311E37B0F2006A951A /* LaunchScreen.storyboard */; };
 		495FCBEF1E5E19DB00AED200 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495FCBEE1E5E19DB00AED200 /* TabBarViewController.swift */; };
 		498824DE1E6077E900803C96 /* PushSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498824DD1E6077E900803C96 /* PushSegue.swift */; };
+		49895E891E6E05BC001B2E05 /* AccountEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49895E881E6E05BC001B2E05 /* AccountEditViewController.swift */; };
 		499375191E3A4440008D65F3 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499375181E3A4440008D65F3 /* InitialViewController.swift */; };
 		4993751D1E3A5DA2008D65F3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4993751C1E3A5DA2008D65F3 /* LoginViewController.swift */; };
 		499CD25B1E585B740079D8A5 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499CD25A1E585B740079D8A5 /* Keychain.swift */; };
@@ -75,6 +76,7 @@
 		4957AC341E37B0F2006A951A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		495FCBEE1E5E19DB00AED200 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		498824DD1E6077E900803C96 /* PushSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushSegue.swift; sourceTree = "<group>"; };
+		49895E881E6E05BC001B2E05 /* AccountEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountEditViewController.swift; sourceTree = "<group>"; };
 		499375181E3A4440008D65F3 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		4993751C1E3A5DA2008D65F3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		499CD25A1E585B740079D8A5 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				49BE68CC1E5DBF880037D225 /* AccountDetailsViewController.swift */,
 				4926CC571E3944550029C736 /* NewAccountViewController.swift */,
 				490B81FC1E4105BD00BCBC4F /* AccountSettingsViewController.swift */,
+				49895E881E6E05BC001B2E05 /* AccountEditViewController.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				495FCBEF1E5E19DB00AED200 /* TabBarViewController.swift in Sources */,
 				49F987031E3E08AE00EC57C9 /* RecipientsTableViewController.swift in Sources */,
 				498824DE1E6077E900803C96 /* PushSegue.swift in Sources */,
+				49895E891E6E05BC001B2E05 /* AccountEditViewController.swift in Sources */,
 				490B81FD1E4105BD00BCBC4F /* AccountSettingsViewController.swift in Sources */,
 				49C1CEDE1E3E81BB009076D3 /* CameraViewController.swift in Sources */,
 				499375191E3A4440008D65F3 /* InitialViewController.swift in Sources */,
