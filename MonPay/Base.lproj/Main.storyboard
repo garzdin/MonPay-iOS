@@ -468,13 +468,22 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When you select an account, it becomes the default one that you make transfers with" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1z-UM-WIa">
+                                <rect key="frame" x="20" y="388" width="374" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                <color key="textColor" red="0.3529411764705882" green="0.43529411764705883" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.098039215686274508" green="0.17254901960784313" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="v1z-UM-WIa" firstAttribute="leading" secondItem="SPt-mh-ztE" secondAttribute="leading" constant="20" id="6Hg-XK-DNa"/>
+                            <constraint firstItem="v1z-UM-WIa" firstAttribute="top" secondItem="KDy-Vs-bCL" secondAttribute="bottom" constant="4" id="FMt-Vk-UH5"/>
                             <constraint firstAttribute="trailing" secondItem="KDy-Vs-bCL" secondAttribute="trailing" id="GzB-XO-g1b"/>
                             <constraint firstAttribute="trailing" secondItem="23V-z4-0RG" secondAttribute="trailing" id="IE1-Ag-gqd"/>
                             <constraint firstItem="KDy-Vs-bCL" firstAttribute="leading" secondItem="SPt-mh-ztE" secondAttribute="leading" id="hea-Kf-opL"/>
                             <constraint firstItem="KDy-Vs-bCL" firstAttribute="top" secondItem="23V-z4-0RG" secondAttribute="bottom" constant="30" id="k91-Vp-2dG"/>
+                            <constraint firstAttribute="trailing" secondItem="v1z-UM-WIa" secondAttribute="trailing" constant="20" id="lpm-7p-Qo3"/>
                             <constraint firstItem="23V-z4-0RG" firstAttribute="top" secondItem="Hg1-Ex-9SP" secondAttribute="bottom" id="mKl-E1-HUc"/>
                             <constraint firstItem="23V-z4-0RG" firstAttribute="leading" secondItem="SPt-mh-ztE" secondAttribute="leading" id="yYa-q3-D5i"/>
                         </constraints>
