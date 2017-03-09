@@ -9,6 +9,10 @@
 import UIKit
 import Alamofire
 
+protocol AccountUpdateDelegate: class {
+    func didUpate()
+}
+
 class AccountEditViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var firstNameField: UnderlinedTextField! {
@@ -53,6 +57,8 @@ class AccountEditViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var cityErrorLabel: UILabel!
     @IBOutlet var postalCodeErrorLabel: UILabel!
     @IBOutlet var countryErrorLabel: UILabel!
+    
+    weak var delegate: AccountUpdateDelegate?
     
     var alert: UIAlertController?
     
@@ -200,7 +206,9 @@ class AccountEditViewController: UIViewController, UITextFieldDelegate {
                             let when = DispatchTime.now() + 2
                             DispatchQueue.main.asyncAfter(deadline: when, execute: {
                                 self.alert?.dismiss(animated: true, completion: {
-                                    self.dismiss(animated: true, completion: nil)
+                                    self.dismiss(animated: true, completion: {
+                                        self.delegate?.didUpate()
+                                    })
                                 })
                             })
                         }

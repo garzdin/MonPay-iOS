@@ -17,7 +17,7 @@ struct SenderWithData {
 fileprivate let reuseIdentifier = "accountCell"
 fileprivate let staticReuseIdentifier = "newAccountCell"
 
-class AccountViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, NewAccountDelegate, AccountDeleteDelegate  {
+class AccountViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, NewAccountDelegate, AccountDeleteDelegate, AccountUpdateDelegate  {
 
     @IBOutlet var initialsLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
@@ -123,12 +123,23 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
                 }
             }
         }
+        if segue.identifier == "editProfile" {
+            if let destination = segue.destination as? AccountEditViewController {
+                destination.delegate = self
+            }
+        }
     }
     
     // MARK: Cell add new account button tapped action
     
     @IBAction func addNewAccount(_ sender: UIButton) {
         performSegue(withIdentifier: "addNewAccount", sender: sender)
+    }
+    
+    // MARK: User update delegate methods
+    
+    func didUpate() {
+        self.refreshData()
     }
     
     // MARK: Cell info button tapped action
