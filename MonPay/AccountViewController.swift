@@ -125,6 +125,12 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
+    // MARK: Cell add new account button tapped action
+    
+    @IBAction func addNewAccount(_ sender: UIButton) {
+        performSegue(withIdentifier: "addNewAccount", sender: sender)
+    }
+    
     // MARK: Cell info button tapped action
     
     func didTapInfoButton(sender: UIButton?) {
@@ -134,12 +140,6 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
                 performSegue(withIdentifier: "showAccountDetails", sender: customSender)
             }
         }
-    }
-    
-    // MARK: Cell add new account button tapped action
-    
-    @IBAction func addNewAccount(_ sender: UIButton) {
-        performSegue(withIdentifier: "addNewAccount", sender: sender)
     }
     
     func didAddNewAccount(account: Account) {
