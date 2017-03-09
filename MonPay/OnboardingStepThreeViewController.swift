@@ -59,7 +59,7 @@ class OnboardingStepThreeViewController: UIViewController, IDRecognizerDelegate 
             Fetcher.sharedInstance.authCreate(params: params, completion: { (response: [String : Any]?) in
                 if let _ = response?["user"] as? [String: Any] {
                     self.present(self.alert!, animated: true, completion: nil)
-                    let when = DispatchTime.now() + 5
+                    let when = DispatchTime.now() + 2
                     DispatchQueue.main.asyncAfter(deadline: when, execute: {
                         self.alert?.dismiss(animated: true, completion: {
                             self.performSegue(withIdentifier: "unwindFromRegistration", sender: self)
