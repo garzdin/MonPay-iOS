@@ -105,7 +105,7 @@ class TransferDetailsViewController: UIViewController {
             let params = [
                 "id": transaction.id
             ]
-            Fetcher.sharedInstance.transactionDelete(params: params, completion: { (response: [String : Any]?) in
+            Fetcher.shared.transactionDelete(params: params, completion: { (response: [String : Any]?) in
                 _ = self.navigationController?.popViewController(animated: true)
                 self.delegate?.didDelete(transaction: transaction)
             })

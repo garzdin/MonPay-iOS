@@ -72,7 +72,7 @@ class ConfirmViewController: UIViewController {
                 "beneficiary": beneficiary.id!,
                 "account": account.id!,
             ]
-            Fetcher.sharedInstance.transactionCreate(params: params) { (response: [String : Any]?) in
+            Fetcher.shared.transactionCreate(params: params) { (response: [String : Any]?) in
                 if let transaction = response?["transaction"] as? [String: Any] {
                     self.delegate?.didConfirm(transation: Transaction(values: transaction))
                     self.dismiss(animated: true, completion: nil)

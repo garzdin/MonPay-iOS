@@ -10,5 +10,5 @@ import Foundation
 import KeychainSwift
 
 class Keychain: NSObject {
-    static let sharedInstance = KeychainSwift(keyPrefix: "mP_")
+    static let shared = KeychainSwift(keyPrefix: "mP_")
 }

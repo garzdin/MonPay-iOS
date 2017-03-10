@@ -170,7 +170,7 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     "to": toCurrencyId,
                     "amount": amount ?? 0
                 ]
-                Fetcher.sharedInstance.conversionCreate(params: params) { (response: [String : Any]?) in
+                Fetcher.shared.conversionCreate(params: params) { (response: [String : Any]?) in
                     if let conversion = response?["conversion"] as? [String: Any],
                         let fromCurrency = conversion["from_currency"] as? String,
                         let _ = conversion["to_currency"] as? String,

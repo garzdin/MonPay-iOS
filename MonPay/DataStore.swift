@@ -31,7 +31,7 @@ class DataStore: NSObject {
     }
     
     func getUser(completion: CompletionHandler?) {
-        Fetcher.sharedInstance.userGet { (response: [String : Any]?) in
+        Fetcher.shared.userGet { (response: [String : Any]?) in
             if let user = response?["user"] as? [String: Any] {
                 self.user = User(values: user)
                 if completion != nil {
@@ -42,7 +42,7 @@ class DataStore: NSObject {
     }
     
     func getCurrencies(completion: CompletionHandler?) {
-        Fetcher.sharedInstance.currencyList { (response: [String : Any]?) in
+        Fetcher.shared.currencyList { (response: [String : Any]?) in
             if let currencies = response?["currencies"] as? [Any] {
                 self.currencies = []
                 for currency in currencies {
@@ -58,7 +58,7 @@ class DataStore: NSObject {
     }
     
     func getBeneficiaries(completion: CompletionHandler?) {
-        Fetcher.sharedInstance.beneficiaryList { (response: [String : Any]?) in
+        Fetcher.shared.beneficiaryList { (response: [String : Any]?) in
             if let beneficiaries = response?["beneficiaries"] as? [Any] {
                 self.beneficiaries = []
                 for beneficiary in beneficiaries {
@@ -74,7 +74,7 @@ class DataStore: NSObject {
     }
     
     func getAccounts(completion: CompletionHandler?) {
-        Fetcher.sharedInstance.accountList { (response: [String : Any]?) in
+        Fetcher.shared.accountList { (response: [String : Any]?) in
             if let accounts = response?["accounts"] as? [Any] {
                 self.accounts = []
                 for account in accounts {
@@ -90,7 +90,7 @@ class DataStore: NSObject {
     }
     
     func getTransactions(completion: CompletionHandler?) {
-        Fetcher.sharedInstance.transactionList { (response: [String : Any]?) in
+        Fetcher.shared.transactionList { (response: [String : Any]?) in
             if let transactions = response?["transactions"] as? [Any] {
                 self.transactions = []
                 for transaction in transactions {

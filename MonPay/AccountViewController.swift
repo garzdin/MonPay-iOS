@@ -96,7 +96,7 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
             }
             let cell = collectionView.cellForItem(at: indexPath) as! AccountCollectionViewCell
             if let accountId = DataStore.shared.accounts[indexPath.row].id {
-                Fetcher.sharedInstance.accountActivate(id: accountId, completion: { (response: [String : Any]?) in
+                Fetcher.shared.accountActivate(id: accountId, completion: { (response: [String : Any]?) in
                     if let _ = response?["account"] as? [String: Any] {
                         DataStore.shared.accounts[indexPath.row].active = true
                         cell.accountSelected = true

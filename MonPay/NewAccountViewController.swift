@@ -90,7 +90,7 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate, PickerDel
                 "currency": selectedCurrency.id!,
                 "country": Locale.current.regionCode!
             ]
-            Fetcher.sharedInstance.accountCreate(params: params) { (response: [String : Any]?) in
+            Fetcher.shared.accountCreate(params: params) { (response: [String : Any]?) in
                 if let account = response?["account"] as? [String: Any] {
                     let newAccount = Account(values: account)
                     self.delegate?.didAddNewAccount(account: newAccount)

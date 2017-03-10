@@ -15,8 +15,8 @@ class AccountSettingsViewController: UIViewController {
     }
     
     @IBAction func logoutAction(_ sender: UIButton) {
-        Keychain.sharedInstance.delete("token")
-        Keychain.sharedInstance.delete("refresh_token")
+        Keychain.shared.delete("token")
+        Keychain.shared.delete("refresh_token")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "InitialViewController")
         

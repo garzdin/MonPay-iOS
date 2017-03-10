@@ -55,7 +55,7 @@ class AccountDetailsViewController: UIViewController {
             let params = [
                 "id": account.id
             ]
-            Fetcher.sharedInstance.accountDelete(params: params, completion: { (response: [String : Any]?) in
+            Fetcher.shared.accountDelete(params: params, completion: { (response: [String : Any]?) in
                 self.dismiss(animated: true, completion: nil)
                 self.delegate?.didDeleteAccount(account: account)
             })

@@ -56,7 +56,7 @@ class OnboardingStepThreeViewController: UIViewController, IDRecognizerDelegate 
                     "country": user.address!.country!
                 ]
             ]
-            Fetcher.sharedInstance.authCreate(params: params, completion: { (response: [String : Any]?) in
+            Fetcher.shared.authCreate(params: params, completion: { (response: [String : Any]?) in
                 if let _ = response?["user"] as? [String: Any] {
                     self.present(self.alert!, animated: true, completion: nil)
                     let when = DispatchTime.now() + 2

@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 class Fetcher: NSObject {
-    static var sharedInstance = Fetcher()
+    static var shared = Fetcher()
     let endpoint: URLConvertible = "https://monpay.herokuapp.com/api/v1/"
     
     // MARK: - Request setup
@@ -18,7 +18,7 @@ class Fetcher: NSObject {
     func request(url: URLConvertible, method: HTTPMethod, parameters: Parameters, encoding: ParameterEncoding, headers: HTTPHeaders, authRequired: Bool, completion: @escaping (_ response: [String: Any]?) -> ()) {
         var unifiedHeaders: Dictionary<String, String> = Dictionary()
         if authRequired == true {
-            if let token = Keychain.sharedInstance.get("token") {
+            if let token = Keychain.shared.get("token") {
                 unifiedHeaders["Authorization"] = token
             } else {
                 self.redirectToLogin()
@@ -32,21 +32,21 @@ class Fetcher: NSObject {
                 if let description = json["description"] as? [String: Any] {
                     if let token = description["token"] as? String {
                         if token.contains("expired") {
-                            if let refresh_token = Keychain.sharedInstance.get("refresh_token") {
+                            if let refresh_token = Keychain.shared.get("refresh_token") {
                                 let params: HTTPHeaders = [
                                     "refresh_token": refresh_token
                                 ]
                                 Alamofire.request("\(self.endpoint)auth/refresh", method: .post, parameters: params, encoding: JSONEncoding.default, headers: [:]).responseJSON(completionHandler: { (response) in
                                     if let json = response.result.value as? [String: Any] {
                                         if let token = json["token"] as? String, let refresh_token = json["refresh_token"] as? String {
-                                            Keychain.sharedInstance.set(token, forKey: "token")
-                                            Keychain.sharedInstance.set(refresh_token, forKey: "refresh_token")
+                                            Keychain.shared.set(token, forKey: "token")
+                                            Keychain.shared.set(refresh_token, forKey: "refresh_token")
                                         } else {
                                             self.redirectToLogin()
                                         }
                                     }
                                 })
-                                unifiedHeaders["Authorization"] = Keychain.sharedInstance.get("token")
+                                unifiedHeaders["Authorization"] = Keychain.shared.get("token")
                                 Alamofire.request("\(self.endpoint)\(url)", method: method, parameters: parameters, encoding: encoding, headers: unifiedHeaders).responseJSON(completionHandler: { (response) in
                                     if let json = response.result.value as? [String: Any] {
                                         completion(json)

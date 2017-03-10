@@ -198,9 +198,9 @@ class AccountEditViewController: UIViewController, UITextFieldDelegate {
                 "postal_code": self.postalCodeField.text!,
                 "country": self.countryField.text!
             ]
-            Fetcher.sharedInstance.userUpdate(params: params, completion: { (response: [String : Any]?) in
+            Fetcher.shared.userUpdate(params: params, completion: { (response: [String : Any]?) in
                 if let _ = response?["user"] as? [String: Any] {
-                    Fetcher.sharedInstance.userAddressUpdate(params: addressParams, completion: { (addressResponse: [String : Any]?) in
+                    Fetcher.shared.userAddressUpdate(params: addressParams, completion: { (addressResponse: [String : Any]?) in
                         if let _ = addressResponse?["address"] as? [String: Any] {
                             self.present(self.alert!, animated: true, completion: nil)
                             let when = DispatchTime.now() + 2

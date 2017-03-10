@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "InitialViewController")
         let rootViewController = storyboard.instantiateViewController(withIdentifier: "RootViewController")
-        if let _ = Keychain.sharedInstance.get("token") {
+        if let _ = Keychain.shared.get("token") {
             self.window?.rootViewController = rootViewController
         } else {
             self.window?.rootViewController = initialViewController

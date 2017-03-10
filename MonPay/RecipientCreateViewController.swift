@@ -142,7 +142,7 @@ class RecipientCreateViewController: UIViewController, UITextFieldDelegate, Pick
                     "country": Locale.current.regionCode!
                 ]
             ]
-            Fetcher.sharedInstance.beneficiaryCreate(params: params, completion: { (response: [String : Any]?) in
+            Fetcher.shared.beneficiaryCreate(params: params, completion: { (response: [String : Any]?) in
                 if let beneficiary = response?["beneficiary"] as? [String: Any] {
                     let newBeneficiary = Beneficiary(values: beneficiary)
                     self.delegate?.didAdd(beneficiary: newBeneficiary)

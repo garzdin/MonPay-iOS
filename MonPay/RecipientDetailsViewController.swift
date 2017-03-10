@@ -95,7 +95,7 @@ class RecipientDetailsViewController: UIViewController {
             let params = [
                 "id": recipient.id
             ]
-            Fetcher.sharedInstance.beneficiaryDelete(params: params, completion: { (response: [String : Any]?) in
+            Fetcher.shared.beneficiaryDelete(params: params, completion: { (response: [String : Any]?) in
                 _ = self.navigationController?.popViewController(animated: true)
                 self.delegate?.didDeleteRecipient(recipient: recipient)
             })
