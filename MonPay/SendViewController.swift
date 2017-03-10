@@ -11,7 +11,6 @@ import Alamofire
 
 // MARK: Reuse identifiers
 fileprivate let cellReuseIdentifier = "recipientCell"
-fileprivate let staticCellReuseIdentifier = "recipientSearchCell"
 
 class SendViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, PickerDelegate, ConfirmTransactionDelegate {
     
@@ -61,48 +60,32 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: Data delegation
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
-            return DataStore.shared.beneficiaries.count
-        } else {
-            return 1
-        }
+        return DataStore.shared.beneficiaries.count
     }
     
     // MARK: Cells setup
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 1 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: staticCellReuseIdentifier, for: indexPath)
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! RecipientCollectionViewCell
-            if let first_name = DataStore.shared.beneficiaries[indexPath.row].first_name, let last_name = DataStore.shared.beneficiaries[indexPath.row].last_name {
-                if let firstNameInitial = first_name.characters.first, let lastNameInitial = last_name.characters.first {
-                    cell.initialsLabel.text = "\(firstNameInitial)\(lastNameInitial)"
-                }
-                cell.nameLabel.text = "\(first_name) \(last_name)"
-            }
-            return cell
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! RecipientCollectionViewCell
+        cell.setupCell(beneficiary: DataStore.shared.beneficiaries[indexPath.row])
+        return cell
     }
     
     // MARK: Cells indication
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            for cell in collectionView.visibleCells.filter({(cell) in return cell is RecipientCollectionViewCell}) as! [RecipientCollectionViewCell] {
-                cell.recipientSelected = false
-                cell.setUnselected()
-            }
-            if let cell = collectionView.cellForItem(at: indexPath) as? RecipientCollectionViewCell {
-                self.transaction.beneficiary = DataStore.shared.beneficiaries[indexPath.row].id
-                cell.recipientSelected = true
-                cell.setSelected()
-            }
+        for cell in collectionView.visibleCells as! [RecipientCollectionViewCell] {
+            cell.recipientSelected = false
+            cell.setUnselected()
+        }
+        if let cell = collectionView.cellForItem(at: indexPath) as? RecipientCollectionViewCell {
+            self.transaction.beneficiary = DataStore.shared.beneficiaries[indexPath.row].id
+            cell.recipientSelected = true
+            cell.setSelected()
         }
     }
     
@@ -246,6 +229,10 @@ class SendViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.recipientSelected = false
             cell.setUnselected()
         }
+        self.resetTransaction()
+    }
+    
+    func resetTransaction() {
         self.transaction = Transaction()
     }
     

@@ -19,6 +19,17 @@ class RecipientCollectionViewCell: UICollectionViewCell {
     let selectedCheckMark = UIImageView()
     var recipientSelected = false
     
+    func setupCell(beneficiary: Beneficiary?) {
+        if let beneficiary = beneficiary {
+            if let first_name = beneficiary.first_name, let last_name = beneficiary.last_name {
+                if let firstNameInitial = first_name.characters.first, let lastNameInitial = last_name.characters.first {
+                    self.initialsLabel.text = "\(firstNameInitial)\(lastNameInitial)"
+                }
+                self.nameLabel.text = "\(first_name) \(last_name)"
+            }
+        }
+    }
+    
     func setSelected() {
         selectedView.backgroundColor = UIColor(red: 72/255.0, green: 207/255.0, blue: 173/255.0, alpha: 0.8)
         selectedView.frame = self.profileView.frame

@@ -177,55 +177,6 @@
                                             <outlet property="profileView" destination="5Vc-Ec-dg5" id="d6H-NX-H4v"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recipientSearchCell" id="KeE-SU-okp">
-                                        <rect key="frame" x="100" y="20" width="60" height="75"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="60" height="75"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2x8-Ay-rd1">
-                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jz-Vu-8tw">
-                                                            <rect key="frame" x="20" y="20" width="21" height="20"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="20" id="cmd-TA-APz"/>
-                                                                <constraint firstAttribute="width" constant="21" id="oMv-u8-aqq"/>
-                                                            </constraints>
-                                                            <state key="normal" image="search"/>
-                                                        </button>
-                                                    </subviews>
-                                                    <color key="backgroundColor" red="0.098039215686274508" green="0.17254901960784313" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="HvW-0D-ueX"/>
-                                                        <constraint firstAttribute="width" constant="60" id="fNe-cM-HFh"/>
-                                                        <constraint firstItem="0jz-Vu-8tw" firstAttribute="centerX" secondItem="2x8-Ay-rd1" secondAttribute="centerX" id="joW-Oq-Scv"/>
-                                                        <constraint firstItem="0jz-Vu-8tw" firstAttribute="centerY" secondItem="2x8-Ay-rd1" secondAttribute="centerY" id="vJw-cZ-Ie1"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="30"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yo-RU-RaY">
-                                                    <rect key="frame" x="10" y="60" width="40" height="15"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
-                                                    <color key="textColor" red="0.3529411764705882" green="0.43529411764705883" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="6yo-RU-RaY" firstAttribute="centerX" secondItem="KeE-SU-okp" secondAttribute="centerX" id="FKn-eK-ZQE"/>
-                                            <constraint firstItem="6yo-RU-RaY" firstAttribute="top" secondItem="2x8-Ay-rd1" secondAttribute="bottom" id="aDW-SB-5S9"/>
-                                            <constraint firstItem="2x8-Ay-rd1" firstAttribute="top" secondItem="KeE-SU-okp" secondAttribute="top" id="cEY-04-vof"/>
-                                            <constraint firstItem="2x8-Ay-rd1" firstAttribute="leading" secondItem="KeE-SU-okp" secondAttribute="leading" id="kPZ-6T-rsa"/>
-                                            <constraint firstAttribute="bottom" secondItem="6yo-RU-RaY" secondAttribute="bottom" id="sNA-nd-UsR"/>
-                                            <constraint firstAttribute="trailing" secondItem="2x8-Ay-rd1" secondAttribute="trailing" id="set-rJ-RhE"/>
-                                        </constraints>
-                                    </collectionViewCell>
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tZ-99-iya">
@@ -3355,12 +3306,11 @@ of an ID document. This document can be either your
         <image name="recipients" width="18" height="17"/>
         <image name="reg_back" width="13" height="22"/>
         <image name="reg_forward" width="13" height="22"/>
-        <image name="search" width="25" height="26"/>
         <image name="send" width="17" height="16"/>
         <image name="settings" width="22" height="22"/>
         <image name="transfers" width="17" height="17"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="z51-Uv-c9T"/>
+        <segue reference="SVa-Xn-taY"/>
     </inferredMetricsTieBreakers>
 </document>
