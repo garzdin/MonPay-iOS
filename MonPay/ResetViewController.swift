@@ -17,6 +17,8 @@ class ResetViewController: UIViewController, UITextFieldDelegate {
     }
     @IBOutlet var emailErrorLabel: UILabel!
     
+    var alert: UIAlertController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -35,11 +37,21 @@ class ResetViewController: UIViewController, UITextFieldDelegate {
     @IBAction func resetAction(_ sender: UIButton) {
         self.view.endEditing(true)
         self.emailErrorLabel.text = ""
-        if validateEmail(enteredEmail: self.emailField.text!) == true {
-            // Send password reset email
-        } else {
+        if self.emailField.text == "" {
+            self.emailErrorLabel.text = "Email is required"
+            self.emailField.becomeFirstResponder()
+        } else if self.validateEmail(enteredEmail: self.emailField.text!) == false {
             self.emailErrorLabel.text = "Invalid email"
             self.emailField.becomeFirstResponder()
+        } else {
+            self.alert = UIAlertController(title: "", message: "An email with instructions has been sent to \(self.emailField.text!)", preferredStyle: .alert)
+            self.present(self.alert!, animated: true, completion: nil)
+            let when = DispatchTime.now() + 2
+            DispatchQueue.main.asyncAfter(deadline: when, execute: {
+                self.alert?.dismiss(animated: true, completion: {
+                    self.dismiss(animated: true, completion: nil)
+                })
+            })
         }
     }
 }
