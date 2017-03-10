@@ -38,6 +38,7 @@
 		49BE68CD1E5DBF880037D225 /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BE68CC1E5DBF880037D225 /* AccountDetailsViewController.swift */; };
 		49C1CEDE1E3E81BB009076D3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C1CEDD1E3E81BB009076D3 /* CameraViewController.swift */; };
 		49C9B70D1E3B620A004CAFEF /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C9B70C1E3B620A004CAFEF /* UnderlinedTextField.swift */; };
+		49CD2E7A1E731AF600FA6679 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CD2E791E731AF600FA6679 /* ResetViewController.swift */; };
 		49E500DA1E4258B7009559CB /* RecipientCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E500D91E4258B7009559CB /* RecipientCreateViewController.swift */; };
 		49F0BC8D1E3BD83F00FB344B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F0BC8C1E3BD83F00FB344B /* RoundedButton.swift */; };
 		49F986FB1E3DF72000EC57C9 /* TransfersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F986FA1E3DF72000EC57C9 /* TransfersTableViewController.swift */; };
@@ -85,6 +86,7 @@
 		49BE68CC1E5DBF880037D225 /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
 		49C1CEDD1E3E81BB009076D3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		49C9B70C1E3B620A004CAFEF /* UnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
+		49CD2E791E731AF600FA6679 /* ResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		49E500D91E4258B7009559CB /* RecipientCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientCreateViewController.swift; sourceTree = "<group>"; };
 		49F0BC8C1E3BD83F00FB344B /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		49F986FA1E3DF72000EC57C9 /* TransfersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransfersTableViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				49C1CEDD1E3E81BB009076D3 /* CameraViewController.swift */,
 				499375181E3A4440008D65F3 /* InitialViewController.swift */,
 				4993751C1E3A5DA2008D65F3 /* LoginViewController.swift */,
+				49CD2E791E731AF600FA6679 /* ResetViewController.swift */,
 				490B81FF1E41194500BCBC4F /* Registration Steps */,
 			);
 			name = Onboarding;
@@ -407,6 +410,7 @@
 				492316AD1E5F428E00831BA6 /* OnboardingStepOneViewController.swift in Sources */,
 				4952AA0A1E5751A2006165E7 /* User.swift in Sources */,
 				4952AA0D1E575AAD006165E7 /* Address.swift in Sources */,
+				49CD2E7A1E731AF600FA6679 /* ResetViewController.swift in Sources */,
 				49414C6B1E38EC2300CF1F20 /* RecipientCollectionViewCell.swift in Sources */,
 				4952AA0F1E575D57006165E7 /* Beneficiary.swift in Sources */,
 				49414C6D1E39002000CF1F20 /* ConfirmViewController.swift in Sources */,

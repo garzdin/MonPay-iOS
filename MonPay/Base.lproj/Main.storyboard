@@ -596,10 +596,10 @@
             </objects>
             <point key="canvasLocation" x="-1362.3188405797102" y="-2554.076086956522"/>
         </scene>
-        <!--View Controller-->
+        <!--Reset View Controller-->
         <scene sceneID="dQ0-Ea-dH1">
             <objects>
-                <viewController id="T2g-c7-Bas" sceneMemberID="viewController">
+                <viewController id="T2g-c7-Bas" customClass="ResetViewController" customModule="MonPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Z7j-5N-6Po"/>
                         <viewControllerLayoutGuide type="bottom" id="Atj-b1-9jh"/>
@@ -660,7 +660,16 @@
                                         <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resetAction:" destination="T2g-c7-Bas" eventType="touchUpInside" id="zG3-jd-PpG"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello sucker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwK-p0-UzA">
+                                <rect key="frame" x="304" y="125" width="70" height="15"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.2475420552" blue="0.20106874769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.098039215686274508" green="0.17254901960784313" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -670,17 +679,23 @@
                             <constraint firstItem="wdL-DU-1bv" firstAttribute="top" secondItem="Z09-ZC-zdH" secondAttribute="bottom" id="Qwb-Pc-UQP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Z09-ZC-zdH" secondAttribute="trailing" constant="20" id="RYb-CO-GuZ"/>
                             <constraint firstItem="Z09-ZC-zdH" firstAttribute="leading" secondItem="CSm-dc-YbH" secondAttribute="leadingMargin" constant="20" id="ahd-hc-WrU"/>
+                            <constraint firstItem="Z09-ZC-zdH" firstAttribute="top" secondItem="gwK-p0-UzA" secondAttribute="bottom" id="gjH-H1-W8x"/>
                             <constraint firstItem="uxA-md-xr7" firstAttribute="top" secondItem="wdL-DU-1bv" secondAttribute="bottom" constant="30" id="mHl-ya-1Gp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gwK-p0-UzA" secondAttribute="trailing" constant="20" id="mbM-ta-Amy"/>
                             <constraint firstItem="wdL-DU-1bv" firstAttribute="leading" secondItem="CSm-dc-YbH" secondAttribute="leadingMargin" constant="20" id="mqF-jy-Oye"/>
                             <constraint firstItem="uxA-md-xr7" firstAttribute="centerX" secondItem="CSm-dc-YbH" secondAttribute="centerX" id="ud5-8v-H1Q"/>
                             <constraint firstItem="zzY-IT-a18" firstAttribute="leading" secondItem="CSm-dc-YbH" secondAttribute="leadingMargin" id="znL-ib-B9h"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailErrorLabel" destination="gwK-p0-UzA" id="RbW-fz-oLm"/>
+                        <outlet property="emailField" destination="Z09-ZC-zdH" id="9vx-j6-Sew"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSd-s6-ZqQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Svx-Ju-tN3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-2219" y="-1779"/>
+            <point key="canvasLocation" x="-2220.289855072464" y="-1779.6195652173915"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="STj-gS-Vub">
