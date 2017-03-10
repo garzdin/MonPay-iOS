@@ -543,7 +543,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="registerAction:" destination="DG2-V7-5JX" eventType="touchUpInside" id="4BO-yS-JT7"/>
-                                    <segue destination="iuN-In-57n" kind="presentation" identifier="register" id="CuW-i7-oLZ"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdh-tY-bhl">
@@ -590,6 +589,7 @@
                     <connections>
                         <segue destination="uhG-Ie-lOo" kind="presentation" identifier="login" id="pHk-3u-xU1"/>
                         <segue destination="T2g-c7-Bas" kind="presentation" identifier="forgotPassword" id="htf-KP-qyX"/>
+                        <segue destination="iuN-In-57n" kind="presentation" identifier="register" id="66V-cO-Psr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5C-oS-q4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
