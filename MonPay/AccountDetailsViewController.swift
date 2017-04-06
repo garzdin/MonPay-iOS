@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 protocol AccountDeleteDelegate: class {
     func didDeleteAccount(account: Account)
@@ -52,8 +53,8 @@ class AccountDetailsViewController: UIViewController {
     
     func confirmDelete(sender: UIAlertController) {
         if let account = self.account {
-            let params = [
-                "id": account.id
+            let params: Parameters = [
+                "id": account.id!
             ]
             Fetcher.shared.accountDelete(params: params, completion: { (response: [String : Any]?) in
                 self.dismiss(animated: true, completion: nil)

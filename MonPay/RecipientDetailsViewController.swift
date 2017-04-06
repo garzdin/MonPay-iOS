@@ -92,8 +92,8 @@ class RecipientDetailsViewController: UIViewController {
     
     func confirmDelete(sender: UIAlertController) {
         if let recipient = self.recipient {
-            let params = [
-                "id": recipient.id
+            let params: Parameters = [
+                "id": recipient.id!
             ]
             Fetcher.shared.beneficiaryDelete(params: params, completion: { (response: [String : Any]?) in
                 _ = self.navigationController?.popViewController(animated: true)

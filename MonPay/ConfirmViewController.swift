@@ -68,7 +68,7 @@ class ConfirmViewController: UIViewController {
             let params: Parameters = [
                 "amount": amount,
                 "currency": currency.id!,
-                "reason": "Transaction \(pairs?.fromAmount) \(pairs?.fromCurrency) to \(beneficiary.first_name)",
+                "reason": "Transaction \(amount) \(currency) to \(beneficiary.first_name!)",
                 "beneficiary": beneficiary.id!,
                 "account": account.id!,
             ]

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 protocol TransactionDeleteDelegate: class {
     func didDelete(transaction: Transaction)
@@ -102,8 +103,8 @@ class TransferDetailsViewController: UIViewController {
     
     func confirmDelete(sender: UIAlertController) {
         if let transaction = self.transaction {
-            let params = [
-                "id": transaction.id
+            let params: Parameters = [
+                "id": transaction.id!
             ]
             Fetcher.shared.transactionDelete(params: params, completion: { (response: [String : Any]?) in
                 _ = self.navigationController?.popViewController(animated: true)

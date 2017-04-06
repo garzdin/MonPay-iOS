@@ -38,7 +38,7 @@ class OnboardingStepThreeViewController: UIViewController, IDRecognizerDelegate 
     }
 
     @IBAction func registerAction(_ sender: UIButton) {
-        if let user = user, let image = imageData {
+        if let user = user, let _ = imageData {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = dateFormat
             let date_of_birth = dateFormatter.string(from: user.date_of_birth!)

@@ -48,9 +48,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.passwordFieldErrorLabel.text = "Password required"
             return
         }
-        let params = [
-            "email": usernameField.text,
-            "password": passwordField.text
+        let params: Parameters = [
+            "email": usernameField.text!,
+            "password": passwordField.text!
         ]
         Fetcher.shared.authLogin(params: params) { (response: [String : Any]?) in
             if let token = response?["token"] as? String, let refresh_token = response?["refresh_token"] as? String {
